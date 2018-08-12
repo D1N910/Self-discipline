@@ -1,4 +1,4 @@
-// pages/unfinishdTaskList/index.js
+// pages/completedTaskList/index.js
 Page({
 
   /**

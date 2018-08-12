@@ -1,14 +1,15 @@
 {
   "pages": [
+    "pages/unfinishdTaskList/index",
     "pages/mine/index",
+    "pages/completedTaskList/index",
     "pages/index/index",
     "pages/milestone/index",
-    "pages/unfinishdTaskList/index",
-    "pages/completedTaskList/index"
+    "pages/addNewTask/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#f8f8f8",
     "navigationBarTitleText": "自律表",
     "navigationBarTextStyle": "black"
   },

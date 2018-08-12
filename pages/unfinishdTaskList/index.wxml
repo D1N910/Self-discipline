@@ -1,2 +1,52 @@
-<!--pages/unfinishdTaskList/index.wxml-->
-<text>pages/unfinishdTaskList/index.wxml</text>
+<!--pages/completedTaskList/index.wxml-->
+<view class="container">
+  <view class="DoneUI-list">
+    <navigator
+      url="/pages/addNewTask/index">
+      
+      <view class="DoneUI-cell DoneUI-cell_access">
+
+        <view class="weui-cell__hd">
+      
+          <image src="../../static/add.png"></image>    
+      
+        </view>
+      
+        <view class="DoneUI-cell__bd">
+          添加新任务
+        </view>
+      
+      </view>
+
+    </navigator>
+
+  </view>
+
+  <view class="DoneUI-form-preview">
+    <view class="DoneUI-form-preview__hd">
+      <view class="DoneUI-form-preview__item">
+        <label class="DoneUI-form-preview__label">进度</label>
+        <em class="DoneUI-form-preview__value">60%</em>
+      </view>
+    </view>
+    <view class="DoneUI-form-preview__bd">
+      <view class="DoneUI-form-preview__item">
+        <label class="DoneUI-form-preview__label">任务内容</label>
+        <span class="DoneUI-form-preview__value">看书10分钟</span>
+      </view>
+      <view class="DoneUI-form-preview__item">
+        <label class="DoneUI-form-preview__label">开始时间</label>
+        <span class="DoneUI-form-preview__value">2018年08月12日</span>
+      </view>
+      <view class="DoneUI-form-preview__item">
+        <label class="DoneUI-form-preview__label">结束时间</label>
+        <span class="DoneUI-form-preview__value">2018年08月14日</span>
+      </view>
+    </view>
+    <view class="DoneUI-form-preview__ft">
+          <view class="DoneUI-form-preview__btn DoneUI-form-preview__btn_default" href="javascript:">删除</view>
+      <view class="DoneUI-form-preview__btn DoneUI-form-preview__btn_primary" href="javascript:">编辑</view>
+            <view class="DoneUI-form-preview__btn DoneUI-form-preview__btn_down" href="javascript:">完成</view>
+    </view>
+  </view>
+</view>

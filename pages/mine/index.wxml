@@ -1,92 +1,94 @@
 <!--pages/mine/index.wxml-->
-<view class="List">
+<view class="container">
+  <view class="DoneUI-list">
 
-  <navigator
-    url="/pages/unfinishdTaskList/index">
+    <navigator
+      url="/pages/unfinishdTaskList/index">
+      
+      <view class="DoneUI-cell DoneUI-cell_access">
+
+        <view class="weui-cell__hd">
+      
+          <image src="../../static/unfinishedTaskList.png"></image>    
+      
+        </view>
+      
+        <view class="DoneUI-cell__bd">
+          进行中(添加入口)
+        </view>
+      
+        <view class="DoneUI-cell__ft">
+          0
+        </view>
+      
+      </view>
+
+    </navigator>
+
+    <navigator
+      url="/pages/completedTaskList/index">
+
+      <view class="DoneUI-cell DoneUI-cell_access">
+
+        <view class="weui-cell__hd">
+      
+          <image src="../../static/completedTaskList.png"></image>    
+      
+        </view>
+      
+        <view class="DoneUI-cell__bd">
+          已完成
+        </view>
+      
+        <view class="DoneUI-cell__ft">
+          0
+        </view>
+      
+      </view>
+
+    </navigator>
+
+    <!-- <navigator
+      url="/pages/milestone/index">
+
+      <view class="DoneUI-cell DoneUI-cell_access">
+
+
+        <view class="weui-cell__hd">
+      
+          <image src="../../static/milestone.png"></image>    
+      
+        </view>
+      
+        <view class="DoneUI-cell__bd">
+          里程碑
+        </view>
+      
+        <view class="DoneUI-cell__ft">
+          0
+        </view>
+      
+      </view>
     
-    <view class="DoneUI-cell DoneUI-cell_access">
+    </navigator> -->
+
+    <view class="DoneUI-cell">
 
       <view class="weui-cell__hd">
     
-        <image src="../../static/unfinishedTaskList.png"></image>    
+        <image src="../../static/red.png"></image>    
     
       </view>
     
       <view class="DoneUI-cell__bd">
-        进行中(添加入口)
+        已获得红花数
       </view>
     
       <view class="DoneUI-cell__ft">
-        0
+        11朵
       </view>
     
     </view>
 
-  </navigator>
-
-  <navigator
-    url="/pages/completedTaskList/index">
-
-    <view class="DoneUI-cell DoneUI-cell_access">
-
-      <view class="weui-cell__hd">
-    
-        <image src="../../static/completedTaskList.png"></image>    
-    
-      </view>
-    
-      <view class="DoneUI-cell__bd">
-        已完成
-      </view>
-    
-      <view class="DoneUI-cell__ft">
-        0
-      </view>
-    
-    </view>
-
-  </navigator>
-
-  <!-- <navigator
-    url="/pages/milestone/index">
-
-    <view class="DoneUI-cell DoneUI-cell_access">
-
-
-      <view class="weui-cell__hd">
-    
-        <image src="../../static/milestone.png"></image>    
-    
-      </view>
-    
-      <view class="DoneUI-cell__bd">
-        里程碑
-      </view>
-    
-      <view class="DoneUI-cell__ft">
-        0
-      </view>
-    
-    </view>
-  
-  </navigator> -->
-
-  <view class="DoneUI-cell">
-
-    <view class="weui-cell__hd">
-  
-      <image src="../../static/red.png"></image>    
-  
-    </view>
-  
-    <view class="DoneUI-cell__bd">
-      已获得红花数
-    </view>
-  
-    <view class="DoneUI-cell__ft">
-      11朵
-    </view>
-  
   </view>
-
 </view>

@@ -1,1 +1,106 @@
 /* pages/completedTaskList/index.wxss */
+.DoneUI-form-preview{
+  position: relative;
+  background-color: #FFFFFF
+}
+.DoneUI-form-preview:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #e5e5e5;
+    color: #e5e5e5;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}
+.DoneUI-form-preview__hd {
+    position: relative;
+    padding: 10px 15px;
+    text-align: right;
+    line-height: 2.5em;
+}
+.DoneUI-form-preview__item {
+    overflow: hidden;
+}
+.DoneUI-form-preview__label {
+    float: left;
+    margin-right: 1em;
+    min-width: 4em;
+    color: #808080;
+    text-align: justify;
+    text-align-last: justify;
+}
+
+.DoneUI-form-preview__hd .DoneUI-form-preview__value {
+    font-style: normal;
+    font-size: 1.6em;
+}
+.DoneUI-form-preview__value {
+    display: block;
+    overflow: hidden;
+    word-break: normal;
+    word-wrap: break-word;
+}
+.DoneUI-form-preview__hd:after {
+    content: " ";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+    border-bottom: 1px solid #e5e5e5;
+    color: #e5e5e5;
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    left: 15px;
+}
+.DoneUI-form-preview__bd {
+    padding: 10px 15px;
+    font-size: .9em;
+    text-align: right;
+    color: #808080;
+    line-height: 2;
+}
+.DoneUI-form-preview__item {
+    overflow: hidden;
+}
+.DoneUI-form-preview__ft {
+    position: relative;
+    line-height: 50px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+.DoneUI-form-preview__btn_primary {
+    color: #09BB07;
+}
+.DoneUI-form-preview__ft:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #D5D5D6;
+    color: #D5D5D6;
+    transform-origin: 0 0;
+    transform: scaleY(0.5);
+}
+.DoneUI-form-preview__btn {
+    position: relative;
+    display: block;
+    flex: 1;
+    color: #09BB07;
+    text-align: center;
+}
+.DoneUI-form-preview__btn_default {
+    color: #808080;
+}
+.DoneUI-form-preview__btn_down{
+    color: #fc7070; 
+}

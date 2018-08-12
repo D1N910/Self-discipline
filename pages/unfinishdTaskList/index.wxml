@@ -15,7 +15,11 @@
         <view class="DoneUI-cell__bd">
           添加新任务
         </view>
-      
+        
+        <view class="DoneUI-cell__ft">
+          
+        </view>
+
       </view>
 
     </navigator>

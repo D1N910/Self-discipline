@@ -16,7 +16,7 @@
       
       <view
         class="weekItemTitle">
-        {{listItem.time}}{{nowDate==listItem.weekName?'今':''}}   
+        {{listItem.time}}  
       </view>
 
       <view

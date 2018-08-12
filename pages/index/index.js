@@ -105,32 +105,9 @@ Page({
   onLoad: function (options) {
     console.log('ddd');
     var nowDate = new Date();
-    switch (nowDate.getDay()){
-      case 0:
-        nowDate = '日';
-        break;
-      case 1:
-        nowDate = '一';
-        break;
-      case 2:
-        nowDate = '二';
-        break;
-      case 3:
-        nowDate = '三';
-        break;
-      case 4:
-        nowDate = '四';
-        break;
-      case 5:
-        nowDate = '五';
-        break;
-      case 6:
-        nowDate = '六';
-        break;
-    }
-    
+    var weekArray=['日','一','二','三','四','五','六'];
     this.setData({
-      nowDate: nowDate
+      nowDate: weekArray[nowDate.getDay()]
     })
   },
 
@@ -183,8 +160,26 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    wx.showLoading({
+      title: '请等待日历加载'
+    })
+    console.log(wx.getStorageSync('allTasks'))
+    var nowDate = new Date();
+    console.log(this.is_leap(nowDate.getFullYear()));
+    var m_days = new Array(31, 28 + this.is_leap(nowDate.getFullYear()), 31, 30, 31, 31, 30, 31, 30, 31, 30, 31);
+    console.log(m_days[nowDate.getMonth()]);
+    console.log(nowDate.getDate());
+    console.log(nowDate.getDay());
+    wx.hideLoading();
   },
 
+  /**
+   * 判断是不是闰年
+   */
+  is_leap(year) {
+    var res;
+    return (year % 100 == 0 ? (year % 400 == 0 ? 1 : 0) : res = (year % 4 == 0 ? 1 : 0));
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

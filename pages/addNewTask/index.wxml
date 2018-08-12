@@ -1,4 +1,108 @@
 <!--pages/addNewTask/index.wxml-->
 <view class="container">
 
+  <form bindsubmit="formSubmit">
+
+    <view class="DoneUI-cells__title">任务内容</view>
+
+    <view class="DoneUI-cells DoneUI-cells_form">
+
+      <view class="DoneUI-cell">
+
+        <view class="DoneUI-cell__bd">
+
+          <textarea
+            class="DoneUI-textarea"
+            placeholder="请输入文本"
+            value=""
+            name="content"
+            rows="3"></textarea>
+
+        </view>
+
+      </view>
+    </view>
+
+    <view class="DoneUI-cells__title">
+      其他配置
+      <text wx:if="{{days!=''}}">(任务持续 {{days}} 天)</text>
+    </view>
+
+    <view class="DoneUI-list DoneUI-form">
+
+      <view class="DoneUI-cell">
+
+        <view class="weui-cell__hd">
+          第一天
+        </view>
+
+        <view class="DoneUI-cell__bd">
+
+          <picker
+            mode="date"
+            data-indata="startData"
+            bindchange="bindDateChange">
+
+            <view class="picker">
+              {{taskData.startData}}
+            </view>
+
+          </picker>
+
+        </view>
+
+      </view>
+
+      <view class="DoneUI-cell">
+
+        <view class="weui-cell__hd">
+          最后一天
+        </view>
+
+        <view class="DoneUI-cell__bd">
+
+          <picker mode="date" value="{{taskData.endData}}" data-indata="endData" bindchange="bindDateChange">
+
+            <view class="picker">
+              {{taskData.endData}}
+            </view>
+
+          </picker>
+
+        </view>
+
+      </view>
+
+      <!-- <view class="DoneUI-cell">
+
+      <view class="weui-cell__hd">
+        是否跳过双休
+      </view>
+
+      <view class="DoneUI-cell__bd">
+
+        <switch bindchange="switch2Change" />
+
+      </view>
+
+    </view> -->
+
+    </view>
+
+    <view class="DoneUI-list">
+      <view class="DoneUI-form-preview__ft">
+
+        <view
+          class="DoneUI-form-preview__btn DoneUI-form-preview__btn_default"
+          bindtap="cancel">取消</view>  
+
+        <button
+          class="DoneUI-form-preview__btn DoneUI-form-preview__btn_down"
+          formType="submit">添加任务</button>
+
+      </view>
+    </view>
+
+  </form>
+
 </view>

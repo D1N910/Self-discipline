@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/index/index",    
+    "pages/addNewTask/index",    
     "pages/unfinishdTaskList/index",
     "pages/mine/index",
     "pages/completedTaskList/index",
-    "pages/index/index",
-    "pages/milestone/index",
-    "pages/addNewTask/index"
+    "pages/milestone/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

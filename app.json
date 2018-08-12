@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/mine/index",
+    "pages/index/index",
+    "pages/milestone/index",
+    "pages/unfinishdTaskList/index",
+    "pages/completedTaskList/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "自律表",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#949494",
+    "selectedColor": "#fc7070",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "自律表",
+        "iconPath": "static/noRed.png",
+        "selectedIconPath": "static/red.png"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "君之",
+        "iconPath": "static/noMine.png",
+        "selectedIconPath": "static/mine.png"
+      }
+    ]
+  }
+}

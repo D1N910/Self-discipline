@@ -1,0 +1,54 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  
+  <!-- 星期与事件 -->
+  <view class="week">
+
+    <view
+      class="weekItem"
+      wx:for="{{List}}"
+      wx:for-item="listItem"
+      wx:for-index="listIndex"
+      wx:key="listIndex"
+      data-nowDate="{{listItem.weekName}}"
+      catchtap="changNowDate"     
+      style="flex:{{nowDate==listItem.weekName?2:1}};opacity:{{nowDate==listItem.weekName?1:0.3}};background:{{nowDate==listItem.weekName?'#fff':''}}">
+      
+      <view
+        class="weekItemTitle">
+        {{listItem.time}}{{nowDate==listItem.weekName?'今':''}}   
+      </view>
+
+      <view
+        class="weekItemTitle">        
+        {{listItem.weekName}}
+      </view>
+
+      <view
+        class="thing"
+        data-listId="{{listIndex}}"        
+        wx:for="{{listItem.thingList}}"
+        wx:key="index"
+        bindtap="changeSuccess"
+        data-item="{{index}}"
+        style="background:{{item.success?'#9dea5e':'#fff'}};border:{{item.success?'1px solid #80bb51':'1px solid #ededed'}}">
+        {{item.content}}
+
+        <view
+          class="success"
+          wx:if="{{item.success}}">
+          <image
+            src="../../static/red.png"
+            mode="aspectFit"></image>
+        </view>
+
+      </view>
+
+    </view>
+
+  </view>
+
+  <!-- 编辑 -->
+  
+
+</view>

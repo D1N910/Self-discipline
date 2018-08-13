@@ -143,7 +143,6 @@ Page({
    * 改变显示星期
    */
   changNowDate(e){
-    console.log(e.currentTarget.dataset.nowdate)
     this.setData({
       nowDate:e.currentTarget.dataset.nowdate
     })
@@ -164,12 +163,43 @@ Page({
       title: '请等待日历加载'
     })
     console.log(wx.getStorageSync('allTasks'))
+
     var nowDate = new Date();
+
     console.log(this.is_leap(nowDate.getFullYear()));
+    
     var m_days = new Array(31, 28 + this.is_leap(nowDate.getFullYear()), 31, 30, 31, 31, 30, 31, 30, 31, 30, 31);
+
+    console.log('getMonth');
     console.log(m_days[nowDate.getMonth()]);
+    console.log('getDate');
     console.log(nowDate.getDate());
+    console.log('getDay');    
     console.log(nowDate.getDay());
+    var weekArray = ['日', '一', '二', '三', '四', '五', '六'];
+    console.log(weekArray[nowDate.getDay()]);
+
+    var List = []
+    var j = 0;
+    for (let i in weekArray){
+
+      List[j]={}
+
+      console.log('***'+weekArray[i]+'***')
+
+      var thisDay = nowDate.getDate() - (nowDate.getDay() - i);
+
+      console.log(thisDay)
+
+      List[j].listId = nowDate.getTime();
+
+      List[j].time = `${nowDate.getMonth()+1}.${nowDate.getDate()}`;
+      List[j].weekName = weekArray[i];
+      List[j].thingList = [];
+      j++;
+
+    }
+    console.log(List);
     wx.hideLoading();
   },
 

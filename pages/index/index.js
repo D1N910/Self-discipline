@@ -9,7 +9,7 @@ Page({
     List:[
       {
         listId: 0,
-        time:'8.6',   
+        time:'8.',   
         weekName:'一',
         thingList:[
           {

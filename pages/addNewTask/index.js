@@ -115,8 +115,8 @@ Page({
     }
     var sArr = this.data.taskData.startData.split("-");
     var eArr = this.data.taskData.endData.split("-");
-    var sRDate = new Date(sArr[0], sArr[1], sArr[2]);
-    var eRDate = new Date(eArr[0], eArr[1], eArr[2]);
+    var sRDate = new Date(sArr[0], sArr[1] - 1, sArr[2]);
+    var eRDate = new Date(eArr[0], eArr[1] - 1, eArr[2]);
     console.log(sRDate.getTime());
     console.log(eRDate.getTime());
     var nowDate = new Date();

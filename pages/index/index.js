@@ -162,7 +162,6 @@ Page({
     wx.showLoading({
       title: '请等待日历加载'
     })
-    console.log(wx.getStorageSync('allTasks'))
 
     var nowDate = new Date();
 
@@ -215,7 +214,6 @@ Page({
 
       var listDate = new Date(ListYear, ListMonth - 1, thisDay)
       List[j].listId = listDate.getTime();
-
       List[j].time = `${ListMonth}.${thisDay}`;
       List[j].weekName = weekArray[i];
       List[j].thingList = [];
@@ -223,6 +221,20 @@ Page({
 
     }
     console.log(List);
+    var allTasks = wx.getStorageSync('allTasks')
+    
+    // 任务装载到时间表里
+    for (let i in allTasks) {
+      console.log(allTasks[i]);
+      for (let j in List){
+        console.log(allTasks[i]);        
+        if (List[j].listId >= allTasks[i].startAt && List[j].listId <= allTasks[i].endAt){
+          allTasks[i].success = 0
+          List[j].thingList.push(allTasks[i])
+        }
+      }
+    }
+
     this.setData({
       List: List
     })

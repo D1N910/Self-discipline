@@ -171,14 +171,11 @@ Page({
     var m_days = new Array(31, 28 + this.is_leap(nowDate.getFullYear()), 31, 30, 31, 31, 30, 31, 30, 31, 30, 31);
 
     console.log('getMonth');
-    console.log(m_days[nowDate.getMonth()]);
     console.log('getDate');
     console.log(nowDate.getDate());
     console.log('getDay');    
     console.log(nowDate.getDay());
     var weekArray = ['日', '一', '二', '三', '四', '五', '六'];
-    console.log(weekArray[nowDate.getDay()]);
-
     var List = []
     var j = 0;
     for (let i in weekArray){
@@ -189,17 +186,46 @@ Page({
 
       var thisDay = nowDate.getDate() - (nowDate.getDay() - i);
 
-      console.log(thisDay)
+      console.log();
 
-      List[j].listId = nowDate.getTime();
+      console.log('*****m_days********');
 
-      List[j].time = `${nowDate.getMonth()+1}.${nowDate.getDate()}`;
+      var lastMonthDay = m_days[nowDate.getMonth() - 1 < 0 ? 11 : nowDate.getMonth() - 1];
+      var nextMonthDay = m_days[nowDate.getMonth() + 1 > 11 ? 0 : nowDate.getMonth() + 1];
+      var nowMonthDay = m_days[nowDate.getMonth()];
+
+      var ListMonth = nowDate.getMonth() + 1
+      var ListYear = nowDate.getFullYear()
+
+      if (thisDay<1){
+        thisDay = lastMonthDay + thisDay
+        ListMonth = L1istMonth - 1 < 0 ? 12 : ListMonth - 1
+        if (ListMonth > nowDate.getMonth() + 1){
+          ListYear = ListYear - 1;
+        }  
+      } else if (thisDay > nowMonthDay){
+        thisDay = thisDay - nowMonthDay
+        ListMonth = ListMonth + 1 > 12 ? 1 : ListMonth + 1   
+        if (ListMonth < nowDate.getMonth() + 1) {
+          ListYear = ListYear + 1;
+        }  
+      }
+
+      console.log(m_days[nowDate.getMonth()]);
+
+      var listDate = new Date(ListYear, ListMonth - 1, thisDay)
+      List[j].listId = listDate.getTime();
+
+      List[j].time = `${ListMonth}.${thisDay}`;
       List[j].weekName = weekArray[i];
       List[j].thingList = [];
       j++;
 
     }
     console.log(List);
+    this.setData({
+      List: List
+    })
     wx.hideLoading();
   },
 

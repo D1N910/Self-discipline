@@ -6,97 +6,7 @@ Page({
    */
   data: {
     nowDate:'',
-    List:[
-      {
-        listId: 0,
-        time:'8.',   
-        weekName:'一',
-        thingList:[
-          {
-            id:0,
-            success:0,
-            content:'准备听力准备听力考试准备听力考试准备听力考试考试'
-          }      
-        ]
-      },
-      {
-        listId: 1,
-        time: '8.7',                                           
-        weekName: '二',
-        thingList: [
-          {
-            id: 0,
-            success: 0,
-            content: '准备听力准备听力考试准备听力考试准备听力考试考试'
-          }   
-        ]
-      },
-      {
-        listId: 2,
-        time: '8.8',                
-        weekName: '三',
-        thingList: [
-          {
-            id: 0,
-            success: 0,
-            content: '准备听力准备听力考试准备听力考试准备听力考试考试'
-          }   
-        ]
-      },
-      {
-        listId: 3,
-        time: '8.9',                        
-        weekName: '四',
-        thingList: [
-          {
-            id: 0,
-            success: 0,
-            content: '准备听力准备听力考试准备听力考试准备听力考试考试'
-          }   
-        ]
-      },
-      {
-        listId: 4,
-        time: '8.10',                                
-        weekName: '五',
-        thingList: [
-          {
-            id: 0,
-            success: 0,
-            content: '准备听力准备听力考试准备听力考试准备听力考试考试'
-          } 
-        ]
-      },
-      {
-        listId:5,
-        time: '8.11',           
-        weekName: '六',
-        thingList: [
-          {
-            id: 0,
-            success: 1,
-            content: '准备听力准备听力考试准备听力考试准备听力考试考试'
-          },
-          {
-            id: 1,
-            success: 1,
-            content: '吃早餐'
-          }
-        ]
-      },
-      {
-        listId: 6,   
-        time: '8.12',                                             
-        weekName: '日',
-        thingList: [
-          {
-            id: 0,
-            success: 0,
-            content: '准备听力准备听力考试准备听力考试准备听力考试考试'
-          }   
-        ]
-      }
-    ]
+    List:[]
   },
 
   /**
@@ -134,6 +44,40 @@ Page({
     }
 
     this.data.List[e.currentTarget.dataset.listid].thingList[e.currentTarget.dataset.item].success = !this.data.List[e.currentTarget.dataset.listid].thingList[e.currentTarget.dataset.item].success;
+
+    var allTasks = wx.getStorageSync('allTasks')
+    if (this.data.List[e.currentTarget.dataset.listid].thingList[e.currentTarget.dataset.item].success){
+      for(let i in allTasks){
+        if (allTasks[i].id == this.data.List[e.currentTarget.dataset.listid].thingList[e.currentTarget.dataset.item].id){
+          var haveSame = 0
+          for (let j in allTasks[i].success){
+            if (allTasks[i].success[j] == this.data.List[e.currentTarget.dataset.listid].listId){
+              haveSame = 1
+              break
+            }
+          }
+          if (!haveSame){
+            allTasks[i].success.push(this.data.List[e.currentTarget.dataset.listid].listId)
+          }
+          break          
+        }
+      }
+    }else{
+      for (let i in allTasks) {
+        if (allTasks[i].id == this.data.List[e.currentTarget.dataset.listid].thingList[e.currentTarget.dataset.item].id) {
+          var haveSame = 0
+          for (let j in allTasks[i].success) {
+            if (allTasks[i].success[j] == this.data.List[e.currentTarget.dataset.listid].listId) {
+              haveSame = j
+              break
+            }
+          }
+          allTasks[i].success.splice(haveSame,1)
+          break
+        }
+      }
+    }
+    wx.setStorageSync('allTasks', allTasks)
     this.setData({
       List: this.data.List
     })
@@ -229,7 +173,15 @@ Page({
       for (let j in List){
         console.log(allTasks[i]);        
         if (List[j].listId >= allTasks[i].startAt && List[j].listId <= allTasks[i].endAt){
-          allTasks[i].success = 0
+          for (let f in allTasks[i].success){
+            if (allTasks[i].success[f] == List[j].listId){
+              allTasks[i].success = 1            
+              break
+            }
+          }
+          if (allTasks[i].success != 1){
+            allTasks[i].success = 0
+          }
           List[j].thingList.push(allTasks[i])
         }
       }

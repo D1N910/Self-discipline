@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/unfinishdTaskList/index",    
-    "pages/mine/index",    
     "pages/index/index",    
+    "pages/mine/index",    
+    "pages/unfinishdTaskList/index",    
     "pages/addNewTask/index",    
     "pages/completedTaskList/index",
     "pages/milestone/index"

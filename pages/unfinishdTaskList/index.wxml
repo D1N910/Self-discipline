@@ -56,8 +56,15 @@
       </view>
     </view>
     <view class="DoneUI-form-preview__ft">
-          <view class="DoneUI-form-preview__btn DoneUI-form-preview__btn_default" href="javascript:">删除</view>
-      <view class="DoneUI-form-preview__btn DoneUI-form-preview__btn_primary" href="javascript:">编辑</view>
+      <view
+        class="DoneUI-form-preview__btn DoneUI-form-preview__btn_default"
+        bindtap="delateItem"
+        data-taskId="{{item.id}}">
+        删除
+      </view>
+      <view
+        class="DoneUI-form-preview__btn DoneUI-form-preview__btn_primary"
+        >编辑</view>
             <view class="DoneUI-form-preview__btn DoneUI-form-preview__btn_down" href="javascript:">完成</view>
     </view>
   </view>

@@ -13,11 +13,17 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad(options){
+  },
+
+  // 刷新页面
+  Refresh: function (options) {
+    this.data.unfinishedTaskLists = []
     // 获取当前时间
     var thisDate = new Date()
+    var thisD = new Date(thisDate.getFullYear(), thisDate.getMonth(), thisDate.getDate())
     // 获取当前时间戳
-    var thisTime = thisDate.getTime()
+    var thisTime = thisD.getTime()
     // 获取所有任务
     var allTasks = wx.getStorageSync('allTasks')
 
@@ -61,7 +67,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.Refresh()  
   },
 
   /**
@@ -93,9 +99,37 @@ Page({
   },
 
   /**
-   * 用户点击右上角分享
+   * 用户点击删除任务
    */
-  onShareAppMessage: function () {
-  
+  delateItem(e) {
+    console.log(e)
+    var _this = this
+    wx.showModal({
+      title: '当这任务没有存在过',
+      content: '是否继续',
+      success: function (res) {
+        if (res.confirm) {
+          var allTasks = wx.getStorageSync('allTasks')
+          for (let i in allTasks) {
+            if (allTasks[i].id == e.target.dataset.taskid){
+              allTasks.splice(i,1)
+              break
+            }
+          }
+          wx.setStorageSync('allTasks', allTasks)
+          _this.Refresh()
+          wx.showToast({
+            title: '删除啦',
+            icon: 'none'
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+          wx.showToast({
+            title: '刚刚的事情当作没发生过',
+            icon: 'none'
+          })
+        }
+      }
+    })
   }
 })

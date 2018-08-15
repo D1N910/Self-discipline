@@ -111,27 +111,20 @@ Page({
 
     console.log(this.is_leap(nowDate.getFullYear()));
     
+    // 月份的天数
     var m_days = new Array(31, 28 + this.is_leap(nowDate.getFullYear()), 31, 30, 31, 31, 30, 31, 30, 31, 30, 31);
 
-    console.log('getMonth');
-    console.log('getDate');
-    console.log(nowDate.getDate());
-    console.log('getDay');    
-    console.log(nowDate.getDay());
+    // 数字对应的星期名
     var weekArray = ['日', '一', '二', '三', '四', '五', '六'];
     var List = []
     var j = 0;
+
+    // 遍历获得初始化的自律表
     for (let i in weekArray){
 
       List[j]={}
 
-      console.log('***'+weekArray[i]+'***')
-
       var thisDay = nowDate.getDate() - (nowDate.getDay() - i);
-
-      console.log();
-
-      console.log('*****m_days********');
 
       var lastMonthDay = m_days[nowDate.getMonth() - 1 < 0 ? 11 : nowDate.getMonth() - 1];
       var nextMonthDay = m_days[nowDate.getMonth() + 1 > 11 ? 0 : nowDate.getMonth() + 1];
@@ -154,8 +147,6 @@ Page({
         }  
       }
 
-      console.log(m_days[nowDate.getMonth()]);
-
       var listDate = new Date(ListYear, ListMonth - 1, thisDay)
       List[j].listId = listDate.getTime();
       List[j].time = `${ListMonth}.${thisDay}`;
@@ -167,22 +158,32 @@ Page({
     console.log(List);
     var allTasks = wx.getStorageSync('allTasks')
     
-    // 任务装载到时间表里
+    // 遍历所有任务
     for (let i in allTasks) {
-      console.log(allTasks[i]);
+      
+      // 遍历所有自律表
       for (let j in List){
-        console.log(allTasks[i]);        
+
+        // 如果自律表 j 的时间在 任务 i 的时间范围内 则添加
         if (List[j].listId >= allTasks[i].startAt && List[j].listId <= allTasks[i].endAt){
-          for (let f in allTasks[i].success){
-            if (allTasks[i].success[f] == List[j].listId){
-              allTasks[i].success = 1            
+
+          let thisAllTasksSuccess = [...allTasks[i].success]
+          // 遍历任务i所有完成的时间
+          for (let f in thisAllTasksSuccess){
+
+            if (thisAllTasksSuccess[f] == List[j].listId){
+              thisAllTasksSuccess = 1            
               break
             }
           }
-          if (allTasks[i].success != 1){
-            allTasks[i].success = 0
+          if (thisAllTasksSuccess != 1){
+            thisAllTasksSuccess = 0
           }
-          List[j].thingList.push(allTasks[i])
+          var newtask = {}
+          newtask.id = allTasks[i].id
+          newtask.content = allTasks[i].content
+          newtask.success = thisAllTasksSuccess
+          List[j].thingList.push(newtask)
         }
       }
     }

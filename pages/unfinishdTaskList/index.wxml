@@ -26,25 +26,33 @@
 
   </view>
 
-  <view class="DoneUI-form-preview">
+  <view class="noThing" wx:if="{{unfinishedTaskLists.length==0}}">
+    这里空空如也，可以尝试添加新任务
+  </view>
+
+  <view
+    class="DoneUI-form-preview"
+    wx:for="{{unfinishedTaskLists}}"
+    wx:key="index"
+    data-taskId="{{item.id}}">
     <view class="DoneUI-form-preview__hd">
       <view class="DoneUI-form-preview__item">
         <label class="DoneUI-form-preview__label">进度</label>
-        <em class="DoneUI-form-preview__value">60%</em>
+        <em class="DoneUI-form-preview__value">{{item.speedOfProgress}}%</em>
       </view>
     </view>
     <view class="DoneUI-form-preview__bd">
       <view class="DoneUI-form-preview__item">
         <label class="DoneUI-form-preview__label">任务内容</label>
-        <span class="DoneUI-form-preview__value">看书10分钟</span>
+        <span class="DoneUI-form-preview__value">{{item.content}}</span>
       </view>
       <view class="DoneUI-form-preview__item">
         <label class="DoneUI-form-preview__label">开始时间</label>
-        <span class="DoneUI-form-preview__value">2018年08月12日</span>
+        <span class="DoneUI-form-preview__value">{{item.startAt}}</span>
       </view>
       <view class="DoneUI-form-preview__item">
         <label class="DoneUI-form-preview__label">结束时间</label>
-        <span class="DoneUI-form-preview__value">2018年08月14日</span>
+        <span class="DoneUI-form-preview__value">{{item.endAt}}</span>
       </view>
     </view>
     <view class="DoneUI-form-preview__ft">

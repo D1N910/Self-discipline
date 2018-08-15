@@ -5,28 +5,46 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    processing: '',
+    over: '',
+    getRed: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var allTasks = wx.getStorageSync('allTasks')
+    var nowDate = new Date();
+
+    var thisTime = nowDate.getTime();
+    console.log(allTasks);
+    var processing = 0;
+    var getRed = 0;
+    for (let i in allTasks) {
+      if (thisTime <= allTasks[i].endAt) {
+        processing++
+      }
+      getRed += allTasks[i].success.length
+    }
+    var over = allTasks.length - processing
+    this.setData({
+      processing: processing,
+      over: over,
+      getRed: getRed
+    })
   },
 
   /**

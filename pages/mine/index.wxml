@@ -18,7 +18,7 @@
         </view>
       
         <view class="DoneUI-cell__ft">
-          0
+          {{processing}}
         </view>
       
       </view>
@@ -37,11 +37,11 @@
         </view>
       
         <view class="DoneUI-cell__bd">
-          已完成
+          已结束
         </view>
       
         <view class="DoneUI-cell__ft">
-          0
+          {{over}}
         </view>
       
       </view>
@@ -85,7 +85,7 @@
       </view>
     
       <view class="DoneUI-cell__ft">
-        11朵
+        {{getRed}}朵
       </view>
     
     </view>

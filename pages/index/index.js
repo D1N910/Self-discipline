@@ -108,8 +108,6 @@ Page({
     })
 
     var nowDate = new Date();
-
-    console.log(this.is_leap(nowDate.getFullYear()));
     
     // 月份的天数
     var m_days = new Array(31, 28 + this.is_leap(nowDate.getFullYear()), 31, 30, 31, 31, 30, 31, 30, 31, 30, 31);
@@ -150,12 +148,14 @@ Page({
       var listDate = new Date(ListYear, ListMonth - 1, thisDay)
       List[j].listId = listDate.getTime();
       List[j].time = `${ListMonth}.${thisDay}`;
+      if (thisDay == nowDate.getDate()){
+        List[j].time = `${ListMonth}.${thisDay}今`;        
+      }
       List[j].weekName = weekArray[i];
       List[j].thingList = [];
       j++;
 
     }
-    console.log(List);
     var allTasks = wx.getStorageSync('allTasks')
     
     // 遍历所有任务

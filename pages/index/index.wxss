@@ -8,6 +8,7 @@
 .weekItem{
   flex: 1;
   text-align: center;
+  min-height: 100vh;
 }
 .weekItem .weekItemTitle{
   font-weight: bolder;

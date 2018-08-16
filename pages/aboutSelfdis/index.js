@@ -8,6 +8,7 @@ Page({
     update:[
       {
         versionId: 'v1.0.0',
+        authorSaid:'本版无拿取用户数据，纯本地离线使用',
         content:'日历显示自律项目/进入显示当日项目/单击完成项目/长按项目进入编辑页面/添加自律项目/管理进行中的项目/管理已结束的项目/关于自律表/D1N910的肝',
         feeked:'wyd1n910@gmail.com',
         author: 'D1N910',

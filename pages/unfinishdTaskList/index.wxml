@@ -1,33 +1,7 @@
 <!--pages/completedTaskList/index.wxml-->
 <view class="container">
-  <view class="DoneUI-list">
-    <navigator
-      url="/pages/addNewTask/index">
-      
-      <view class="DoneUI-cell DoneUI-cell_access">
-
-        <view class="weui-cell__hd">
-      
-          <image src="../../static/add.png"></image>    
-      
-        </view>
-      
-        <view class="DoneUI-cell__bd">
-          添加新任务
-        </view>
-        
-        <view class="DoneUI-cell__ft">
-          
-        </view>
-
-      </view>
-
-    </navigator>
-
-  </view>
-
   <view class="noThing" wx:if="{{unfinishedTaskLists.length==0}}">
-    这里空空如也，可以尝试添加新任务
+    这里空空如也，可以尝试添加新自律项目
   </view>
 
   <view
@@ -38,7 +12,7 @@
     <view class="DoneUI-form-preview__hd">
       <view class="DoneUI-form-preview__item">
         <label class="DoneUI-form-preview__label">进度</label>
-        <em class="DoneUI-form-preview__value">{{item.speedOfProgress}}%</em>
+        <em class="DoneUI-form-preview__value">{{item.speedOfProgress}}％</em>
       </view>
     </view>
     <view class="DoneUI-form-preview__bd">
@@ -63,13 +37,17 @@
         删除
       </view>
       <navigator
+        class="DoneUI-form-preview__btn DoneUI-form-preview__btn_primary DoneUI-form-preview__btn_down"
         url="/pages/addNewTask/index?id={{item.id}}">
       <view
-        class="DoneUI-form-preview__btn DoneUI-form-preview__btn_primary"
+        class=""
         >编辑</view>
       </navigator>        
 
-            <view class="DoneUI-form-preview__btn DoneUI-form-preview__btn_down" href="javascript:">完成</view>
     </view>
+  </view>
+
+  <view class="noThing" wx:if="{{unfinishedTaskLists.length!=0}}">
+    －－这里是自律的底线－－
   </view>
 </view>

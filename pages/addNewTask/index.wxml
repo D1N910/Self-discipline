@@ -109,8 +109,4 @@
 
   </form>
 
-  <view class="edit" wx:if="{{edit}}">
-      ⚠️ 修改任务时间将清空原任务的小红花
-  </view>
-
 </view>

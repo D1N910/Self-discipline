@@ -114,9 +114,3 @@ button:before {
 .DoneUI-form-preview__btn_down{
     color: #fc7070; 
 }
-.edit{
-  font-size: 32rpx;
-  color: #fc7070;
-  text-align: right;
-  margin: 14rpx 8rpx;
-}

@@ -46,8 +46,15 @@ Page({
 
         // 完成时间
         var doneDay = (allTasks[i].endAt - allTasks[i].startAt)/86400000 + 1
+        
+        var doneNumber = 0
         // 任务进度
-        unfinishedTaskListsItem.speedOfProgress =parseInt(allTasks[i].success.length / doneDay * 100)
+        for (let j in allTasks[i].success){
+          if (allTasks[i].success[j] >= allTasks[i].startAt && allTasks[i].success[j] <= allTasks[i].endAt){
+            doneNumber ++
+          }
+        }
+        unfinishedTaskListsItem.speedOfProgress = parseInt(doneNumber / doneDay * 100)
         this.data.unfinishedTaskLists.push(unfinishedTaskListsItem)
       }
     }
@@ -107,6 +114,8 @@ Page({
     wx.showModal({
       title: '当这任务没有存在过',
       content: '是否继续',
+      cancelColor: '#fc7070',
+      confirmColor:'#000000',
       success: function (res) {
         if (res.confirm) {
           var allTasks = wx.getStorageSync('allTasks')

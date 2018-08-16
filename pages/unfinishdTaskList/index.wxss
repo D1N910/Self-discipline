@@ -8,7 +8,10 @@
 .DoneUI-form-preview{
   position: relative;
   background-color: #FFFFFF;
-  margin: 16rpx 0;
+  margin: 0 0 16px 0;
+}
+.DoneUI-form-preview:last-child{
+  margin: 0 0 16px 0;  
 }
 .DoneUI-form-preview:before {
     content: " ";
@@ -82,6 +85,7 @@
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
+    flex: 1;
 }
 .DoneUI-form-preview__btn_primary {
     color: #09BB07;

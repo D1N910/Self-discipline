@@ -3,6 +3,29 @@
   <view class="DoneUI-list">
 
     <navigator
+      url="/pages/addNewTask/index">
+      
+      <view class="DoneUI-cell DoneUI-cell_access">
+
+        <view class="weui-cell__hd">
+      
+          <image src="../../static/add.png"></image>    
+      
+        </view>
+      
+        <view class="DoneUI-cell__bd">
+          添加新自律项目
+        </view>
+        
+        <view class="DoneUI-cell__ft">
+          
+        </view>
+
+      </view>
+
+    </navigator>
+
+    <navigator
       url="/pages/unfinishdTaskList/index">
       
       <view class="DoneUI-cell DoneUI-cell_access">
@@ -14,7 +37,7 @@
         </view>
       
         <view class="DoneUI-cell__bd">
-          进行中(添加入口)
+          进行中的项目
         </view>
       
         <view class="DoneUI-cell__ft">
@@ -37,7 +60,7 @@
         </view>
       
         <view class="DoneUI-cell__bd">
-          已结束
+          已结束的项目
         </view>
       
         <view class="DoneUI-cell__ft">

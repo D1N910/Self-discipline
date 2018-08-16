@@ -163,12 +163,42 @@ Page({
       })
       return false;
     }
+
     var sArr = this.data.taskData.startData.split("-");
     var eArr = this.data.taskData.endData.split("-");
     var sRDate = new Date(sArr[0], sArr[1] - 1, sArr[2]);
     var eRDate = new Date(eArr[0], eArr[1] - 1, eArr[2]);
     console.log(sRDate.getTime());
     console.log(eRDate.getTime());
+
+    var allTasks = wx.getStorageSync('allTasks')
+
+    // 如果是在编辑状态
+    if (this.data.edit) {
+      this.data.editTasks.startAt = sRDate.getTime()
+      this.data.editTasks.endAt = eRDate.getTime()
+      this.data.editTasks.content = e.detail.value.content
+      for (let i in allTasks) {
+        if (this.data.editTasks.id == allTasks[i].id){
+          allTasks[i] = this.data.editTasks
+          break          
+        }
+      }
+      wx.setStorageSync('allTasks', allTasks)
+
+      wx.showToast({
+        title: '修改任务成功'
+      })
+
+      setTimeout(() => {
+        wx.navigateBack({
+          delta: 1,
+        })
+      }, 1000)
+
+      return false
+    }
+
     var nowDate = new Date();
     var newTask = {
       id: nowDate.getTime(),
@@ -178,7 +208,6 @@ Page({
       endAt: eRDate.getTime(),
       otherOpations:{}
     }
-    var allTasks = wx.getStorageSync('allTasks')
     if (allTasks != '') {
       allTasks.push(newTask)
       // Do something with return value

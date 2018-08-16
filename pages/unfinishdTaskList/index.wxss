@@ -1,10 +1,4 @@
 /* pages/completedTaskList/index.wxss */
-.noThing{
-  font-size: 32rpx;
-  text-align: center;
-  color: #fc7070;
-  padding: 30px 0;
-}
 .DoneUI-form-preview{
   position: relative;
   background-color: #FFFFFF;

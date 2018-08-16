@@ -60,3 +60,9 @@
     margin-top: -4px;
     right: 2px;
 }
+.noThing{
+  font-size: 32rpx;
+  text-align: center;
+  color: #fc7070;
+  padding: 30px 0;
+}

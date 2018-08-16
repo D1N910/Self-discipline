@@ -1,8 +1,11 @@
 <!--pages/completedTaskList/index.wxml-->
 <view class="container">
-  <view class="noThing" wx:if="{{unfinishedTaskLists.length==0}}">
-    这里空空如也，可以尝试添加新自律项目
-  </view>
+  <navigator
+    url='/pages/addNewTask/index'>
+    <view class="noThing" wx:if="{{unfinishedTaskLists.length==0}}">
+      这里空空如也，可以尝试添加新自律项目➕
+    </view>
+  </navigator>
 
   <view
     class="DoneUI-form-preview"

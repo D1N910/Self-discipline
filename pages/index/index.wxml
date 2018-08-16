@@ -30,10 +30,10 @@
         wx:for="{{listItem.thingList}}"
         wx:key="index"
         bindtap="changeSuccess"
+        bindlongpress="navigaToEdit"
         data-item="{{index}}"
         style="background:{{item.success?'#9dea5e':'#fff'}};border:{{item.success?'1px solid #80bb51':'1px solid #ededed'}}">
         {{item.content}}
-
         <view
           class="success"
           wx:if="{{item.success}}">

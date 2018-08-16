@@ -1,1 +1,4 @@
 /* pages/mine/index.wxss */
+.DoneUI-list{
+  margin-bottom: 16rpx;
+}

@@ -1,30 +1,56 @@
 <!--pages/completedTaskList/index.wxml-->
 <view class="container">
-  <view class="DoneUI-form-preview">
+  <navigator
+      url='/pages/unfinishdTaskList/index'>
+    <view class="noThing" wx:if="{{endTaskLists.length==0}}">
+      这里空空如也，坚持完成自律项目去✊
+    </view>
+  </navigator>
+
+  <view
+    class="DoneUI-form-preview"
+    wx:for="{{endTaskLists}}"
+    wx:key="index"
+    data-taskId="{{item.id}}">
     <view class="DoneUI-form-preview__hd">
       <view class="DoneUI-form-preview__item">
-        <label class="DoneUI-form-preview__label">进度</label>
-        <em class="DoneUI-form-preview__value">60%</em>
+        <label class="DoneUI-form-preview__label">获得红花数</label>
+        <em class="DoneUI-form-preview__value">{{item.redNum}}朵</em>
       </view>
     </view>
     <view class="DoneUI-form-preview__bd">
       <view class="DoneUI-form-preview__item">
         <label class="DoneUI-form-preview__label">任务内容</label>
-        <span class="DoneUI-form-preview__value">看书10分钟</span>
+        <span class="DoneUI-form-preview__value">{{item.content}}</span>
       </view>
       <view class="DoneUI-form-preview__item">
         <label class="DoneUI-form-preview__label">开始时间</label>
-        <span class="DoneUI-form-preview__value">2018年08月12日</span>
+        <span class="DoneUI-form-preview__value">{{item.startAt}}</span>
       </view>
       <view class="DoneUI-form-preview__item">
         <label class="DoneUI-form-preview__label">结束时间</label>
-        <span class="DoneUI-form-preview__value">2018年08月14日</span>
+        <span class="DoneUI-form-preview__value">{{item.endAt}}</span>
       </view>
     </view>
     <view class="DoneUI-form-preview__ft">
-          <view class="DoneUI-form-preview__btn DoneUI-form-preview__btn_default" href="javascript:">删除</view>
-      <view class="DoneUI-form-preview__btn DoneUI-form-preview__btn_primary" href="javascript:">编辑</view>
-            <view class="DoneUI-form-preview__btn DoneUI-form-preview__btn_down" href="javascript:">完成</view>
+      <view
+        class="DoneUI-form-preview__btn DoneUI-form-preview__btn_default"
+        bindtap="delateItem"
+        data-taskId="{{item.id}}">
+        删除
+      </view>
+      <navigator
+        class="DoneUI-form-preview__btn DoneUI-form-preview__btn_primary DoneUI-form-preview__btn_down"
+        url="/pages/addNewTask/index?id={{item.id}}">
+      <view
+        class=""
+        >编辑</view>
+      </navigator>        
+
     </view>
+  </view>
+
+  <view class="noThing" wx:if="{{endTaskLists.length!=0}}">
+    －－这里是自律的底线－－
   </view>
 </view>

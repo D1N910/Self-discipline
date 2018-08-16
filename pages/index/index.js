@@ -21,6 +21,15 @@ Page({
     })
   },
 
+  // 长按走向导航页面
+  navigaToEdit(e){
+    wx.navigateTo({
+      url: `/pages/addNewTask/index?id=${this.data.List[e.currentTarget.dataset.listid].thingList[e.currentTarget.dataset.item].id}`,
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
   /**
    * 改变选中状态 
    */

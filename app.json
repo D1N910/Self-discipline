@@ -1,11 +1,12 @@
 {
   "pages": [
-    "pages/index/index",    
-    "pages/mine/index",    
-    "pages/unfinishdTaskList/index",    
-    "pages/addNewTask/index",    
+    "pages/index/index",
+    "pages/mine/index",
+    "pages/unfinishdTaskList/index",
+    "pages/addNewTask/index",
     "pages/completedTaskList/index",
-    "pages/milestone/index"
+    "pages/milestone/index",
+    "pages/aboutSelfdis/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

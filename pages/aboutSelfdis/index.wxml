@@ -1,0 +1,39 @@
+<!--pages/aboutSelfdis/index.wxml-->
+<!--pages/completedTaskList/index.wxml-->
+<view class="container">
+
+  <view
+    class="DoneUI-form-preview"
+    wx:for="{{update}}"
+    wx:key="index">
+    <view class="DoneUI-form-preview__hd">
+      <view class="DoneUI-form-preview__item">
+        <label class="DoneUI-form-preview__label">版本号</label>
+        <em class="DoneUI-form-preview__value">{{item.versionId}}</em>
+      </view>
+    </view>
+    <view class="DoneUI-form-preview__bd">
+      <view class="DoneUI-form-preview__item">
+        <label class="DoneUI-form-preview__label">版本内容</label>
+        <span class="DoneUI-form-preview__value">{{item.content}}</span>
+      </view>
+      <view class="DoneUI-form-preview__item">
+        <label class="DoneUI-form-preview__label">问题反馈</label>
+        <span class="DoneUI-form-preview__value">{{item.feeked}}</span>
+      </view>
+      <view class="DoneUI-form-preview__item">
+        <label class="DoneUI-form-preview__label">本版作者</label>
+        <span class="DoneUI-form-preview__value">{{item.author}}</span>
+      </view>
+      <view class="DoneUI-form-preview__item">
+        <label class="DoneUI-form-preview__label">鸣谢</label>
+        <span class="DoneUI-form-preview__value">{{item.thanks}}</span>
+      </view>
+      <view class="DoneUI-form-preview__item">
+        <label class="DoneUI-form-preview__label">代码开源</label>
+        <span class="DoneUI-form-preview__value">{{item.open}}</span>
+      </view>
+    </view>
+  </view>
+
+</view>

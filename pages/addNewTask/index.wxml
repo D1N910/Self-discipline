@@ -14,7 +14,7 @@
           <textarea
             class="DoneUI-textarea"
             placeholder="请输入文本"
-            value=""
+            value="{{editTasks.content}}"
             name="content"
             rows="3"></textarea>
 
@@ -61,7 +61,11 @@
 
         <view class="DoneUI-cell__bd">
 
-          <picker mode="date" value="{{taskData.endData}}" data-indata="endData" bindchange="bindDateChange">
+          <picker
+            mode="date"
+            value="{{taskData.endData}}"
+            data-indata="endData"
+            bindchange="bindDateChange">
 
             <view class="picker">
               {{taskData.endData}}
@@ -98,11 +102,15 @@
 
         <button
           class="DoneUI-form-preview__btn DoneUI-form-preview__btn_down"
-          formType="submit">添加任务</button>
+          formType="submit">{{submitText}}</button>
 
       </view>
     </view>
 
   </form>
+
+  <view class="edit" wx:if="{{edit}}">
+      ⚠️ 修改任务时间将清空原任务的小红花
+  </view>
 
 </view>

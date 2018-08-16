@@ -5,17 +5,66 @@ Page({
    * 页面的初始数据
    */
   data: {
-    taskData:{
+    taskData: {
       startData: '',
       endData: ''
     },
-    days:''
+    days: '',
+    editTasks:{},
+    edit: 0,
+    changeTime: 0,
+    submitText: '添加任务'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+    if(options.id){
+      var allTasks = wx.getStorageSync('allTasks')
+      console.log('编辑页面')
+      wx.setNavigationBarTitle({
+        title: '修改任务'
+      })
+      this.setData({
+        submitText: '修改'
+      })
+      var haveId = 0
+      for (let i in allTasks) {
+        if (allTasks[i].id == options.id){
+          // 先得到任务开始/结束时间
+          var allTaskStart = new Date(allTasks[i].startAt)
+          var allTaskEnd = new Date(allTasks[i].endAt)
+
+          // 转换时间
+          this.data.taskData.startData = `${allTaskStart.getFullYear()}-${(allTaskStart.getMonth() + 1) < 10 ? '0' + (allTaskStart.getMonth() + 1) : (allTaskStart.getMonth() + 1)}-${allTaskStart.getDate() < 10 ? '0' + allTaskStart.getDate() : allTaskStart.getDate()}`
+          this.data.taskData.endData = `${allTaskEnd.getFullYear()}-${(allTaskEnd.getMonth() + 1) < 10 ? '0' + (allTaskEnd.getMonth() + 1) : (allTaskEnd.getMonth() + 1)}-${allTaskEnd.getDate() < 10 ? '0' + allTaskEnd.getDate() : allTaskEnd.getDate()}`
+
+          this.setData({
+            editTasks: { ...allTasks[i] },
+            taskData: this.data.taskData,
+            edit: 1
+          },()=>{
+            this.getDays()
+          })
+          console.log(this.data.taskData)
+          haveId = 1       
+          break
+        }
+      }
+      if (!haveId) {
+        wx.showToast({
+          title: '发生错误，该任务不存在',
+          icon:'none'
+        })
+        setTimeout(()=>{
+          this.cancel()
+        }, 1000)
+      }
+      return false
+    }
+
     var startData = new Date();
     this.data.taskData.startData = `${startData.getFullYear()}-${(startData.getMonth() + 1) < 10 ? ('0' + (startData.getMonth() + 1)) : (startData.getMonth() + 1)}-${(startData.getDate()) < 10 ? ('0' + (startData.getDate())) : (startData.getDate())}`;
     this.data.taskData.endData = `${startData.getFullYear()}-${(startData.getMonth() + 1) < 10 ? ('0' + (startData.getMonth() + 1)) : (startData.getMonth() + 1)}-${(startData.getDate()) < 10 ? ('0' + (startData.getDate())) : (startData.getDate())}`;
@@ -72,6 +121,7 @@ Page({
    * 修改时间
    */
   bindDateChange(e){
+    this.data.changeTime = 1
     this.data.taskData[e.currentTarget.dataset.indata] = e.detail.value
   
     this.setData({

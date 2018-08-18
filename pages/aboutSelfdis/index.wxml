@@ -22,10 +22,6 @@
         <span class="DoneUI-form-preview__value">{{item.content}}</span>
       </view>
       <view class="DoneUI-form-preview__item">
-        <label class="DoneUI-form-preview__label">版本内容</label>
-        <span class="DoneUI-form-preview__value">{{item.content}}</span>
-      </view>
-      <view class="DoneUI-form-preview__item">
         <label class="DoneUI-form-preview__label">问题反馈</label>
         <span class="DoneUI-form-preview__value">{{item.feeked}}</span>
       </view>

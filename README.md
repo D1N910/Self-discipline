@@ -17,6 +17,7 @@
 Copyright (c) 2018-present, D1N910
 
 ## Error
+  ![Error](https://wx3.sinaimg.cn/mw690/006ES7aSly1fuew5b5p4aj30os061q3r.jpg)
 
 ## How To Start
 [Wacht the miniprogram dev File](https://developers.weixin.qq.com/miniprogram/dev/index.html?t=18080816)

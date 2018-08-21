@@ -3,26 +3,28 @@
 
   <form bindsubmit="formSubmit">
 
-    <view class="DoneUI-cells__title">任务内容</view>
-
-    <view class="DoneUI-cells DoneUI-cells_form">
+    <view class="DoneUI-cells__title">
+      选择自律项目
+    </view>
+    <view class="DoneUI-list DoneUI-form">
 
       <view class="DoneUI-cell">
 
-        <view class="DoneUI-cell__bd">
+        <view class="weui-cell__hd">
+          项目名称
+        </view>
 
-          <textarea
-            class="DoneUI-textarea"
-            placeholder="请输入文本"
-            value="{{editTasks.content}}"
-            name="content"
-            rows="3"></textarea>
+        <view class="DoneUI-cell__bd">
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+            <view class="picker">
+              {{array[index]}}
+            </view>
+          </picker>
 
         </view>
 
       </view>
     </view>
-
     <view class="DoneUI-cells__title">
       持续天数
       <text wx:if="{{days!=''}}">(坚持自律 {{days}} 天)</text>

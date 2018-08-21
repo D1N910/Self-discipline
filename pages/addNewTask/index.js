@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    index: 0,
+    array:['按时起床','自己洗漱','自己吃饭','开心上学','专心做事','自己睡觉','文明礼貌','讲卫生','关心别人','热爱劳动','积极勇敢'],
     taskData: {
       startData: '',
       endData: ''
@@ -13,7 +15,7 @@ Page({
     editTasks:{},
     edit: 0,
     changeTime: 0,
-    submitText: '添加任务'
+    submitText: '添加项目'
   },
 
   /**
@@ -25,7 +27,7 @@ Page({
       var allTasks = wx.getStorageSync('allTasks')
       console.log('编辑页面')
       wx.setNavigationBarTitle({
-        title: '修改任务'
+        title: '修改项目'
       })
       this.setData({
         submitText: '修改'
@@ -40,7 +42,14 @@ Page({
           // 转换时间
           this.data.taskData.startData = `${allTaskStart.getFullYear()}-${(allTaskStart.getMonth() + 1) < 10 ? '0' + (allTaskStart.getMonth() + 1) : (allTaskStart.getMonth() + 1)}-${allTaskStart.getDate() < 10 ? '0' + allTaskStart.getDate() : allTaskStart.getDate()}`
           this.data.taskData.endData = `${allTaskEnd.getFullYear()}-${(allTaskEnd.getMonth() + 1) < 10 ? '0' + (allTaskEnd.getMonth() + 1) : (allTaskEnd.getMonth() + 1)}-${allTaskEnd.getDate() < 10 ? '0' + allTaskEnd.getDate() : allTaskEnd.getDate()}`
-
+          for(let t in this.data.array){
+            if (this.data.array[t] == allTasks[i].content){
+              this.setData({
+                index:t
+              })
+              break
+            }
+          }
           this.setData({
             editTasks: { ...allTasks[i] },
             taskData: this.data.taskData,
@@ -74,7 +83,11 @@ Page({
       this.getDays();      
     })
   },
-
+  bindPickerChange: function (e) {
+    this.setData({
+      index: e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -148,14 +161,6 @@ Page({
    * 添加任务
    */
   formSubmit(e){
-    console.log(e)
-    if (e.detail.value.content==''){
-      wx.showToast({
-        title: '任务内容不能为空哦',
-        icon:"none"
-      })
-      return false;
-    }
     if (this.data.days<=0){
       wx.showToast({
         title: '请检查时间设置',
@@ -177,7 +182,7 @@ Page({
     if (this.data.edit) {
       this.data.editTasks.startAt = sRDate.getTime()
       this.data.editTasks.endAt = eRDate.getTime()
-      this.data.editTasks.content = e.detail.value.content
+      this.data.editTasks.content = this.data.array[this.data.index]
       for (let i in allTasks) {
         if (this.data.editTasks.id == allTasks[i].id){
           allTasks[i] = this.data.editTasks
@@ -187,7 +192,7 @@ Page({
       wx.setStorageSync('allTasks', allTasks)
 
       wx.showToast({
-        title: '修改任务成功'
+        title: '修改项目成功,坚持自律哦'
       })
 
       setTimeout(() => {
@@ -202,7 +207,7 @@ Page({
     var nowDate = new Date();
     var newTask = {
       id: nowDate.getTime(),
-      content: e.detail.value.content,
+      content: this.data.array[this.data.index],
       success:[],
       startAt: sRDate.getTime(),
       endAt: eRDate.getTime(),
@@ -219,7 +224,7 @@ Page({
     }
 
     wx.showToast({
-      title: '创建任务成功'
+      title: '创建任务成功,坚持自律哦'
     })
 
     setTimeout(()=>{

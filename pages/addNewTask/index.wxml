@@ -24,8 +24,8 @@
     </view>
 
     <view class="DoneUI-cells__title">
-      其他配置
-      <text wx:if="{{days!=''}}">(任务持续 {{days}} 天)</text>
+      持续天数
+      <text wx:if="{{days!=''}}">(坚持自律 {{days}} 天)</text>
     </view>
 
     <view class="DoneUI-list DoneUI-form">

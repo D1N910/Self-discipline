@@ -5,6 +5,8 @@
 
 ## 版本更新在wiki里
 
+[to wiki watch](https://github.com/D1N910/Self-discipline/wiki/%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0)
+
 ## Thanks  
 >核心icon 来自阿里巴巴的 iconfont.cn  
 核心UI 来自腾讯的 weui.io  

@@ -7,12 +7,12 @@ Page({
   data: {
     update:[
       {
-        versionId: 'v0.1.1',
-        authorSaid:'这一版给乖宝宝用',
-        content:'日历显示自律项目/进入显示当日项目/单击完成项目/长按项目进入编辑页面/添加自律项目/管理进行中的项目/管理已结束的项目/关于自律表',
+        versionId: 'v0.1.3',
+        authorSaid:'可以设置中文、日本語和English的星期名啦；新增欢迎词和版本更新公告。',
+        content:'新增设置，可以设置日历语言',
         feeked:'wyd1n910@gmail.com',
         author: 'D1N910',
-        thanks: 'weui.io，iconfont.cn，我的妹妹',
+        thanks: 'B站：qsdafqr，小小的肉丸one',
         open:'https://github.com/D1N910/Self-discipline'
       }
     ]

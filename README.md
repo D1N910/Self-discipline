@@ -1,6 +1,6 @@
 # 自律表——微信小程序
 已上线，持续更新中。微信 搜一搜 自律表   
-或者 微信扫一扫以下的二维码
+或者 微信扫一扫以下的二维码  
 ![](http://ww1.sinaimg.cn/large/006ES7aSgy1fuihrlqlsyj3076076jsd.jpg) 
 
 ## 版本更新在wiki里

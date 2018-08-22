@@ -13,12 +13,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('ddd');
-    var nowDate = new Date();
-    var weekArray=['日','一','二','三','四','五','六'];
-    this.setData({
-      nowDate: weekArray[nowDate.getDay()]
-    })
   },
 
   // 长按走向导航页面
@@ -112,17 +106,31 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var nowDate = new Date();
+    var value = wx.getStorageSync('weekType')
+    if (value) {
+      if (value == 0) {
+        var weekArray = ['日', '一', '二', '三', '四', '五', '六'];
+      } else if (value == 1) {
+        var weekArray = ['日', '月', '火', '水', '木', '金', '土'];
+      } else if (value == 2) {
+        var weekArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
+      }
+    } else {
+      wx.setStorageSync('weekType', 0)
+      var weekArray = ['日', '一', '二', '三', '四', '五', '六'];
+    }
+    this.setData({
+      nowDate: weekArray[nowDate.getDay()]
+    })
+
     wx.showLoading({
       title: '请等待日历加载'
     })
-
-    var nowDate = new Date();
     
     // 月份的天数
     var m_days = new Array(31, 28 + this.is_leap(nowDate.getFullYear()), 31, 30, 31, 31, 30, 31, 30, 31, 30, 31);
 
-    // 数字对应的星期名
-    var weekArray = ['日', '一', '二', '三', '四', '五', '六'];
     var List = []
     var j = 0;
 

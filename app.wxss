@@ -53,7 +53,6 @@
     border-style: solid;
     -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
     transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
-    position: relative;
     top: -2px;
     position: absolute;
     top: 50%;
@@ -65,4 +64,121 @@
   text-align: center;
   color: #fc7070;
   padding: 30px 0;
+}
+
+/* pages/addNewTask/index.wxss */
+.DoneUI-cells__title {
+  padding-top: .77em;
+  padding-bottom: .3em;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+  color: #808080;
+  font-size: 14px;
+}
+.DoneUI-cells__title + .DoneUI-cells {
+    margin-top: 0;
+}
+.DoneUI-cells {
+    margin-top: 1.17647059em;
+    background-color: #FFFFFF;
+    line-height: 1.47058824;
+    font-size: 17px;
+    overflow: hidden;
+    position: relative;
+}
+.DoneUI-cells:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #e5e5e5;
+    color: #e5e5e5;
+    transform-origin: 0 0;
+    transform: scaleY(0.5);
+    z-index: 2;
+}
+.DoneUI-textarea {
+    display: block;
+    border: 0;
+    resize: none;
+    width: 100%;
+    color: inherit;
+    font-size: 1em;
+    line-height: inherit;
+    outline: 0;
+}
+.DoneUI-cell {
+    padding: 10rpx 15rpx;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.DoneUI-textarea-counter{
+  color: #B2B2B2;
+  text-align: right;
+}
+
+.DoneUI-form .DoneUI-cell__bd{
+  text-align: right;
+}
+
+button{
+  background: #fff;
+}
+button::after{
+  border-radius: 0;
+  border: none;
+}
+button:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #D5D5D6;
+    color: #D5D5D6;
+    transform-origin: 0 0;
+    transform: scaleY(0.5);
+}
+.DoneUI-form-preview__ft {
+    position: relative;
+    line-height: 50px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+.DoneUI-form-preview__btn_primary {
+    color: #09BB07;
+}
+.DoneUI-form-preview__ft:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #D5D5D6;
+    color: #D5D5D6;
+    transform-origin: 0 0;
+    transform: scaleY(0.5);
+}
+.DoneUI-form-preview__btn {
+    position: relative;
+    display: block;
+    flex: 1;
+    color: #09BB07;
+    text-align: center;
+}
+.DoneUI-form-preview__btn_default {
+    color: #808080;
+}
+.DoneUI-form-preview__btn_down{
+    color: #fc7070; 
 }

@@ -1,0 +1,37 @@
+<!--pages/addNewTask/index.wxml-->
+<view class="container">
+
+
+    <view class="DoneUI-cells__title">
+      日历设置
+    </view>
+    <view class="DoneUI-list">
+
+      <view class="DoneUI-cell DoneUI-cell_access">
+      <view class="weui-cell__hd">
+    
+        <image src="../../static/language.png"></image>    
+    
+      </view>
+    
+      <view class="DoneUI-cell__bd">
+        星期语言
+      </view>
+    
+      <view class="DoneUI-cell__ft">
+          <picker
+            bindchange="bindPickerChange"
+            value="{{index}}"
+            range="{{array}}"
+          >
+
+            <view class="picker">
+              {{array[index]}}
+            </view>
+            
+          </picker>
+      </view>
+      </view>
+    </view>
+
+</view>

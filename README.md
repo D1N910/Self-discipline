@@ -1,5 +1,9 @@
 # 自律表——微信小程序
 
+已上线，持续更新中。微信 搜一搜 自律表    
+![](http://ww1.sinaimg.cn/large/006ES7aSgy1fuihrlqlsyj3076076jsd.jpg) 
+
+
 ## v0.1.1
 自我阉割版本  
 

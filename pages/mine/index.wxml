@@ -122,7 +122,30 @@
       <view class="DoneUI-cell DoneUI-cell_access">
 
         <view class="weui-cell__hd">
+
+          <image src="../../static/setting.png"></image>    
+
+        </view>
       
+        <view class="DoneUI-cell__bd">
+          设置
+        </view>
+        
+        <view class="DoneUI-cell__ft">
+          
+        </view>
+
+      </view>
+
+    </navigator>
+    <navigator
+      url="/pages/aboutSelfdis/index">
+      
+      <view class="DoneUI-cell DoneUI-cell_access">
+
+        <view class="weui-cell__hd">
+
+          <image src="../../static/about.png"></image>   
       
         </view>
       

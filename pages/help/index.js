@@ -1,20 +1,11 @@
-// pages/aboutSelfdis/index.js
+// pages/help/index.js
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
-    update:[
-      {
-        versionId: 'v0.1.3',
-        authorSaid:'可以设置中文、日本語和English的星期名啦；新增欢迎词和版本更新公告。',
-        content:'新增设置，可以设置日历语言',
-        feeked:'wyd1n910@gmail.com',
-        author: 'D1N910',
-        thanks: 'B站：qsdafqr，小小的肉丸one',
-        open:'https://github.com/D1N910/Self-discipline'
-      }
-    ]
+  
   },
 
   /**

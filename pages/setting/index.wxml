@@ -33,5 +33,38 @@
       </view>
       </view>
     </view>
+    <view class="DoneUI-list">
 
+      <view class="DoneUI-cell DoneUI-cell_access">
+      <view class="weui-cell__hd">
+    
+        <image src="../../static/program.png"></image>    
+    
+      </view>
+    
+      <view class="DoneUI-cell__bd">
+        自律方案
+      </view>
+    
+      <view class="DoneUI-cell__ft">
+          <picker
+            bindchange="bindPickerChange"
+            value="{{index}}"
+            range="{{array}}"
+          >
+
+            <view class="picker">
+              {{array[index]}}
+            </view>
+            
+          </picker>
+      </view>
+      </view>
+    </view>
+    <navigator
+      url="/pages/help/index">
+      <view class="DoneUI-cells__title DoneUI-help">
+        使用帮助
+      </view>
+    </navigator>    
 </view>

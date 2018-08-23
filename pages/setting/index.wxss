@@ -1,1 +1,5 @@
 /* pages/setting/in de.wxss */
+.DoneUI-help{
+  text-align: right;
+  text-decoration:underline;
+}

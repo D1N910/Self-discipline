@@ -31,7 +31,6 @@ Page({
     
 
     var thisDate = new Date(nowDate.getFullYear(),nowDate.getMonth(),nowDate.getDate());
-    console.log(allTasks);
     var processing = 0;
     var getRed = 0;
     for (let i in allTasks) {

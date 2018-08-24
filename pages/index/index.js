@@ -13,18 +13,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var thisVision = 'v0.1.3'
+    var thisVision = 'v0.1.4'
     var getVision = wx.getStorageSync('vision')
     if(getVision){
       if (thisVision != getVision){
         wx.showModal({
-          title: '更新公告',
-          content: `根据自律者的意见进行更新升级，现在版本为 ${thisVision}，请自律者在“关于自律表”查看更新内容`,
+          title: '版本更新',
+          content: `版本${thisVision}，新增［设置］－［自律方案］`,
           showCancel:false,
           confirmColor:'#fc7070'
         })
+        wx.setStorageSync('vision', thisVision)        
       }
-      wx.setStorageSync('vision', thisVision)
     }else{
       wx.showModal({
         title:'欢迎自律新人',
@@ -49,7 +49,6 @@ Page({
    * 改变选中状态 
    */
   changeSuccess(e){
-    console.log(this.data.List[e.currentTarget.dataset.listid].thingList[e.currentTarget.dataset.item].success);
 
     if (!this.data.List[e.currentTarget.dataset.listid].thingList[e.currentTarget.dataset.item].success){
 

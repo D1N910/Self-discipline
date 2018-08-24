@@ -6,6 +6,15 @@ Page({
   data: {
     update:[
       {
+        versionId: 'v0.1.4－现',
+        authorSaid: '大朋友也可以用啦，要好好爱小朋友哦',
+        content: '新增［设置］－［自律方案］',
+        feeked: 'wyd1n910@gmail.com',
+        author: 'D1N910',
+        thanks: '穗，Kingna',
+        open: 'https://github.com/D1N910/Self-discipline'
+      },
+      {
         versionId: 'v0.1.3',
         authorSaid:'可以设置中文、日本語和English的星期名啦；新增欢迎词和版本更新公告。',
         content:'新增设置，可以设置日历语言',

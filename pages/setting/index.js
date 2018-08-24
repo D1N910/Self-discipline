@@ -5,24 +5,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-    array: ['中式(日...六)', '日语(日...土)','英语(Sun...Sat)'],
-    index:0
+    weekTypeArray: ['中式(日...六)', '日语(日...土)','英语(Sun...Sat)'],
+    weekTypeIndex:0,
+    programIndex: 0,
+    programArray:['小朋友','大朋友']
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var value = wx.getStorageSync('weekType')
-    if (value){
-      this.setData({
-        index: value
-      })
-    }else{
-      wx.setStorageSync('weekType', 0)
-      this.setData({
-        index: 0
-      })
+    var weekTypeIndex = wx.getStorageSync('weekType')
+    var Setting = {}
+    // 在此新增设置
+    Setting['weekTypeIndex'] = wx.getStorageSync('weekType')
+    Setting['programIndex'] = wx.getStorageSync('program')
+    // 在此更新设置设置
+    for(let i in Setting){
+      if (Setting[i]) {
+        this.setData({
+          [i]: Setting[i]
+        })
+      } else {
+        wx.setStorageSync(i.split('Index')[0], 0)
+      }
     }
 
   },
@@ -38,12 +44,15 @@ Page({
    * 修改星期显示设置
    */
   bindPickerChange: function (e) {
+    // console.log(e)
+    // return false
+
     this.setData({
-      index: e.detail.value
+      [e.currentTarget.dataset.arrayname+'Index']: e.detail.value
     })
     wx.setStorage({
-      key: "weekType",
-      data: e.detail.value,
+      key: e.currentTarget.dataset.arrayname,
+      data: parseInt(e.detail.value),
       success(){
         wx.showToast({
           title: '修改成功!'

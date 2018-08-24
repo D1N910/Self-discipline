@@ -6,7 +6,7 @@ Page({
    */
   data: {
     index: 0,
-    array:['按时起床','自己洗漱','自己吃饭','开心上学','专心做事','自己睡觉','文明礼貌','讲卫生','关心别人','热爱劳动','积极勇敢'],
+    array:[],
     taskData: {
       startData: '',
       endData: ''
@@ -22,7 +22,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var program = wx.getStorageSync('program')
+    var taskContentArray
+    switch (program)
+    {
+      case 0:
+        taskContentArray = ['按时起床', '自己洗漱', '自己吃饭', '开心上学', '专心做事', '自己睡觉', '文明礼貌', '讲卫生', '关心别人', '热爱劳动', '积极勇敢']
+        break;
+      case 1:
+        taskContentArray = ['按时起床', '自己洗碗', '开心上班', '专心上班', '积极勇敢', '细嚼慢咽', '文明礼貌', '讲卫生', '关心别人', '关爱孩子', '不打骂孩子','讲故事','亲吻爱人','零点前睡觉']
+        break;
+        default:
+        taskContentArray = ['按时起床', '自己洗漱', '自己吃饭', '开心上学', '专心做事', '自己睡觉', '文明礼貌', '讲卫生', '关心别人', '热爱劳动', '积极勇敢']
+        wx.setStorageSync('program', 0)
+        break;
+    }
+    this.setData({
+      array: taskContentArray
+    })
     if(options.id){
       var allTasks = wx.getStorageSync('allTasks')
       console.log('编辑页面')
@@ -192,7 +209,7 @@ Page({
       wx.setStorageSync('allTasks', allTasks)
 
       wx.showToast({
-        title: '修改项目成功,坚持自律哦'
+        title: '修改项目成功'
       })
 
       setTimeout(() => {
@@ -224,7 +241,7 @@ Page({
     }
 
     wx.showToast({
-      title: '创建任务成功,坚持自律哦'
+      title: '创建任务成功'
     })
 
     setTimeout(()=>{

@@ -1,4 +1,58 @@
 <!--pages/help/index.wxml-->
 <view>
-  尊敬的自律者您好，以下是设置的使用教程
+  <view
+    class="sorryTitle">
+    当你看到这则使用帮助的时候，说明[设置]模块不够透明清楚，我感到非常抱歉。
+  </view>
+
+    <view class="DoneUI-cells__title">
+      内容设置
+    </view>
+    <view class="DoneUI-list">
+
+      <view class="DoneUI-cell DoneUI-cell_access">
+      <view class="weui-cell__hd">
+    
+        <image src="../../static/program.png"></image>    
+    
+      </view>
+    
+      <view class="DoneUI-cell__bd">
+        自律方案
+      </view>
+    
+      <view class="DoneUI-cell__ft">
+          小朋友
+      </view>
+      </view>
+    </view>
+  <view
+    class="sorryContent">
+    【自律方案】可以调整任务设置的类型。比如你现在是大朋友，你没有小朋友，自律表，那么你可以调成“大朋友”的自律方案，那么在新增任务的时候就会显示针对大朋友的自律内容
+  </view>
+    <view class="DoneUI-cells__title">
+      其他设置
+    </view>
+    <view class="DoneUI-list">
+
+      <view class="DoneUI-cell DoneUI-cell_access">
+      <view class="weui-cell__hd">
+    
+        <image src="../../static/language.png"></image>    
+    
+      </view>
+    
+      <view class="DoneUI-cell__bd">
+        星期语言
+      </view>
+    
+      <view class="DoneUI-cell__ft">
+          中式(日...六)
+      </view>
+      </view>
+  <view
+    class="sorryContent">
+    【自律方案】可以调整任务设置的类型。比如你现在是大朋友，你没有小朋友，自律表，那么你可以调成“大朋友”的自律方案，那么在新增任务的时候就会显示针对大朋友的自律内容
+  </view>
+    </view>  
 </view>

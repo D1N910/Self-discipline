@@ -66,10 +66,10 @@
       </view>
       </view>
     </view>
-    <!-- <navigator
+    <navigator
       url="/pages/help/index">
       <view class="DoneUI-cells__title DoneUI-help">
         使用帮助
       </view>
-    </navigator>     -->
+    </navigator>    
 </view>

@@ -1,14 +1,14 @@
 {
   "pages": [
-    "pages/index/index",    
+    "pages/help/index",
     "pages/setting/index",    
+    "pages/index/index",    
     "pages/addNewTask/index",
     "pages/mine/index",
     "pages/unfinishdTaskList/index",
     "pages/completedTaskList/index",
     "pages/milestone/index",
-    "pages/aboutSelfdis/index",
-    "pages/help/index"
+    "pages/aboutSelfdis/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

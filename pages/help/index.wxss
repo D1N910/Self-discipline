@@ -2,13 +2,13 @@
 .sorryTitle{
   width: calc(100% - 90rpx);
   padding-left: 28rpx;
-  font-size: 36rpx;
-  border-left: 10rpx solid #000;
+  font-size: 28rpx;
+  border-left: 5rpx solid #000;
   margin: 24rpx 30rpx 24rpx 30rpx;
 }
 .sorryContent{
   width: calc(100% - 60rpx);
   padding: 0 30rpx;
-  font-size: 56rpx;
+  font-size: 36rpx;
   background: #ededed;
 }

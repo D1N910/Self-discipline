@@ -24,6 +24,19 @@
         </view>
 
       </view>
+
+      <view class="DoneUI-cell">
+
+        <view class="weui-cell__hd">
+          备注
+        </view>
+
+        <view class="DoneUI-cell__bd">
+          <input
+            placeholder="要好好自律哦"></input>
+        </view>
+
+      </view>
     </view>
     <view class="DoneUI-cells__title">
       持续天数
@@ -81,18 +94,23 @@
 
       <!-- <view class="DoneUI-cell">
 
-      <view class="weui-cell__hd">
-        是否跳过双休
-      </view>
+        <view class="weui-cell__hd">
+          是否跳过双休
+        </view>
 
-      <view class="DoneUI-cell__bd">
+        <view class="DoneUI-cell__bd">
 
-        <switch bindchange="switch2Change" />
+          <switch bindchange="switch2Change" />
 
-      </view>
+        </view>
 
-    </view> -->
+      </view> -->
 
+    </view>
+
+    <view class="DoneUI-cells__title">
+      完成时间段
+      <text wx:if="{{days!=''}}">(时长)</text>
     </view>
 
     <view class="DoneUI-list">

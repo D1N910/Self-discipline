@@ -170,7 +170,7 @@ Page({
 
       if (thisDay<1){
         thisDay = lastMonthDay + thisDay
-        ListMonth = L1istMonth - 1 < 0 ? 12 : ListMonth - 1
+        ListMonth = ListMonth - 1 < 0 ? 12 : ListMonth - 1
         if (ListMonth > nowDate.getMonth() + 1){
           ListYear = ListYear - 1;
         }  

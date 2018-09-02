@@ -12,26 +12,8 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#f8f8f8",
+    "navigationBarBackgroundColor": "#ff7199",
     "navigationBarTitleText": "自律表",
-    "navigationBarTextStyle": "black"
-  },
-  "tabBar": {
-    "color": "#949494",
-    "selectedColor": "#fc7070",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "自律表",
-        "iconPath": "static/noRed.png",
-        "selectedIconPath": "static/red.png"
-      },
-      {
-        "pagePath": "pages/mine/index",
-        "text": "君之",
-        "iconPath": "static/noMine.png",
-        "selectedIconPath": "static/mine.png"
-      }
-    ]
+    "navigationBarTextStyle": "white"
   }
 }

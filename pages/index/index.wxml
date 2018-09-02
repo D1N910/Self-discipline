@@ -11,44 +11,71 @@
       wx:for-index="listIndex"
       wx:key="listIndex"
       data-nowDate="{{listItem.weekName}}"
-      catchtap="changNowDate"     
-      style="flex:{{nowDate==listItem.weekName?2:1}};opacity:{{nowDate==listItem.weekName?1:0.3}};background:{{nowDate==listItem.weekName?'#fff':''}}">
+      catchtap="changNowDate">
       
       <view
-        class="weekItemTitle">
+        class="weekItemTitle {{listIndex==thisdata?'weekItemTitleTime':''}}">
         {{listItem.time}}  
       </view>
 
       <view
-        class="weekItemTitle">        
-        {{listItem.weekName}}
-      </view>
-
-      <view
-        class="thing"
-        data-listId="{{listIndex}}"        
-        wx:for="{{listItem.thingList}}"
-        wx:key="index"
-        bindtap="changeSuccess"
-        bindlongpress="navigaToEdit"
-        data-item="{{index}}"
-        style="background:{{item.success?'#9dea5e':'#fff'}};border:{{item.success?'1px solid #80bb51':'1px solid #ededed'}}">
-        {{item.content}}
+        class="weekItemTitle {{listIndex==thisdata?'nowWeekName':''}}">  
         <view
-          class="success"
-          wx:if="{{item.success}}">
-          <image
-            src="../../static/red.png"
-            mode="aspectFit"></image>
+          class="weekName {{listIndex==showCurrent?'clickWeekName':''}}">
+          {{listItem.weekName}}          
         </view>
-
       </view>
 
     </view>
 
   </view>
+  <swiper
+    bindchange="changeWeekShow">
+    <block
+      wx:for="{{List}}"
+      wx:for-item="listItem"
+      wx:for-index="listIndex"
+      wx:key="listIndex">
+      <swiper-item>      
+        <view
+          class="thing"
+          data-listId="{{listIndex}}"        
+          wx:for="{{listItem.thingList}}"
+          wx:key="index"
+          bindtap="changeSuccess"
+          bindlongpress="navigaToEdit"
+          data-item="{{index}}">
+            <view class="dealTime">
+              00:00
+            </view>
+            <view
+              class="thingImage">
 
+            </view>
+            <view class="tingDetail">
+              <view class="tingTitle">
+                {{item.content}}          
+              </view>
+              <view class="tingTitle">
+                {{item.content}}          
+              </view>
+            </view>
+          <view
+            class="success"
+            wx:if="{{item.success}}">
+            <image
+              src="../../static/red.png"></image>
+          </view>
+        </view>
+      </swiper-item>      
+    </block>  
+  </swiper>
   <!-- 编辑 -->
-  
+  <navigator
+    url="/pages/mine/index">
+    <view class="editButton">
+      <image src="../../static/index_setting.png"></image>
+    </view>
+  </navigator>
 
 </view>

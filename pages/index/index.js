@@ -6,7 +6,9 @@ Page({
    */
   data: {
     nowDate:'',
-    List:[]
+    List:[],
+    showCurrent:0,
+    thisdata:0
   },
 
   /**
@@ -186,7 +188,11 @@ Page({
       List[j].listId = listDate.getTime();
       List[j].time = `${ListMonth}.${thisDay}`;
       if (thisDay == nowDate.getDate()){
-        List[j].time = `${ListMonth}.${thisDay}今`;        
+        // 设置当前日期
+        this.setData({
+          showCurrent: j,
+          thisdata: j
+        })     
       }
       List[j].weekName = weekArray[i];
       List[j].thingList = [];
@@ -264,5 +270,17 @@ Page({
    */
   onReachBottom: function () {
   
+  },
+  /**
+   * 滑块改变星期
+   */
+  changeWeekShow(event){
+    console.log('ddd')
+    console.log(event.detail)
+    this.setData({
+      showCurrent: event.detail.current
+    },()=>{
+      console.log(this.data.showCurrent)
+    })
   }
 })

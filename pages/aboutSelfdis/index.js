@@ -6,7 +6,16 @@ Page({
   data: {
     update:[
       {
-        versionId: 'v0.1.4－现',
+        versionId: 'v0.2.0',
+        authorSaid: '写轮眼之术。。。',
+        content: '首页页面样式/整体样式大改',
+        feeked: 'wyd1n910@gmail.com',
+        author: 'D1N910',
+        thanks: 'bilibili app客户端 追番时间表的设计者',
+        open: 'https://github.com/D1N910/Self-discipline'
+      },
+      {
+        versionId: 'v0.1.4',
         authorSaid: '大朋友也可以用啦，要好好爱小朋友哦',
         content: '新增［设置］－［自律方案］',
         feeked: 'wyd1n910@gmail.com',

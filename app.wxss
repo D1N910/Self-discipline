@@ -1,7 +1,7 @@
 /**app.wxss**/
 .container{
   min-height: 100vh;
-  background-color: #eaeaea;
+  background-color: #f8f8f8;
 }
 .DoneUI-list{
   background-color: #fff;

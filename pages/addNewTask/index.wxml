@@ -25,7 +25,7 @@
 
       </view>
 
-      <view class="DoneUI-cell">
+      <!-- <view class="DoneUI-cell">
 
         <view class="weui-cell__hd">
           备注
@@ -36,7 +36,7 @@
             placeholder="要好好自律哦"></input>
         </view>
 
-      </view>
+      </view> -->
     </view>
     <view class="DoneUI-cells__title">
       持续天数
@@ -108,10 +108,10 @@
 
     </view>
 
-    <view class="DoneUI-cells__title">
+    <!-- <view class="DoneUI-cells__title">
       完成时间段
       <text wx:if="{{days!=''}}">(时长)</text>
-    </view>
+    </view> -->
 
     <view class="DoneUI-list">
       <view class="DoneUI-form-preview__ft">

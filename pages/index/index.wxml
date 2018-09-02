@@ -54,7 +54,7 @@
           bindlongpress="navigaToEdit"
           data-item="{{index}}">
             <view class="dealTime">
-              00:00
+              <!-- 全天 -->
             </view>
             <view
               class="thingImage">
@@ -64,9 +64,9 @@
               <view class="tingTitle">
                 {{item.content}}          
               </view>
-              <view class="tingTitle">
+              <!-- <view class="tingTitle">
                 {{item.content}}          
-              </view>
+              </view> -->
             </view>
           <view
             class="success"

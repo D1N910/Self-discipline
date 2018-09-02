@@ -25,13 +25,13 @@ Page({
         that.data.windowWidth = res.windowWidth
       }
     })
-    var thisVision = 'v0.1.4'
+    var thisVision = 'v0.2.0'
     var getVision = wx.getStorageSync('vision')
     if(getVision){
       if (thisVision != getVision){
         wx.showModal({
           title: '版本更新',
-          content: `版本${thisVision}，新增［设置］－［自律方案］`,
+          content: `版本${thisVision}，首页页面样式/整体样式大改，感谢bilibili`,
           showCancel:false,
           confirmColor:'#fc7070'
         })

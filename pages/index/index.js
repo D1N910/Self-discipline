@@ -8,7 +8,8 @@ Page({
     nowDate:'',
     List:[],
     showCurrent:0,
-    thisdata:0
+    thisdata:0,
+    current:1
   },
 
   /**
@@ -113,7 +114,7 @@ Page({
    */
   changNowDate(e){
     this.setData({
-      nowDate:e.currentTarget.dataset.nowdate
+      current: e.currentTarget.dataset.nowindex
     })
   },
 
@@ -191,7 +192,8 @@ Page({
         // 设置当前日期
         this.setData({
           showCurrent: j,
-          thisdata: j
+          thisdata: j,
+          current: j
         })     
       }
       List[j].weekName = weekArray[i];

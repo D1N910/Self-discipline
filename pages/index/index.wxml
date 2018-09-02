@@ -10,8 +10,8 @@
       wx:for-item="listItem"
       wx:for-index="listIndex"
       wx:key="listIndex"
-      data-nowDate="{{listItem.weekName}}"
-      catchtap="changNowDate">
+      data-nowindex="{{listIndex}}"    
+      bindtap="changNowDate"  >
       
       <view
         class="weekItemTitle {{listIndex==thisdata?'weekItemTitleTime':''}}">
@@ -30,6 +30,7 @@
 
   </view>
   <swiper
+    current="{{current}}"
     bindchange="changeWeekShow">
     <block
       wx:for="{{List}}"

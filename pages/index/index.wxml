@@ -2,8 +2,11 @@
 <view class="container">
   
   <!-- 星期与事件 -->
-  <view class="week">
-
+  <scroll-view
+    class="weekScroll-view"
+    scroll-x
+    scroll-with-animation
+    scroll-left="{{scrollLeft}}">
     <view
       class="weekItem"
       wx:for="{{List}}"
@@ -27,8 +30,7 @@
       </view>
 
     </view>
-
-  </view>
+  </scroll-view>
   <swiper
     current="{{current}}"
     bindchange="changeWeekShow">
@@ -37,7 +39,12 @@
       wx:for-item="listItem"
       wx:for-index="listIndex"
       wx:key="listIndex">
-      <swiper-item>      
+      <swiper-item>   
+        <image
+          class="null"
+          wx:if="{{listItem.thingList.length==0}}"
+          src="../../static/null.png">
+        </image>
         <view
           class="thing"
           data-listId="{{listIndex}}"        

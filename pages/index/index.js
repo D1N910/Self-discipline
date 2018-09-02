@@ -9,13 +9,22 @@ Page({
     List:[],
     showCurrent:0,
     thisdata:0,
-    current:1
+    current:1,
+    scrollLeft:0,
+    windowWidth: 0,
+    rect:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        that.data.windowWidth = res.windowWidth
+      }
+    })
     var thisVision = 'v0.1.4'
     var getVision = wx.getStorageSync('vision')
     if(getVision){
@@ -157,12 +166,24 @@ Page({
     var List = []
     var j = 0;
 
+    // 生成初始化的，以当前时间为中央时间的表
+  
+    var arr4 =
+      weekArray.slice(0, nowDate.getDay());
+    undefined
+    var arr3 = weekArray.slice(nowDate.getDay(), 7);
+    undefined
+    var arr2 = weekArray.slice(0, nowDate.getDay());
+    undefined
+    var arr1 = weekArray.slice(nowDate.getDay() + 1, 7);
+
+    var listArray = [...arr1, ...arr2, ...arr3, ...arr4]
     // 遍历获得初始化的自律表
-    for (let i in weekArray){
+    for (let i in listArray){
 
       List[j]={}
 
-      var thisDay = nowDate.getDate() - (nowDate.getDay() - i);
+      var thisDay = nowDate.getDate() - 6 - (nowDate.getDay() - i);
 
       var lastMonthDay = m_days[nowDate.getMonth() - 1 < 0 ? 11 : nowDate.getMonth() - 1];
       var nextMonthDay = m_days[nowDate.getMonth() + 1 > 11 ? 0 : nowDate.getMonth() + 1];
@@ -193,10 +214,10 @@ Page({
         this.setData({
           showCurrent: j,
           thisdata: j,
-          current: j
+          current: j,
         })     
       }
-      List[j].weekName = weekArray[i];
+      List[j].weekName = listArray[i];
       List[j].thingList = [];
       j++;
 
@@ -233,9 +254,27 @@ Page({
       }
     }
 
+    var that = this
     this.setData({
       List: List
+    },()=>{
+      wx.createSelectorQuery().selectAll('.weekItem').boundingClientRect(function (rects) {
+        rects.forEach(function (rect) {
+          that.data.rect[that.data.rect.length] = rect
+          if (that.data.rect.length==8){
+            that.setData({
+              scrollLeft: that.data.windowWidth/2 - that.data.rect[7].width/2
+            })
+          }
+        })
+      }).exec()
+      // this.setData({
+      //   scrollLeft: this.data.windowWidth / 2 - 26
+      // })
     })
+
+    // scrollLeft: 100      
+
     wx.hideLoading();
   },
 
@@ -282,7 +321,9 @@ Page({
     this.setData({
       showCurrent: event.detail.current
     },()=>{
-      console.log(this.data.showCurrent)
+      this.setData({
+        scrollLeft: this.data.windowWidth / 2 + (event.detail.current - 6) * (this.data.rect[7].width) - this.data.rect[7].width/2
+      })
     })
   }
 })

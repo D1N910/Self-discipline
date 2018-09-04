@@ -15,7 +15,8 @@ Page({
     editTasks:{},
     edit: 0,
     changeTime: 0,
-    submitText: '添加项目'
+    submitText: '添加项目',
+    remarks:''
   },
 
   /**
@@ -190,8 +191,6 @@ Page({
     var eArr = this.data.taskData.endData.split("-");
     var sRDate = new Date(sArr[0], sArr[1] - 1, sArr[2]);
     var eRDate = new Date(eArr[0], eArr[1] - 1, eArr[2]);
-    console.log(sRDate.getTime());
-    console.log(eRDate.getTime());
 
     var allTasks = wx.getStorageSync('allTasks')
 
@@ -230,6 +229,7 @@ Page({
       endAt: eRDate.getTime(),
       otherOpations:{}
     }
+    newTask.otherOpations.remarks = this.data.remarks
     if (allTasks != '') {
       allTasks.push(newTask)
       // Do something with return value
@@ -259,5 +259,12 @@ Page({
     wx.navigateBack({
       delta: 1,
     })
+  },
+
+  /**
+   * 修改备注 
+   */
+  changeRemarks(e){
+    this.data.remarks = e.detail.value
   }
 })

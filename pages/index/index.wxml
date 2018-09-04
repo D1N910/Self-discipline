@@ -64,9 +64,9 @@
               <view class="tingTitle">
                 {{item.content}}          
               </view>
-              <!-- <view class="tingTitle">
-                {{item.content}}          
-              </view> -->
+              <view class="tingTitleRemarks">
+                {{item.otherOpations.remarks}}          
+              </view>
             </view>
           <view
             class="success"

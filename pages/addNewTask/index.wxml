@@ -25,7 +25,7 @@
 
       </view>
 
-      <!-- <view class="DoneUI-cell">
+      <view class="DoneUI-cell">
 
         <view class="weui-cell__hd">
           备注
@@ -33,10 +33,12 @@
 
         <view class="DoneUI-cell__bd">
           <input
-            placeholder="要好好自律哦"></input>
+            value="{{remarks}}"
+            bindinput="changeRemarks"
+            placeholder="加油完成自律任务吧"></input>
         </view>
 
-      </view> -->
+      </view>
     </view>
     <view class="DoneUI-cells__title">
       持续天数

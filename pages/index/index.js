@@ -168,22 +168,18 @@ Page({
 
     // 生成初始化的，以当前时间为中央时间的表
   
-    var arr4 =
-      weekArray.slice(0, nowDate.getDay());
-    undefined
+    var arr4 = weekArray.slice(0, nowDate.getDay());
     var arr3 = weekArray.slice(nowDate.getDay(), 7);
-    undefined
     var arr2 = weekArray.slice(0, nowDate.getDay());
-    undefined
     var arr1 = weekArray.slice(nowDate.getDay() + 1, 7);
-
+    
     var listArray = [...arr1, ...arr2, ...arr3, ...arr4]
     // 遍历获得初始化的自律表
     for (let i in listArray){
 
       List[j]={}
 
-      var thisDay = nowDate.getDate() - 6 - (nowDate.getDay() - i);
+      var thisDay = nowDate.getDate() - arr1.length - (nowDate.getDay() - i);
 
       var lastMonthDay = m_days[nowDate.getMonth() - 1 < 0 ? 11 : nowDate.getMonth() - 1];
       var nextMonthDay = m_days[nowDate.getMonth() + 1 > 11 ? 0 : nowDate.getMonth() + 1];
@@ -217,7 +213,7 @@ Page({
           current: j,
         })     
       }
-      List[j].weekName = listArray[i];
+      List[j].weekName = weekArray[listDate.getDay()]
       List[j].thingList = [];
       j++;
 
@@ -248,6 +244,7 @@ Page({
           var newtask = {}
           newtask.id = allTasks[i].id
           newtask.content = allTasks[i].content
+          newtask.otherOpations = allTasks[i].otherOpations
           newtask.success = thisAllTasksSuccess
           List[j].thingList.push(newtask)
         }

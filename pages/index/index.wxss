@@ -61,7 +61,7 @@
   margin: 6rpx 3rpx;
   position: relative;  
   line-height: inherit;
-  height: 200rpx;
+  height: 140rpx;
   display: flex;
 }
 .thing .dealTime{
@@ -112,4 +112,9 @@ swiper{
   top: 0px;
   bottom: 0px;
   margin: auto;
+}
+
+.tingTitleRemarks{
+  font-size: 14px;
+  color: #ff7199;
 }

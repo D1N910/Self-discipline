@@ -23,6 +23,12 @@
         <label class="DoneUI-form-preview__label">任务内容</label>
         <span class="DoneUI-form-preview__value">{{item.content}}</span>
       </view>
+      <view
+        class="DoneUI-form-preview__item"
+        wx-if="{{item.otherOpations.remarks}}">
+        <label class="DoneUI-form-preview__label">备注</label>
+        <span class="DoneUI-form-preview__value">{{item.otherOpations.remarks}}</span>
+      </view>
       <view class="DoneUI-form-preview__item">
         <label class="DoneUI-form-preview__label">开始时间</label>
         <span class="DoneUI-form-preview__value">{{item.startAt}}</span>

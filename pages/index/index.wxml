@@ -44,7 +44,7 @@
           class="null"
           wx:if="{{listItem.thingList.length==0}}"
           src="../../static/null.png">
-        </image>
+        </image> 
         <view
           class="thing"
           data-listId="{{listIndex}}"        
@@ -78,7 +78,7 @@
       </swiper-item>      
     </block>  
   </swiper>
-  <!-- 编辑 -->
+  <!-- 个人 -->
   <navigator
     url="/pages/mine/index">
     <view class="editButton">

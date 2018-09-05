@@ -86,8 +86,8 @@
 .editButton{
   position: absolute;
   background-color: #ff7199;
-  width: 81rpx;
-  height: 81rpx;
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 50%;
   right: 30rpx;
   bottom: 60rpx;
@@ -95,10 +95,11 @@
   display: flex;
   align-items:center;
   justify-content: center;
+  box-shadow: 0px 5px 20px rgba(0,0,0,0.15);
 }
 .editButton image{
-  width: 41rpx;
-  height: 41rpx;
+  width: 71rpx;
+  height: 71rpx;
 }
 swiper{
   height: calc(100vh - 160rpx);

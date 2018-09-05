@@ -41,6 +41,7 @@ Page({
     this.setData({
       array: taskContentArray
     })
+    // 如果是编辑页面
     if(options.id){
       var allTasks = wx.getStorageSync('allTasks')
       console.log('编辑页面')
@@ -71,6 +72,7 @@ Page({
           this.setData({
             editTasks: { ...allTasks[i] },
             taskData: this.data.taskData,
+            remarks: allTasks[i].otherOpations.remarks,
             edit: 1
           },()=>{
             this.getDays()
@@ -199,6 +201,7 @@ Page({
       this.data.editTasks.startAt = sRDate.getTime()
       this.data.editTasks.endAt = eRDate.getTime()
       this.data.editTasks.content = this.data.array[this.data.index]
+      this.data.editTasks.otherOpations.remarks = this.data.remarks
       for (let i in allTasks) {
         if (this.data.editTasks.id == allTasks[i].id){
           allTasks[i] = this.data.editTasks

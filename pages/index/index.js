@@ -260,18 +260,12 @@ Page({
           that.data.rect[that.data.rect.length] = rect
           if (that.data.rect.length==8){
             that.setData({
-              scrollLeft: that.data.windowWidth/2 - that.data.rect[7].width/2
+              scrollLeft: that.data.windowWidth/2 - that.data.rect[0].width/2
             })
           }
         })
       }).exec()
-      // this.setData({
-      //   scrollLeft: this.data.windowWidth / 2 - 26
-      // })
     })
-
-    // scrollLeft: 100      
-
     wx.hideLoading();
   },
 
@@ -314,12 +308,12 @@ Page({
    */
   changeWeekShow(event){
     console.log('ddd')
-    console.log(event.detail)
+    console.log(this.data)
     this.setData({
       showCurrent: event.detail.current
     },()=>{
       this.setData({
-        scrollLeft: this.data.windowWidth / 2 + (event.detail.current - 6) * (this.data.rect[7].width) - this.data.rect[7].width/2
+        scrollLeft: this.data.windowWidth / 2 + (event.detail.current - 6) * (this.data.rect[0].width) - this.data.rect[0].width/2
       })
     })
   }

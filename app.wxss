@@ -27,10 +27,13 @@
     transform: scaleY(0.5);
 }
 .DoneUI-cell image{
-  width:40rpx;
-  height:40rpx;
+  width:55rpx;
+  height:55rpx;
   margin-right:5rpx;
   display:block;  
+}
+.weui-cell__hd{
+  padding: 0 15px 0 0;
 }
 .DoneUI-cell__bd {
   flex: 1;
@@ -110,7 +113,7 @@
     outline: 0;
 }
 .DoneUI-cell {
-    padding: 10rpx 15rpx;
+    padding: 10px 15px;
     position: relative;
     display: -webkit-box;
     display: -webkit-flex;

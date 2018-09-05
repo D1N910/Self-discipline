@@ -52,6 +52,7 @@ Page({
         // 赋值
         endTaskListsItem.id = allTasks[i].id
         endTaskListsItem.content = allTasks[i].content
+        endTaskListsItem.otherOpations = allTasks[i].otherOpations
         // 转换时间
         endTaskListsItem.startAt = `${allTaskStart.getFullYear()}年${allTaskStart.getMonth() + 1}月${allTaskStart.getDate()}日`
         endTaskListsItem.endAt = `${allTaskEnd.getFullYear()}年${allTaskEnd.getMonth() + 1}月${allTaskEnd.getDate()}日`

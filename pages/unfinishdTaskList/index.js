@@ -38,6 +38,7 @@ Page({
         // 赋值
         unfinishedTaskListsItem.id = allTasks[i].id
         unfinishedTaskListsItem.content = allTasks[i].content
+        unfinishedTaskListsItem.otherOpations = allTasks[i].otherOpations
         // 转换时间
         unfinishedTaskListsItem.startAt = `${allTaskStart.getFullYear()}年${allTaskStart.getMonth() + 1}月${allTaskStart.getDate()}日`
         unfinishedTaskListsItem.endAt = `${allTaskEnd.getFullYear()}年${allTaskEnd.getMonth() + 1}月${allTaskEnd.getDate()}日`

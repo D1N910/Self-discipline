@@ -145,7 +145,11 @@
             data-timevalue="startTime"
             bindchange="bindTimeChange">
             <view class="picker">
-             {{startTime}}
+              <text
+                class="prompt"
+                wx:if="{{startTime==''}}"
+              >选择时间</text>
+              {{startTime}}
             </view>
           </picker>
         </view>
@@ -161,11 +165,16 @@
         <view class="DoneUI-cell__bd">
           <picker
             mode="time"
+            start="{{startTime}}"
             value="{{endTime}}"
             data-timevalue="endTime"
             bindchange="bindTimeChange">
             <view class="picker">
-             {{endTime}}
+             <text
+              class="prompt"             
+              wx:if="{{endTime==''}}"
+            >选择时间</text>
+              {{endTime}}
             </view>
           </picker>
         </view>

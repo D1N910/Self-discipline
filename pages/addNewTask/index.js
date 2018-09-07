@@ -17,8 +17,8 @@ Page({
     changeTime: 0,
     submitText: '添加项目',
     remarks:'',
-    startTime: '09:01',
-    endTime: '09:01',
+    startTime: '',
+    endTime: '',
     ifAllDay: true
   },
 
@@ -64,6 +64,30 @@ Page({
           // 转换时间
           this.data.taskData.startData = `${allTaskStart.getFullYear()}-${(allTaskStart.getMonth() + 1) < 10 ? '0' + (allTaskStart.getMonth() + 1) : (allTaskStart.getMonth() + 1)}-${allTaskStart.getDate() < 10 ? '0' + allTaskStart.getDate() : allTaskStart.getDate()}`
           this.data.taskData.endData = `${allTaskEnd.getFullYear()}-${(allTaskEnd.getMonth() + 1) < 10 ? '0' + (allTaskEnd.getMonth() + 1) : (allTaskEnd.getMonth() + 1)}-${allTaskEnd.getDate() < 10 ? '0' + allTaskEnd.getDate() : allTaskEnd.getDate()}`
+
+          if (allTasks[i].otherOpations.doneTime) {
+            if (!allTasks[i].otherOpations.doneTime.allDay){
+              let setGetDate = new Date('2017/01/01')
+              let thisStarDate = new Date(setGetDate.getTime() + allTasks[i].otherOpations.doneTime.startTime)
+              this.data.startTime = `${thisStarDate.getHours() < 10 ? '0' + thisStarDate.getHours() : thisStarDate.getHours()}:${thisStarDate.getMinutes() < 10 ? '0' + thisStarDate.getMinutes() : thisStarDate.getMinutes()}`
+              let thisEndDate = new Date(setGetDate.getTime() + allTasks[i].otherOpations.doneTime.endTime)
+              this.data.endTime = `${thisEndDate.getHours() < 10 ? '0' + thisEndDate.getHours() : thisEndDate.getHours()}:${thisEndDate.getMinutes() < 10 ? '0' + thisEndDate.getMinutes() : thisEndDate.getMinutes()}`
+              this.setData({
+                ifAllDay: false,
+                startTime: this.data.startTime,
+                endTime: this.data.endTime
+              })
+            }else{
+              this.setData({
+                ifAllDay: true
+              })
+            }
+          }else{
+            this.setData({
+              ifAllDay: true
+            })
+          }
+
           for(let t in this.data.array){
             if (this.data.array[t] == allTasks[i].content){
               this.setData({
@@ -80,7 +104,6 @@ Page({
           },()=>{
             this.getDays()
           })
-          console.log(this.data.taskData)
           haveId = 1       
           break
         }
@@ -181,12 +204,36 @@ Page({
   },
 
   /**
-   * 添加任务
+   * 添加任务/添加项目
    */
   formSubmit(e){
+    var doneTime = {}
+    if (!this.data.ifAllDay){
+      console.log(this.data.startTime)
+      console.log(this.data.endTime)
+      let useDate = new Date()
+      let cocularTimeDate = new Date('2017/01/01')
+      let startTimeDate = new Date(`2017/01/01 ${this.data.startTime}`)
+      let endTimeDate = new Date(`2017/01/01 ${this.data.endTime}`)
+
+      if (endTimeDate.getTime() - startTimeDate.getTime() < 0) {
+        wx.showToast({
+          title: '错误：请检查执行时间段设置',
+          icon: "none"
+        })
+        return false
+      }
+      doneTime.allDay = 0      
+      doneTime.startTime = startTimeDate.getTime() - cocularTimeDate.getTime()
+      doneTime.endTime = endTimeDate.getTime() - cocularTimeDate.getTime()
+
+    } else {
+      doneTime.allDay = 1 
+    }
+
     if (this.data.days<=0){
       wx.showToast({
-        title: '请检查时间设置',
+        title: '错误：请检查持续天数设置',
         icon: "none"
       })
       return false;
@@ -205,6 +252,7 @@ Page({
       this.data.editTasks.endAt = eRDate.getTime()
       this.data.editTasks.content = this.data.array[this.data.index]
       this.data.editTasks.otherOpations.remarks = this.data.remarks
+      this.data.editTasks.otherOpations.doneTime = doneTime
       for (let i in allTasks) {
         if (this.data.editTasks.id == allTasks[i].id){
           allTasks[i] = this.data.editTasks
@@ -236,6 +284,7 @@ Page({
       otherOpations:{}
     }
     newTask.otherOpations.remarks = this.data.remarks
+    newTask.otherOpations.doneTime = doneTime    
     if (allTasks != '') {
       allTasks.push(newTask)
       // Do something with return value

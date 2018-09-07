@@ -20,7 +20,6 @@
         class="weekItemTitle {{listIndex==thisdata?'weekItemTitleTime':''}}">
         {{listItem.time}}  
       </view>
-
       <view
         class="weekItemTitle {{listIndex==thisdata?'nowWeekName':''}}">  
         <view
@@ -53,8 +52,17 @@
           bindtap="changeSuccess"
           bindlongpress="navigaToEdit"
           data-item="{{index}}">
-            <view class="dealTime">
-              <!-- 全天 -->
+            <view
+              class="dealTime"
+              wx:if="{{item.allDay}}"
+              >
+              全天
+            </view>
+            <view
+              class="dealTime"
+              wx:if="{{!item.allDay}}"
+              >
+              {{item.startTimeAt}}
             </view>
             <view
               class="thingImage">

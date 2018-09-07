@@ -119,3 +119,7 @@ swiper{
   font-size: 14px;
   color: #ff7199;
 }
+
+swiper-item{
+  overflow-y: auto;
+}

@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/addNewTask/index",    
     "pages/index/index",    
+    "pages/addNewTask/index",    
     "pages/help/index",
     "pages/setting/index",    
     "pages/mine/index",

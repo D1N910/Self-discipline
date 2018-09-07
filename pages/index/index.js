@@ -25,13 +25,13 @@ Page({
         that.data.windowWidth = res.windowWidth
       }
     })
-    var thisVision = 'v0.2.0'
+    var thisVision = 'v0.2.11'
     var getVision = wx.getStorageSync('vision')
     if(getVision){
       if (thisVision != getVision){
         wx.showModal({
           title: '版本更新',
-          content: `版本${thisVision}，首页页面样式/整体样式大改，感谢bilibili`,
+          content: `版本${thisVision}，v0.2.1迭代内容，修复了一个bug，曾导致首页显示过多自律项目时候不能滑动`,
           showCancel:false,
           confirmColor:'#fc7070'
         })
@@ -113,6 +113,7 @@ Page({
       }
     }
     wx.setStorageSync('allTasks', allTasks)
+  
     this.setData({
       List: this.data.List
     })
@@ -246,7 +247,36 @@ Page({
           newtask.content = allTasks[i].content
           newtask.otherOpations = allTasks[i].otherOpations
           newtask.success = thisAllTasksSuccess
-          List[j].thingList.push(newtask)
+          if (allTasks[i].otherOpations.doneTime) {
+            newtask.allDay = allTasks[i].otherOpations.doneTime.allDay
+            if (!newtask.allDay){
+              let setGetDate = new Date('2017/01/01')
+              let thisStarDate = new Date(setGetDate.getTime() + allTasks[i].otherOpations.doneTime.startTime)
+              newtask.startTimeAt = `${thisStarDate.getHours() < 10 ? '0' + thisStarDate.getHours() : thisStarDate.getHours()}:${thisStarDate.getMinutes() < 10 ? '0' + thisStarDate.getMinutes() : thisStarDate.getMinutes()}`
+            }
+          } else {
+            newtask.allDay = 1
+          }
+          if (!newtask.allDay){
+            List[j].thingList.unshift(newtask)
+          }else{
+            List[j].thingList.push(newtask)
+          }
+          // var allDayList = []
+          // var setDateList = []
+          // var sorSetDateList = []
+          // for (let w in List[j].thingList){
+          //   if (!List[j].thingList[w].allDay){
+          //     var allDayList = List[j].thingList.slice(0,w)    
+          //     setDateList = List[j].thingList.slice(w)
+          //     sorSetDateList = setDateList.sort(function (a, b) { return a.otherOpations.doneTime.startTime - b.otherOpations.doneTime.startTime; })
+          //     break
+          //   }
+          // } 
+          // console.log('***List[j].thingList****')
+          // console.log(List[j].thingList)
+          // console.log([...allDayList, ...sorSetDateList])
+          // List[j].thingList = [...allDayList, ...sorSetDateList]
         }
       }
     }

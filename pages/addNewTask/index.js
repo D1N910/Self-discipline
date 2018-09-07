@@ -16,7 +16,10 @@ Page({
     edit: 0,
     changeTime: 0,
     submitText: '添加项目',
-    remarks:''
+    remarks:'',
+    startTime: '09:01',
+    endTime: '09:01',
+    ifAllDay: true
   },
 
   /**
@@ -269,5 +272,22 @@ Page({
    */
   changeRemarks(e){
     this.data.remarks = e.detail.value
+  },
+
+  /**
+   * 是否全天
+   */
+  switch2ChangeAllDay(e){
+    this.setData({
+      ifAllDay: e.detail.value
+    })
+  },
+  /**
+   * 修改具体时间段时间
+   */
+  bindTimeChange: function (e) {
+    this.setData({
+      [e.target.dataset.timevalue]: e.detail.value
+    })
   }
 })

@@ -107,5 +107,5 @@
     color: #808080;
 }
 .DoneUI-form-preview__btn_down{
-    color: #fc7070; 
+    color: #ff7199; 
 }

@@ -110,6 +110,68 @@
 
     </view>
 
+    <view class="DoneUI-cells__title">
+      执行时间段
+    </view>
+    <view class="DoneUI-list DoneUI-form">
+      <view class="DoneUI-cell">
+
+        <view class="weui-cell__hd">
+          全天
+        </view>
+
+        <view class="DoneUI-cell__bd">
+
+          <switch
+            color="#ff7199"
+            checked="{{ifAllDay}}"
+            bindchange="switch2ChangeAllDay" />
+
+        </view>
+
+      </view>
+      <view
+        class="DoneUI-cell"
+        wx-if="{{!ifAllDay}}">
+
+        <view class="weui-cell__hd">
+          开始时间
+        </view>
+
+        <view class="DoneUI-cell__bd">
+          <picker
+            mode="time"
+            value="{{startTime}}"
+            data-timevalue="startTime"
+            bindchange="bindTimeChange">
+            <view class="picker">
+             {{startTime}}
+            </view>
+          </picker>
+        </view>
+
+      </view>
+      <view class="DoneUI-cell"
+        wx-if="{{!ifAllDay}}">      
+
+        <view class="weui-cell__hd">
+          结束时间
+        </view>
+
+        <view class="DoneUI-cell__bd">
+          <picker
+            mode="time"
+            value="{{endTime}}"
+            data-timevalue="endTime"
+            bindchange="bindTimeChange">
+            <view class="picker">
+             {{endTime}}
+            </view>
+          </picker>
+        </view>
+
+      </view>
+    </view>
     <!-- <view class="DoneUI-cells__title">
       完成时间段
       <text wx:if="{{days!=''}}">(时长)</text>

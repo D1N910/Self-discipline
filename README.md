@@ -20,6 +20,12 @@ Copyright (c) 2018-present, D1N910
 
 ## Error
   ![Error](https://wx3.sinaimg.cn/mw690/006ES7aSly1fuew5b5p4aj30os061q3r.jpg)
+  
+## Now
+
+你会发现现在的版本和初版大有不同；因为为了配合 **Error** 的问题，在配合阉割以后，也成功上线了。至于以后会如何，是会跟着我的个人实力的增长而不断迭代。
+
+
 
 ## How To Start
 [Wacht the miniprogram dev File](https://developers.weixin.qq.com/miniprogram/dev/index.html?t=18080816)

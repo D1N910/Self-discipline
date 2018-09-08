@@ -136,7 +136,7 @@ swiper-item{
   margin-top:2.4em;
 }
 .weui-loadmore {
-  width:65%;
+  width:calc(100% - 30rpx);
   margin:1em auto;
   line-height:1.6em;
   font-size:14px;
@@ -157,3 +157,37 @@ swiper-item{
   display:inline-block;
   vertical-align:middle;
 }
+.clock{
+  width: 30rpx;
+  height: 30rpx;
+  display: inline-block;
+  border: 1px solid #ff7199;
+  border-radius: 50%;
+  position: relative;
+}
+.clock .hour{
+  width: 1px;
+  height: 10rpx;
+  background-color: #ff7199;
+  position: absolute;  
+  left: 15rpx;
+  top: 5rpx;
+  transform-origin: center bottom;
+  transition: all 0.2s;  
+  transform:rotate(0deg);  
+}
+.clock .min{
+  width: 1rpx;
+  height: 14rpx;
+  left: 15rpx;
+  background-color: #ff7199;
+  position: absolute;  
+  transform-origin: center bottom;
+  transition: all 0.2s;  
+  transform:rotate(0deg);  
+}
+  /* left: 25rpx;
+  top: 25rpx; */
+  /* -webkit-transform-origin: center bottom;
+  transform-origin: center left;
+  transform:rotate(360deg); */

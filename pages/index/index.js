@@ -15,7 +15,9 @@ Page({
     rect:[],
     nowTimeInTop:1,
     nowTimeShow: '',
-    nowTimeWord: ''
+    nowTimeWord: '',
+    minTransform: 'transform:rotate(0deg);',
+    hourTransform: 'transform:rotate(0deg);'   
   },
 
   /**
@@ -294,6 +296,11 @@ Page({
     this.data.nowTimeShow = `${nowDate.getHours() < 10 ? '0' + nowDate.getHours() : nowDate.getHours()}:${nowDate.getMinutes() < 10 ? '0' + nowDate.getMinutes() : nowDate.getMinutes()}`
     this.data.nowTimeInTop = 1
 
+    // 时钟时针旋转角度
+    this.data.hourTransform = `transform:rotate(${(360 * nowDate.getHours() / 12) + (30*nowDate.getMinutes() / 60)}deg);`
+    // 时钟分针旋转角度
+    this.data.minTransform = `transform:rotate(${360 * nowDate.getMinutes() / 60}deg);`
+
     // 根据时间排序
     for (let i in List){
       let allDayList = []
@@ -321,7 +328,9 @@ Page({
     this.setData({
       List: List,
       nowTimeInTop: this.data.nowTimeInTop,
-      nowTimeShow: this.data.nowTimeShow
+      nowTimeShow: this.data.nowTimeShow,
+      minTransform: this.data.minTransform,
+      hourTransform: this.data.hourTransform
     },()=>{
       wx.createSelectorQuery().selectAll('.weekItem').boundingClientRect(function (rects) {
         rects.forEach(function (rect) {

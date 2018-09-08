@@ -25,13 +25,13 @@ Page({
         that.data.windowWidth = res.windowWidth
       }
     })
-    var thisVision = 'v0.2.11'
+    var thisVision = 'v0.2.12'
     var getVision = wx.getStorageSync('vision')
     if(getVision){
       if (thisVision != getVision){
         wx.showModal({
           title: '版本更新',
-          content: `版本${thisVision}，v0.2.1迭代内容，修复了一个bug，曾导致首页显示过多自律项目时候不能滑动`,
+          content: `版本${thisVision}，v0.2.1x迭代内容，修复了一个bug，曾导致首页显示过多的时候不能滑动；新增设置时间。`,
           showCancel:false,
           confirmColor:'#fc7070'
         })
@@ -40,7 +40,7 @@ Page({
     }else{
       wx.showModal({
         title:'欢迎自律新人',
-        content: '亲爱的自律者，欢迎来到自律表，点击右下角君之来新建自律项目吧',
+        content: '亲爱的自律者，欢迎来到自律表，点击［右下角］的按钮来新建自律项目吧',
         showCancel: false,
         confirmColor: '#fc7070'
       })
@@ -260,25 +260,27 @@ Page({
           if (!newtask.allDay){
             List[j].thingList.unshift(newtask)
           }else{
-            List[j].thingList.push(newtask)
+            List[j].thingList.push(newtask)       
           }
-          // var allDayList = []
-          // var setDateList = []
-          // var sorSetDateList = []
-          // for (let w in List[j].thingList){
-          //   if (!List[j].thingList[w].allDay){
-          //     var allDayList = List[j].thingList.slice(0,w)    
-          //     setDateList = List[j].thingList.slice(w)
-          //     sorSetDateList = setDateList.sort(function (a, b) { return a.otherOpations.doneTime.startTime - b.otherOpations.doneTime.startTime; })
-          //     break
-          //   }
-          // } 
-          // console.log('***List[j].thingList****')
-          // console.log(List[j].thingList)
-          // console.log([...allDayList, ...sorSetDateList])
-          // List[j].thingList = [...allDayList, ...sorSetDateList]
+        }
+
+      }
+    }
+
+    // 根据时间排序
+    for (let i in List){
+      let allDayList = []
+      let setDateList = []
+      let sorSetDateList = []
+      for(let j in List[i].thingList ){
+        if (List[i].thingList[j].allDay){
+          allDayList.push(List[i].thingList[j])
+        }else{
+          setDateList.push(List[i].thingList[j])
         }
       }
+      sorSetDateList = setDateList.sort(function (a, b) { return a.otherOpations.doneTime.startTime - b.otherOpations.doneTime.startTime; })
+      List[i].thingList = [...sorSetDateList, ...allDayList]      
     }
 
     var that = this

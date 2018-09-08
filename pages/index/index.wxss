@@ -65,9 +65,11 @@
   display: flex;
 }
 .thing .dealTime{
-  color: #9e9e9e;
   padding: 8rpx 16rpx;
   font-size: 24rpx;
+}
+.thing .dealTimeSuccess{
+  color: #9e9e9e;  
 }
 .success{
   width: 81rpx;

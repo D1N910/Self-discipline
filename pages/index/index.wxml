@@ -53,13 +53,13 @@
           bindlongpress="navigaToEdit"
           data-item="{{index}}">
             <view
-              class="dealTime"
+              class="{{item.success?'dealTime dealTimeSuccess':'dealTime'}}"
               wx:if="{{item.allDay}}"
               >
               全天
             </view>
             <view
-              class="dealTime"
+              class="{{item.success?'dealTime dealTimeSuccess':'dealTime'}}"
               wx:if="{{!item.allDay}}"
               >
               {{item.startTimeAt}}
@@ -72,8 +72,15 @@
               <view class="tingTitle">
                 {{item.content}}          
               </view>
-              <view class="tingTitleRemarks">
+              <view
+                class="{{item.success?'tingTitleRemarks dealTimeSuccess':'tingTitleRemarks'}}"
+                wx:if="{{item.otherOpations.remarks!=''}}">
                 {{item.otherOpations.remarks}}          
+              </view>
+             <view
+                wx:if="{{item.otherOpations.remarks==''}}"
+                class="{{item.success?'tingTitleRemarks dealTimeSuccess':'tingTitleRemarks'}}">
+                加油完成自律任务吧
               </view>
             </view>
           <view

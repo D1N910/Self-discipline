@@ -37,7 +37,7 @@ Page({
       if (thisVision != getVision){
         wx.showModal({
           title: '版本更新',
-          content: `版本${thisVision}，v0.2.1x迭代内容，修复了一个bug，曾导致首页显示过多的时候不能滑动；新增设置时间。`,
+          content: `版本${thisVision}，v0.2.1迭代内容，修复了一个bug，曾导致首页显示过多的时候不能滑动；新增设置时间;显示时长；显示小钟表`,
           showCancel:false,
           confirmColor:'#fc7070'
         })
@@ -276,6 +276,15 @@ Page({
               let setGetDate = new Date('2017/01/01')
               let thisStarDate = new Date(setGetDate.getTime() + allTasks[i].otherOpations.doneTime.startTime)
               newtask.startTimeAt = `${thisStarDate.getHours() < 10 ? '0' + thisStarDate.getHours() : thisStarDate.getHours()}:${thisStarDate.getMinutes() < 10 ? '0' + thisStarDate.getMinutes() : thisStarDate.getMinutes()}`
+
+              // 当前时长
+              let timeDifference = (allTasks[i].otherOpations.doneTime.endTime - allTasks[i].otherOpations.doneTime.startTime) / 1000 / 60 / 60
+              console.log(`${parseInt(timeDifference)}小时${(parseFloat(timeDifference - parseInt(timeDifference)) * 60).toFixed()}分钟`)
+              if (parseInt(timeDifference)!=0){
+                newtask.needDoneTime = `${parseInt(timeDifference)}小时${(parseFloat(timeDifference - parseInt(timeDifference)) * 60).toFixed()}分钟`
+              }else{
+                newtask.needDoneTime = `${(parseFloat(timeDifference - parseInt(timeDifference)) * 60).toFixed()}分钟`
+              }
             }
           } else {
             newtask.allDay = 1

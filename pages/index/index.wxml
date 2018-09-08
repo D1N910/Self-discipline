@@ -76,7 +76,10 @@
               </view>
               <view class="tingDetail">
                 <view class="tingTitle">
-                  {{item.content}}          
+                  {{item.content}} 
+                  <text
+                    class="needDoneTime"
+                    wx:if="{{item.needDoneTime}}">时长{{item.needDoneTime}}  </text>  
                 </view>
                 <view
                   class="{{item.success?'tingTitleRemarks dealTimeSuccess':'tingTitleRemarks'}}"

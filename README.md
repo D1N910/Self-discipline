@@ -13,7 +13,7 @@
 主页样式 来自bilibili的 2018年09月08日当下的安卓 APP 端 番剧时间表
 
 **为了避免蹭热度，说明：本人只是使用其开源的内容，并没有他们有合作关系**
-
+**bilibili样式并没有“开源”，如果有什么问题，请及时联系我，我将担负一切的责任**
 ## License
 [MIT](https://opensource.org/licenses/MIT)  
 Copyright (c) 2018-present, D1N910

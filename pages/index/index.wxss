@@ -125,3 +125,35 @@ swiper{
 swiper-item{
   overflow-y: auto;
 }
+
+.nowTimeShow{
+  font-size: 24rpx;
+  text-align: center;
+  color: #ff7199;
+}
+.weui-loadmore_line {
+  border-top:1px solid #ff7199;
+  margin-top:2.4em;
+}
+.weui-loadmore {
+  width:65%;
+  margin:1em auto;
+  line-height:1.6em;
+  font-size:14px;
+  text-align:center;
+}
+
+.weui-loadmore__tips {
+  background:inherit;
+}
+.weui-loadmore__tips_in-line {
+  position:relative;
+  top:-.9em;
+  padding:0 .55em;
+  background-color:#f8f8f8;
+  color:#ff7199;
+}
+.weui-loadmore__tips {
+  display:inline-block;
+  vertical-align:middle;
+}

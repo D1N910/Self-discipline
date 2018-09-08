@@ -12,13 +12,17 @@ Page({
     current:1,
     scrollLeft:0,
     windowWidth: 0,
-    rect:[]
+    rect:[],
+    nowTimeInTop:1,
+    nowTimeShow: '',
+    nowTimeWord: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
     var that = this
     wx.getSystemInfo({
       success: function (res) {
@@ -134,11 +138,28 @@ Page({
   onReady: function () {
   
   },
-
+  //生成从minNum到maxNum的随机数
+  randomNum(minNum, maxNum){
+    switch(arguments.length) { 
+        case 1:
+    return parseInt(Math.random() * minNum + 1, 10);
+    break;
+    case 2:
+    return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+    break;
+    default: 
+                return 0;
+    break;
+    } 
+  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var nowTimeWord = ['自律带来自信', '三更灯火五更鸡，正是读书时', '大海源于山溪', '不登高山，不知天之高', '不临深溪，不知地之厚', '君子博学而日参省乎己', '积土成山，风雨兴焉', '积水成渊，蛟龙生焉', '积善成德，而神明自得', '不积跬步，无以至千里', '不积小流，无以成江海', '驽马十驾，功在不舍', '锲而不舍，金石可镂', '时间，就像海棉里的水', '读书应自己思索，自己做主。', '凡事以理想为因，实行为果。', '有趣， 源于对生活的热爱', '我给你一个拥抱','在坚持中走向富有和平和']
+    this.setData({
+      nowTimeWord:nowTimeWord[this.randomNum(0, nowTimeWord.length - 1)]
+    })
     var nowDate = new Date();
     var value = wx.getStorageSync('weekType')
     if (value) {
@@ -267,6 +288,12 @@ Page({
       }
     }
 
+    // 当前时间
+    let nowYMD = new Date(`${nowDate.getFullYear()}/${(nowDate.getMonth() + 1 < 10) ? ('0' + (nowDate.getMonth() + 1)) : nowDate.getMonth() + 1}/${nowDate.getDate() < 10 ? '0' + nowDate.getDate() : nowDate.getDate()}`)
+    let NowTime = nowDate.getTime() - nowYMD.getTime()
+    this.data.nowTimeShow = `${nowDate.getHours() < 10 ? '0' + nowDate.getHours() : nowDate.getHours()}:${nowDate.getMinutes() < 10 ? '0' + nowDate.getMinutes() : nowDate.getMinutes()}`
+    this.data.nowTimeInTop = 1
+
     // 根据时间排序
     for (let i in List){
       let allDayList = []
@@ -280,12 +307,21 @@ Page({
         }
       }
       sorSetDateList = setDateList.sort(function (a, b) { return a.otherOpations.doneTime.startTime - b.otherOpations.doneTime.startTime; })
+      for (let j = sorSetDateList.length-1; j>=0;j--){
+        if (sorSetDateList[j].otherOpations.doneTime.startTime < NowTime){
+          sorSetDateList[j].nearlyTime = 1
+          this.data.nowTimeInTop = 0
+          break          
+        }
+      }
       List[i].thingList = [...sorSetDateList, ...allDayList]      
     }
-
+    console.log(List)
     var that = this
     this.setData({
-      List: List
+      List: List,
+      nowTimeInTop: this.data.nowTimeInTop,
+      nowTimeShow: this.data.nowTimeShow
     },()=>{
       wx.createSelectorQuery().selectAll('.weekItem').boundingClientRect(function (rects) {
         rects.forEach(function (rect) {

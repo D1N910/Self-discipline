@@ -45,51 +45,63 @@
           src="../../static/null.png">
         </image> 
         <view
-          class="thing"
-          data-listId="{{listIndex}}"        
+          class="weui-loadmore weui-loadmore_line"
+          wx:if="{{listIndex==thisdata&&nowTimeInTop}}">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{nowTimeShow}} {{nowTimeWord}}</view>
+        </view>
+        <block
           wx:for="{{listItem.thingList}}"
-          wx:key="index"
-          bindtap="changeSuccess"
-          bindlongpress="navigaToEdit"
-          data-item="{{index}}">
-            <view
-              class="{{item.success?'dealTime dealTimeSuccess':'dealTime'}}"
-              wx:if="{{item.allDay}}"
-              >
-              全天
-            </view>
-            <view
-              class="{{item.success?'dealTime dealTimeSuccess':'dealTime'}}"
-              wx:if="{{!item.allDay}}"
-              >
-              {{item.startTimeAt}}
-            </view>
-            <view
-              class="thingImage">
-
-            </view>
-            <view class="tingDetail">
-              <view class="tingTitle">
-                {{item.content}}          
+          wx:key="index">
+          <view
+            class="thing"
+            data-listId="{{listIndex}}"        
+            bindtap="changeSuccess"
+            bindlongpress="navigaToEdit"
+            data-item="{{index}}">
+              <view
+                class="{{item.success?'dealTime dealTimeSuccess':'dealTime'}}"
+                wx:if="{{item.allDay}}"
+                >
+                全天
               </view>
               <view
-                class="{{item.success?'tingTitleRemarks dealTimeSuccess':'tingTitleRemarks'}}"
-                wx:if="{{item.otherOpations.remarks!=''}}">
-                {{item.otherOpations.remarks}}          
+                class="{{item.success?'dealTime dealTimeSuccess':'dealTime'}}"
+                wx:if="{{!item.allDay}}"
+                >
+                {{item.startTimeAt}}
               </view>
-             <view
-                wx:if="{{item.otherOpations.remarks==''}}"
-                class="{{item.success?'tingTitleRemarks dealTimeSuccess':'tingTitleRemarks'}}">
-                加油完成自律任务吧
+              <view
+                class="thingImage">
+
               </view>
+              <view class="tingDetail">
+                <view class="tingTitle">
+                  {{item.content}}          
+                </view>
+                <view
+                  class="{{item.success?'tingTitleRemarks dealTimeSuccess':'tingTitleRemarks'}}"
+                  wx:if="{{item.otherOpations.remarks!=''}}">
+                  {{item.otherOpations.remarks}}          
+                </view>
+              <view
+                  wx:if="{{item.otherOpations.remarks==''}}"
+                  class="{{item.success?'tingTitleRemarks dealTimeSuccess':'tingTitleRemarks'}}">
+                  加油完成自律任务吧
+                </view>
+              </view>
+            <view
+              class="success"
+              wx:if="{{item.success}}">
+              <image
+                src="../../static/red.png"></image>
             </view>
-          <view
-            class="success"
-            wx:if="{{item.success}}">
-            <image
-              src="../../static/red.png"></image>
           </view>
+        <view
+          class="weui-loadmore weui-loadmore_line"
+          wx:if="{{listIndex==thisdata&&item.nearlyTime}}">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{nowTimeShow}} {{nowTimeWord}}</view>
         </view>
+      </block>
       </swiper-item>      
     </block>  
   </swiper>

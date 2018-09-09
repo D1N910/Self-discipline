@@ -96,6 +96,7 @@
               class="success"
               wx:if="{{item.success}}">
               <image
+                animation="{{item.flowerShow}}"                
                 src="../../static/red.png"></image>
             </view>
           </view>

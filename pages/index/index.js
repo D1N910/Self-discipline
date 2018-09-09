@@ -17,7 +17,7 @@ Page({
     nowTimeShow: '',
     nowTimeWord: '',
     minTransform: 'transform:rotate(0deg);',
-    hourTransform: 'transform:rotate(0deg);'   
+    hourTransform: 'transform:rotate(0deg);'
   },
 
   /**
@@ -31,13 +31,13 @@ Page({
         that.data.windowWidth = res.windowWidth
       }
     })
-    var thisVision = 'v0.2.12'
+    var thisVision = 'v0.2.13'
     var getVision = wx.getStorageSync('vision')
     if(getVision){
       if (thisVision != getVision){
         wx.showModal({
           title: '版本更新',
-          content: `版本${thisVision}，v0.2.1迭代内容，修复了一个bug，曾导致首页显示过多的时候不能滑动；新增设置时间;显示时长；显示小钟表`,
+          content: `版本${thisVision}，v0.2.1x迭代内容，显示时长；显示小钟表`,
           showCancel:false,
           confirmColor:'#fc7070'
         })
@@ -74,7 +74,6 @@ Page({
         title: '可喜可贺，奖励一朵大红花',
         icon:'none'
       })
-
     }else{
       
       wx.showToast({
@@ -122,6 +121,28 @@ Page({
   
     this.setData({
       List: this.data.List
+    },()=>{
+      if (this.data.List[e.currentTarget.dataset.listid].thingList[e.currentTarget.dataset.item].success){
+        // 鲜花动效
+        var flowerShowAnimationData = wx.createAnimation({
+          duration: 300,
+          timingFunction: 'ease',
+        })
+
+        this.flowerShowAnimationData = flowerShowAnimationData
+
+        flowerShowAnimationData.translate(-30).scale(2).rotate(180).step()
+
+        this.setData({
+          [`List[${e.currentTarget.dataset.listid}].thingList[${e.currentTarget.dataset.item}].flowerShow`]: flowerShowAnimationData.export()
+        })
+        setTimeout(function () {
+          flowerShowAnimationData.translate(0).scale(1).rotate(-180).step()
+          this.setData({
+            [`List[${e.currentTarget.dataset.listid}].thingList[${e.currentTarget.dataset.item}].flowerShow`]: flowerShowAnimationData.export()
+          })
+        }.bind(this), 300)
+      }
     })
   },
 
@@ -270,6 +291,8 @@ Page({
           newtask.content = allTasks[i].content
           newtask.otherOpations = allTasks[i].otherOpations
           newtask.success = thisAllTasksSuccess
+          // 鲜花动效
+          newtask.flowerShow = {}
           if (allTasks[i].otherOpations.doneTime) {
             newtask.allDay = allTasks[i].otherOpations.doneTime.allDay
             if (!newtask.allDay){
@@ -279,7 +302,6 @@ Page({
 
               // 当前时长
               let timeDifference = (allTasks[i].otherOpations.doneTime.endTime - allTasks[i].otherOpations.doneTime.startTime) / 1000 / 60 / 60
-              console.log(`${parseInt(timeDifference)}小时${(parseFloat(timeDifference - parseInt(timeDifference)) * 60).toFixed()}分钟`)
               if (parseInt(timeDifference)!=0){
                 newtask.needDoneTime = `${parseInt(timeDifference)}小时${(parseFloat(timeDifference - parseInt(timeDifference)) * 60).toFixed()}分钟`
               }else{
@@ -389,12 +411,11 @@ Page({
   onReachBottom: function () {
   
   },
+
   /**
    * 滑块改变星期
    */
   changeWeekShow(event){
-    console.log('ddd')
-    console.log(this.data)
     this.setData({
       showCurrent: event.detail.current
     },()=>{

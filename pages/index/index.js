@@ -31,13 +31,13 @@ Page({
         that.data.windowWidth = res.windowWidth
       }
     })
-    var thisVision = 'v0.2.13'
+    var thisVision = 'v0.2.14'
     var getVision = wx.getStorageSync('vision')
     if(getVision){
       if (thisVision != getVision){
         wx.showModal({
-          title: '版本更新',
-          content: `版本${thisVision}，v0.2.1x迭代内容，显示时长；显示小钟表`,
+          title: `版本${thisVision}更新`,
+          content: '奖励小红花有了动画效果(｀・ω・´)；现在首页可以点击右上角转发分享［自律表］给你的朋友了╮(￣▽￣)╭ 提醒功能等v0.2.2的时候更新(´；ω；`)',
           showCancel:false,
           confirmColor:'#fc7070'
         })
@@ -67,21 +67,6 @@ Page({
    * 改变选中状态 
    */
   changeSuccess(e){
-
-    if (!this.data.List[e.currentTarget.dataset.listid].thingList[e.currentTarget.dataset.item].success){
-
-      wx.showToast({
-        title: '可喜可贺，奖励一朵大红花',
-        icon:'none'
-      })
-    }else{
-      
-      wx.showToast({
-        title: '事情未完，暂时收回大红花',
-        icon: 'none'
-      })
-
-    }
 
     this.data.List[e.currentTarget.dataset.listid].thingList[e.currentTarget.dataset.item].success = !this.data.List[e.currentTarget.dataset.listid].thingList[e.currentTarget.dataset.item].success;
 
@@ -131,15 +116,19 @@ Page({
 
         this.flowerShowAnimationData = flowerShowAnimationData
 
-        flowerShowAnimationData.translate(-30).scale(2).rotate(180).step()
+        flowerShowAnimationData.scale(2).rotate(180).step()
 
         this.setData({
           [`List[${e.currentTarget.dataset.listid}].thingList[${e.currentTarget.dataset.item}].flowerShow`]: flowerShowAnimationData.export()
         })
         setTimeout(function () {
-          flowerShowAnimationData.translate(0).scale(1).rotate(-180).step()
+          flowerShowAnimationData.scale(1).rotate(-180).step()
           this.setData({
             [`List[${e.currentTarget.dataset.listid}].thingList[${e.currentTarget.dataset.item}].flowerShow`]: flowerShowAnimationData.export()
+          })
+          wx.showToast({
+            title: '可喜可贺，奖励一朵大红花',
+            icon: 'none'
           })
         }.bind(this), 300)
       }
@@ -183,7 +172,9 @@ Page({
     this.setData({
       nowTimeWord:nowTimeWord[this.randomNum(0, nowTimeWord.length - 1)]
     })
-    var nowDate = new Date();
+    var nowDate = new Date()
+    // var testDate = new Date()
+    // var nowDate = new Date(testDate.getFullYear(), testDate.getMonth(), testDate.getDate() + 4);
     var value = wx.getStorageSync('weekType')
     if (value) {
       if (value == 0) {
@@ -423,5 +414,18 @@ Page({
         scrollLeft: this.data.windowWidth / 2 + (event.detail.current - 6) * (this.data.rect[0].width) - this.data.rect[0].width/2
       })
     })
+  },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    return {
+      title: `${this.data.nowTimeWord}`,
+      path: `/pages/index/index`,
+      imageUrl: '../../static/share.jpg',
+      success(e) {
+        console.log('转发成功')
+      }
+    }
   }
 })

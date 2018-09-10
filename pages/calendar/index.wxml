@@ -1,0 +1,82 @@
+<!--pages/calendar/index.wxml-->
+<view
+  class="container"
+>
+  <view
+    class="showYear">
+      <picker
+        mode="date"
+        value="{{showYear}}"
+        fields="year"
+        bindchange="bindshowYearChange">
+        <view>
+          {{showYear}}
+        </view>
+      </picker>
+  </view>
+  <!-- 月份 -->
+  <scroll-view
+    class="weekScroll-view"
+    scroll-x
+    scroll-with-animation
+    scroll-left="{{scrollLeft}}">
+    <view
+      class="weekItem"
+      wx:for="{{List}}"
+      wx:for-item="listItem"
+      wx:for-index="listIndex"
+      wx:key="listIndex"
+      data-nowindex="{{listIndex}}"    
+      bindtap="changNowDate"  >
+
+      <view
+        class="weekItemTitle {{listIndex==thisdata?'nowWeekName':''}}">  
+        <view
+          class="weekName {{listIndex==showCurrent?'clickWeekName':''}}">
+          {{listItem.monthName}}          
+        </view>
+      </view>
+
+    </view>
+  </scroll-view>
+  <view
+    class="calendarContainer">
+    <view
+     class="calendarContainerWeek weekTitle">
+      <view
+        class="calendarContainerWeekItem"
+        wx:for="{{weekArray}}"
+        wx:for-item="listItem"
+        wx:for-index="listIndex"
+        wx:key="listIndex">
+        {{listItem}}
+      </view>
+    </view>
+  </view>
+  <swiper
+    current="{{current}}"
+    bindchange="changeWeekShow">
+    <block
+      wx:for="{{List}}"
+      wx:for-item="listItem"
+      wx:for-index="listIndex"
+      wx:key="listIndex">
+      <swiper-item>   
+        <view
+          class="calendarContainer">
+          <view
+          class="calendarContainerWeek">
+            <view
+              class="calendarContainerWeekItem"
+              wx:for="{{listItem.date}}"
+              wx:for-item="listWeekItem"
+              wx:for-index="listWeekIndex"
+              wx:key="listIndex">
+              {{listWeekItem.name}}
+            </view>
+          </view>
+        </view>
+      </swiper-item>      
+    </block>  
+  </swiper>
+</view>

@@ -1,0 +1,67 @@
+/* pages/calendar/index.wxss */
+.showYear{
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #fff;
+  background-color: #ff7199;
+  text-align: center;
+}
+.weekScroll-view{
+  height: 80rpx;  
+  width: 100vw;
+  overflow:hidden;
+  white-space: nowrap;
+  box-shadow: 0px 5px 20px rgba(0,0,0,0.15);
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.weekScroll-view .weekItem{
+  font-size: 28rpx;  
+  width: calc(100%/7);
+  display: inline-block;
+  text-align: center;  
+}
+.weekItem .weekItemTitle{
+  font-weight: bolder;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #ff7199;
+  color: white;
+}
+.weekItemTitle .weekName{
+  border:1px solid #ff7199;
+  border-radius: 50%;
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  margin: auto;
+  transition: all 0.2s;
+}
+
+/* 日历容器 */
+.calendarContainer{
+  padding: 30rpx 0 0 0;
+}
+/* 日历星期容器 */
+.calendarContainerWeek{
+  display: flex;
+  flex-wrap: wrap;
+}
+.calendarContainerWeek .calendarContainerWeekItem{
+  width: calc(100vw/7);
+  text-align: center;
+  height: 120rpx;
+  line-height: 120rpx;
+}
+.weekTitle .calendarContainerWeekItem{
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+swiper{
+  min-height: calc(100vh - 270rpx);
+}

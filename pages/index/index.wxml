@@ -47,7 +47,16 @@
         <view
           class="weui-loadmore weui-loadmore_line"
           wx:if="{{listIndex==thisdata&&nowTimeInTop}}">
-            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{nowTimeShow}} {{nowTimeWord}}</view>
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">
+              <view
+                class="clock">
+                <view
+                  class="hour"
+                  style="{{hourTransform}}"></view>
+                <view
+                  class="min"
+                  style="{{minTransform}}"></view>
+              </view>{{nowTimeShow}} {{nowTimeWord}}</view>
         </view>
         <block
           wx:for="{{listItem.thingList}}"

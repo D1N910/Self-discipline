@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/index/index",    
+    "pages/setting/index",    
     "pages/addNewTask/index",
     "pages/help/index",
-    "pages/setting/index",
     "pages/mine/index",
     "pages/unfinishdTaskList/index",
     "pages/completedTaskList/index",

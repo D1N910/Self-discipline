@@ -123,7 +123,7 @@
         <view class="DoneUI-cell__bd">
 
           <switch
-            color="#ff7199"
+            color="{{themeColor}}"
             checked="{{ifAllDay}}"
             bindchange="switch2ChangeAllDay" />
 
@@ -195,6 +195,7 @@
 
         <button
           class="DoneUI-form-preview__btn DoneUI-form-preview__btn_down"
+          style="color:{{themeColor}};"
           formType="submit">{{submitText}}</button>
 
       </view>

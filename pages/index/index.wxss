@@ -28,7 +28,9 @@
   color: white;
 }
 .weekItemTitle .weekName{
-  border:1px solid #ff7199;
+  border-width:1px;
+  border-style: solid;
+  border-color: rgba(0,0,0,0);
   border-radius: 50%;
   width: 60rpx;
   height: 60rpx;
@@ -91,8 +93,8 @@
 .editButton{
   position: absolute;
   background-color: #ff7199;
-  width: 100rpx;
-  height: 100rpx;
+  width: 80rpx;
+  height: 80rpx;
   border-radius: 50%;
   right: 30rpx;
   bottom: 60rpx;
@@ -103,8 +105,8 @@
   box-shadow: 0px 5px 20px rgba(0,0,0,0.15);
 }
 .editButton image{
-  width: 71rpx;
-  height: 71rpx;
+  width: 51rpx;
+  height: 51rpx;
 }
 swiper{
   height: calc(100vh - 160rpx);

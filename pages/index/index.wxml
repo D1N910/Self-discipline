@@ -17,13 +17,16 @@
       bindtap="changNowDate"  >
       
       <view
-        class="weekItemTitle {{listIndex==thisdata?'weekItemTitleTime':''}}">
+        class="weekItemTitle {{listIndex==thisdata?'weekItemTitleTime':''}}"
+        style="background:{{themeColor}};">
         {{listItem.time}}  
       </view>
       <view
-        class="weekItemTitle {{listIndex==thisdata?'nowWeekName':''}}">  
+        style="background:{{themeColor}};border-color:{{themeColor}};"
+        class="weekItemTitle {{listIndex==thisdata?'nowWeekName':''}}">
         <view
-          class="weekName {{listIndex==showCurrent?'clickWeekName':''}}">
+          class="weekName {{listIndex==showCurrent?'clickWeekName':''}}"
+          style="{{listIndex==thisdata&&listIndex==showCurrent?'color:'+themeColor+';':'#ffffff'}}">
           {{listItem.weekName}}          
         </view>
       </view>
@@ -46,16 +49,19 @@
         </image> 
         <view
           class="weui-loadmore weui-loadmore_line"
+          style="border-color:{{themeColor}};"
           wx:if="{{listIndex==thisdata&&nowTimeInTop}}">
-            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line"
+          style="color:{{themeColor}};">            
               <view
-                class="clock">
+                class="clock"
+                style="border-color:{{themeColor}};">
                 <view
                   class="hour"
-                  style="{{hourTransform}}"></view>
+                  style="{{hourTransform}}background-color:{{themeColor}};"></view>
                 <view
                   class="min"
-                  style="{{minTransform}}"></view>
+                  style="{{minTransform}}background-color:{{themeColor}};"></view>
               </view>{{nowTimeShow}} {{nowTimeWord}}</view>
         </view>
         <block
@@ -91,11 +97,13 @@
                     wx:if="{{item.needDoneTime}}">时长{{item.needDoneTime}}  </text>  
                 </view>
                 <view
+                  style="{{item.success?'':'color:'+themeColor+';'}}"
                   class="{{item.success?'tingTitleRemarks dealTimeSuccess':'tingTitleRemarks'}}"
                   wx:if="{{item.otherOpations.remarks!=''}}">
                   {{item.otherOpations.remarks}}          
                 </view>
               <view
+                  style="{{item.success?'':'color:'+themeColor+';'}}"
                   wx:if="{{item.otherOpations.remarks==''}}"
                   class="{{item.success?'tingTitleRemarks dealTimeSuccess':'tingTitleRemarks'}}">
                   加油完成自律任务吧
@@ -111,16 +119,20 @@
           </view>
         <view
           class="weui-loadmore weui-loadmore_line"
+          style="border-color:{{themeColor}};"          
           wx:if="{{listIndex==thisdata&&item.nearlyTime}}">
-            <view class="weui-loadmore__tips weui-loadmore__tips_in-line">
+            <view class="weui-loadmore__tips weui-loadmore__tips_in-line"
+                style="color:{{themeColor}};">
               <view
-                class="clock">
+                class="clock"
+                style="border-color:{{themeColor}};"
+                >
                 <view
                   class="hour"
-                  style="{{hourTransform}}"></view>
+                  style="{{hourTransform}}background-color:{{themeColor}};"></view>
                 <view
                   class="min"
-                  style="{{minTransform}}"></view>
+                  style="{{minTransform}}background-color:{{themeColor}};"></view>
               </view>
               {{nowTimeShow}} {{nowTimeWord}}
             </view>
@@ -132,7 +144,9 @@
   <!-- 个人 -->
   <navigator
     url="/pages/mine/index">
-    <view class="editButton">
+    <view
+      class="editButton"
+      style="background-color:{{themeColor}};">
       <image src="../../static/index_setting.png"></image>
     </view>
   </navigator>

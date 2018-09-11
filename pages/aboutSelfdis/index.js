@@ -1,3 +1,4 @@
+var app = getApp()
 // pages/aboutSelfdis/index.js
 Page({
   /**
@@ -5,6 +6,15 @@ Page({
    */
   data: {
     update:[
+      {
+        versionId: 'v0.2.1',
+        authorSaid: '阿修罗肝地狱',
+        content: '添加时间；时间排序；显示当前时间；显示小时钟；优化样式；鲜花动效；能够转发【自律表】；【主题颜色】能够更改。',
+        feeked: 'wyd1n910@gmail.com',
+        author: 'D1N910',
+        thanks: '灰者；Kajweb',
+        open: 'https://github.com/D1N910/Self-discipline'
+      },
       {
         versionId: 'v0.2.0',
         authorSaid: '写轮眼之术。。。',
@@ -36,10 +46,23 @@ Page({
   },
 
   /**
+   * 更新主题
+   */
+  toUpdateTheme() {
+    this.setData({
+      themeColor: app.globalData.themeColor
+    })
+    wx.setNavigationBarColor({
+      frontColor: '#ffffff',
+      backgroundColor: this.data.themeColor,
+    })
+  },
+
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.toUpdateTheme()  
   },
 
   /**
@@ -53,7 +76,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.toUpdateTheme()    
   },
 
   /**

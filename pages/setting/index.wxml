@@ -38,19 +38,18 @@
       其他设置
     </view>
     <view class="DoneUI-list">
-
       <view class="DoneUI-cell DoneUI-cell_access">
-      <view class="weui-cell__hd">
+        <view class="weui-cell__hd">
     
-        <image src="../../static/language.png"></image>    
+          <image src="../../static/language.png"></image>    
     
-      </view>
+        </view>
     
-      <view class="DoneUI-cell__bd">
-        星期语言
-      </view>
+        <view class="DoneUI-cell__bd">
+          星期语言
+        </view>
     
-      <view class="DoneUI-cell__ft">
+        <view class="DoneUI-cell__ft">
           <picker
             data-arrayName="weekType"
             bindchange="bindPickerChange"
@@ -63,11 +62,38 @@
             </view>
             
           </picker>
+        </view>
       </view>
-      </view>
+
+      <view class="DoneUI-cell DoneUI-cell_access">
+        <view class="weui-cell__hd">
+    
+          <view
+            class="settingColor"
+            style="background-color:{{themeColor}};"></view>   
+    
+        </view>
+    
+        <view class="DoneUI-cell__bd">
+          主题颜色
+        </view>
+    
+        <view class="DoneUI-cell__ft">
+          <picker
+            data-arrayName="themeColor"
+            bindchange="bindPickerChange"
+            value="{{themeColorIndex}}"
+            range="{{themeColorArray}}">
+
+            <view class="picker">
+              {{themeColorArray[themeColorIndex]}}
+            </view>
+            
+          </picker>
+        </view> 
+      </view>    
     </view>
-    <navigator
-      url="/pages/help/index">
+    <navigator url="/pages/help/index">
       <view class="DoneUI-cells__title DoneUI-help">
         使用帮助
       </view>

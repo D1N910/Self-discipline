@@ -1,3 +1,5 @@
+var app = getApp()
+
 // pages/addNewTask/index.js
 Page({
 
@@ -19,13 +21,28 @@ Page({
     remarks:'',
     startTime: '',
     endTime: '',
-    ifAllDay: true
+    ifAllDay: true,
+    themeColor: ''
   },
 
+  /**
+   * 更新主题
+   */
+  toUpdateTheme() {
+    this.setData({
+      themeColor: app.globalData.themeColor
+    })
+    wx.setNavigationBarColor({
+      frontColor: '#ffffff',
+      backgroundColor: this.data.themeColor,
+    })
+  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.toUpdateTheme()
     var program = wx.getStorageSync('program')
     var taskContentArray
     switch (program)
@@ -96,6 +113,9 @@ Page({
               break
             }
           }
+          if (!allTasks[i].otherOpations.remarks){
+            allTasks[i].otherOpations.remarks = ''
+          }
           this.setData({
             editTasks: { ...allTasks[i] },
             taskData: this.data.taskData,
@@ -145,7 +165,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.toUpdateTheme()
   },
 
   /**

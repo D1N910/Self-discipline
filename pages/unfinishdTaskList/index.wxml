@@ -49,14 +49,17 @@
         class="DoneUI-form-preview__btn DoneUI-form-preview__btn_primary DoneUI-form-preview__btn_down"
         url="/pages/addNewTask/index?id={{item.id}}">
       <view
-        class=""
+        style="color:{{themeColor}};"
         >编辑</view>
       </navigator>        
 
     </view>
   </view>
 
-  <view class="noThing" wx:if="{{unfinishedTaskLists.length!=0}}">
+  <view
+    class="noThing"
+    wx:if="{{unfinishedTaskLists.length!=0}}"
+    style="color:{{themeColor}};">
     －－这里是自律的底线－－
   </view>
 </view>

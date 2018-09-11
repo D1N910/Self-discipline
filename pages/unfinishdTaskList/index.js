@@ -1,3 +1,4 @@
+var app = getApp()
 // pages/completedTaskList/index.js
 Page({
 
@@ -5,13 +6,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-    unfinishedTaskLists:[]
+    unfinishedTaskLists:[],
+    themeColor: []
+  },
+
+  /**
+   * 更新主题
+   */
+  toUpdateTheme() {
+    this.setData({
+      themeColor: app.globalData.themeColor
+    })
+    wx.setNavigationBarColor({
+      frontColor: '#ffffff',
+      backgroundColor: this.data.themeColor,
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options){
+    this.toUpdateTheme()
   },
 
   // 刷新页面
@@ -74,6 +90,7 @@ Page({
    */
   onShow: function () {
     this.Refresh()  
+    this.toUpdateTheme()    
   },
 
   /**
@@ -113,8 +130,8 @@ Page({
     wx.showModal({
       title: '当这任务没有存在过',
       content: '是否继续',
-      cancelColor: '#fc7070',
-      confirmColor:'#000000',
+      cancelColor: this.data.themeColor,
+      confirmColor:'#ededed',
       success: function (res) {
         if (res.confirm) {
           var allTasks = wx.getStorageSync('allTasks')

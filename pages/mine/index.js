@@ -1,4 +1,5 @@
 // pages/mine/index.js
+var app = getApp()
 Page({
 
   /**
@@ -14,6 +15,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.toUpdateTheme()    
+  },
+
+  /**
+   * 更新主题
+   */
+  toUpdateTheme() {
+    this.setData({
+      themeColor: app.globalData.themeColor
+    })
+    wx.setNavigationBarColor({
+      frontColor: '#ffffff',
+      backgroundColor: this.data.themeColor,
+    })
   },
 
   /**
@@ -26,6 +41,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.toUpdateTheme()
+    
     var allTasks = wx.getStorageSync('allTasks')
     var nowDate = new Date();
     

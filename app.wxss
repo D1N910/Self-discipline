@@ -185,3 +185,9 @@ button:before {
 .DoneUI-form-preview__btn_down{
     color: #fc7070; 
 }
+.DoneUI-cell .settingColor{
+  width: 55rpx;
+  height: 55rpx;
+  margin-right: 5rpx;
+  border-radius: 10rpx;
+}

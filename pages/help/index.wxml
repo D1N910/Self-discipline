@@ -44,27 +44,53 @@
     <view class="DoneUI-list">
 
       <view class="DoneUI-cell DoneUI-cell_access">
-      <view class="weui-cell__hd">
+        <view class="weui-cell__hd">
+      
+          <image src="../../static/language.png"></image>    
+      
+        </view>
+      
+        <view class="DoneUI-cell__bd">
+          星期语言
+        </view>
     
-        <image src="../../static/language.png"></image>    
+        <view class="DoneUI-cell__ft">
+            中式(日...六)
+        </view>
+      </view>
+      <view
+        class="sorryContent">
+        [星期语言]：修改星期显示的语言
+      </view>
+      <view
+        class="sorryContent">
+        现在的自律方案['中式(日...六)', '日语(日...土)','英语(Sun...Sat)']
+      </view>
+     <view class="DoneUI-cell DoneUI-cell_access">
+        <view class="weui-cell__hd">
+      
+          <view
+            class="settingColor"
+            style="background-color:{{themeColor}};"></view>   
+        
+      
+        </view>
+      
+        <view class="DoneUI-cell__bd">
+          背景颜色
+        </view>
     
+        <view class="DoneUI-cell__ft">
+            {{themeColor}}
+        </view>
       </view>
-    
-      <view class="DoneUI-cell__bd">
-        星期语言
+      <view
+        class="sorryContent">
+        可以修改背景颜色
       </view>
-    
-      <view class="DoneUI-cell__ft">
-          中式(日...六)
+      <view
+        class="sorryContent">
+        现在的自律方案支持颜色['#ff7199 粉[默认]', '#2d2d2d 黑', '#f1453d 红', '#ffc041 黄','#85c35c 绿','#1297ec 蓝','#a129aa 紫']
       </view>
-      </view>
-  <view
-    class="sorryContent">
-    [星期语言]：修改星期显示的语言
-  </view>
-  <view
-    class="sorryContent">
-    现在的自律方案['中式(日...六)', '日语(日...土)','英语(Sun...Sat)']
-  </view>
     </view>  
 </view>

@@ -1,7 +1,20 @@
 //app.js
 App({
   onLaunch(){
+    wx.cloud.init({
+      env: 'test-all-bb8cb2'
+    })
     this.toUpdate()
+    wx.cloud.callFunction({
+      name: 'getAllTasks',
+      data:{
+        allTasks: wx.getStorageSync('allTasks')
+      },
+      success: function (res) {
+        console.log(res.result)
+      },
+      fail: console.error
+    })
   },
   /**
    * 更新主题颜色

@@ -15,5 +15,6 @@
     "navigationBarBackgroundColor": "#ff7199",
     "navigationBarTitleText": "自律表",
     "navigationBarTextStyle": "white"
-  }
+  },
+  "cloud": true
 }

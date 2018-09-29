@@ -45,13 +45,13 @@ Page({
         that.data.windowWidth = res.windowWidth
       }
     })
-    var thisVision = 'v0.2.1'
+    var thisVision = 'v0.2.2'
     var getVision = wx.getStorageSync('vision')
     if(getVision){
       if (thisVision != getVision){
         wx.showModal({
           title: `版本${thisVision}更新`,
-          content: '大版本更新！现在【自律表】可以设置颜色啦～点击右下角-设置-【主题颜色】即可更改颜色～',
+          content: '添加了云开发能力，以后换手机也可以同步信息啦~',
           showCancel:false,
           confirmColor:this.data.themeColor
         })

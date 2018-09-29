@@ -9,8 +9,7 @@ exports.main = async (event, context) => {
     openId: event.userInfo.openId
   }).get()
   if (ifhave.data.length==0){
-    try {
-      return await db.collection('allTasksList').add({
+    await db.collection('allTasksList').add({
         // data 字段表示需新增的 JSON 数据
         data: {
           dupDateue: new Date(),
@@ -18,12 +17,19 @@ exports.main = async (event, context) => {
           allTasks: event.allTasks
         }
       })
-    } catch (e) {
-      console.error(e)
-    }
+      return {
+        status:1400,
+        msg:'成功添加新记录'
+      }
   }else{
-    return await db.collection('allTasksList').doc(ifhave.data[0]._id).update({
-      allTasks: event.allTasks
+    await db.collection('allTasksList').doc(ifhave.data[0]._id).update({
+      data:{
+        allTasks: event.allTasks
+      }
     })
+    return {
+      status:200,
+      msg:'更新成功'
+    }
   }
 }

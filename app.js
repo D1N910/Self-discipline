@@ -1,19 +1,6 @@
 //app.js
 App({
   onLaunch(){
-    wx.setTopBarText({
-      text: '记得自律哦',
-      success(res){
-        console.log(res)
-      },
-      fail(res){
-        console.log(res)
-      },
-      complete(res){
-        console.log(res)
-      }
-    }
-    )
     this.toUpdate()
     // 拿到服务器原存取信息
     if (!wx.getStorageSync('allTasks')){
@@ -29,7 +16,7 @@ App({
             wx.setStorageSync('allTasks', res.result.data[0].allTasks)
             wx.showModal({
               title: '自律表提示',
-              content: 'hey 皇上，你好像换了个手机登录微信，现在我们通过安全的云开发服务存储了您之前的自律表配置信息，已经更新到了目前的手机上，请重新打开自律表。',
+              content: 'hey 亲爱的，你好像换了个手机登录微信，现在我们通过安全的云开发服务存储了您之前的自律表配置信息，已经更新到了目前的手机上，请重新打开自律表。',
               showCancel: false,
               confirmText:'朕知道了'
             })

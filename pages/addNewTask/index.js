@@ -344,6 +344,39 @@ Page({
   },
 
   /**
+   * 用户点击删除任务
+   */
+  delateItem(e) {
+    console.log(e)
+    var _this = this
+    wx.showModal({
+      title: '将永久删除此任务',
+      content: '是否继续',
+      cancelColor: this.data.themeColor,
+      confirmText:'确定',
+      success: function (res) {
+        if (res.confirm) {
+          var allTasks = wx.getStorageSync('allTasks')
+          for (let i in allTasks) {
+            if (allTasks[i].id == e.target.dataset.taskid) {
+              allTasks.splice(i, 1)
+              break
+            }
+          }
+          wx.setStorageSync('allTasks', allTasks)
+          _this.cancel()
+          wx.showToast({
+            title: '删除啦',
+            icon: 'none'
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
+
+  /**
    * 是否全天
    */
   switch2ChangeAllDay(e){

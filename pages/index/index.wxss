@@ -62,12 +62,14 @@
   border-color: #fff;
 }
 .thing{
+  width: calc(100% - 30rpx);
   padding: 16rpx 0;
-  margin: 6rpx 3rpx;
+  margin: 16rpx auto;
   position: relative;  
   line-height: inherit;
-  height: 140rpx;
+  min-height: 140rpx;
   display: flex;
+  box-shadow:0px 0px 24px 0px rgba(65, 65, 65, 0.13);
 }
 .thing .dealTime{
   padding: 8rpx 16rpx;
@@ -75,6 +77,9 @@
 }
 .thing .dealTimeSuccess{
   color: #9e9e9e;  
+}
+.tingDetail{
+  flex: 1;
 }
 .success{
   width: 81rpx;
@@ -126,6 +131,7 @@ swiper{
 .tingTitleRemarks{
   font-size: 14px;
   color: #ff7199;
+  margin-right: 91rpx;
 }
 
 swiper-item{
@@ -147,6 +153,7 @@ swiper-item{
   line-height:1.6em;
   font-size:14px;
   text-align:center;
+  margin-top: 2.6em;
 }
 
 .weui-loadmore__tips {
@@ -160,8 +167,9 @@ swiper-item{
   color:#ff7199;
 }
 .weui-loadmore__tips {
-  display:inline-block;
   vertical-align:middle;
+  display: inline-flex;
+  align-items: center;
 }
 .clock{
   width: 30rpx;

@@ -124,5 +124,14 @@ Page({
    */
   onReachBottom: function () {
 
+  },
+  changeWeekShow(event) {
+    this.setData({
+      showCurrent: event.detail.current
+    }, () => {
+      this.setData({
+        scrollLeft: this.data.windowWidth / 2 + (event.detail.current - 6) * (this.data.rect[0].width) - this.data.rect[0].width / 2
+      })
+    })
   }
 })

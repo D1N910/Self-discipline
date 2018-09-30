@@ -128,10 +128,10 @@ Page({
     console.log(e)
     var _this = this
     wx.showModal({
-      title: '当这任务没有存在过',
+      title: '将永久删除此任务',
       content: '是否继续',
       cancelColor: this.data.themeColor,
-      confirmColor:'#ededed',
+      confirmText: '确定',
       success: function (res) {
         if (res.confirm) {
           var allTasks = wx.getStorageSync('allTasks')

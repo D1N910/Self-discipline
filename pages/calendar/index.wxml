@@ -1,4 +1,4 @@
-<!--pages/calendar/index.wxml-->
+<!-- 日历 -->
 <view
   class="container"
 >

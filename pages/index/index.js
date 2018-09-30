@@ -45,13 +45,13 @@ Page({
         that.data.windowWidth = res.windowWidth
       }
     })
-    var thisVision = 'v0.2.2'
+    var thisVision = 'v0.2.3'
     var getVision = wx.getStorageSync('vision')
     if(getVision){
       if (thisVision != getVision){
         wx.showModal({
           title: `版本${thisVision}更新`,
-          content: '添加了云开发能力，以后换手机也可以同步信息啦~',
+          content: '优化了首页样式，时钟现在居中了，加了阴影，可以在首页长按任务试试~如果不喜欢请电邮我~如果喜欢，希望能添加到我的小程序orz',
           showCancel:false,
           confirmColor:this.data.themeColor
         })
@@ -206,10 +206,6 @@ Page({
     }
     this.setData({
       nowDate: weekArray[nowDate.getDay()]
-    })
-
-    wx.showLoading({
-      title: '请等待日历加载'
     })
     
     // 月份的天数
@@ -381,7 +377,6 @@ Page({
         })
       }).exec()
     })
-    wx.hideLoading();
   },
 
   /**

@@ -1,4 +1,4 @@
-<!--pages/index/index.wxml-->
+<!-- 主页 显示事件 -->
 <view class="container">
   
   <!-- 星期与事件 -->

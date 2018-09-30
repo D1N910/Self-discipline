@@ -193,10 +193,18 @@
           class="DoneUI-form-preview__btn DoneUI-form-preview__btn_default"
           bindtap="cancel">取消</view>  
 
+        <!-- 修改/添加 -->
         <button
           class="DoneUI-form-preview__btn DoneUI-form-preview__btn_down"
           style="color:{{themeColor}};"
           formType="submit">{{submitText}}</button>
+        
+        <view
+          wx:if="{{editTasks.id}}"
+          data-taskid="{{editTasks.id}}"
+          class="DoneUI-form-preview__btn DoneUI-form-preview__btn_default"
+          bindtap="delateItem">删除</view>  
+
 
       </view>
     </view>

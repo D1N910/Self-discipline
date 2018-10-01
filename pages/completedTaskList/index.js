@@ -137,16 +137,6 @@ Page({
           }
           wx.setStorageSync('allTasks', allTasks)
           _this.Refresh()
-          wx.showToast({
-            title: '删除啦',
-            icon: 'none'
-          })
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-          wx.showToast({
-            title: '刚刚的事情当作没发生过',
-            icon: 'none'
-          })
         }
       }
     })

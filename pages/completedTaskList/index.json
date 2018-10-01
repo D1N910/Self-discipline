@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "已结束的项目"
+  "navigationBarTitleText": "已结束的项目",
+  "usingComponents": {
+    "task-card": "/component/taskCard/index"
+  }
 }

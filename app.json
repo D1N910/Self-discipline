@@ -1,13 +1,13 @@
 {
   "pages": [
     "pages/index/index",    
+    "pages/completedTaskList/index",    
     "pages/calendar/index",    
     "pages/setting/index",    
     "pages/addNewTask/index",    
     "pages/help/index",
     "pages/mine/index",
     "pages/unfinishdTaskList/index",
-    "pages/completedTaskList/index",
     "pages/milestone/index",
     "pages/aboutSelfdis/index"
   ],

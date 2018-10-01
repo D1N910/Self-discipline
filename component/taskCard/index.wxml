@@ -1,0 +1,49 @@
+<!-- 任务卡片组件 -->
+<movable-area
+  class="tCC-ma">
+  <movable-view
+    out-of-bounds
+    damping="160"
+    x="{{ifShowControl?'-1000rpx':'1000rpx'}}"
+    direction="horizontal"
+    class="tCC-mv"
+    bindtouchstart="handleTouchstart"
+    bindtouchend="handleTouchend"
+    style="width:calc(100vw + {{2*200}}rpx);"
+  >
+    <view
+      class="tCC-mv-lf">
+      <view
+        class="tCC-mv-lf-top">
+        <view
+          class="tCC-mv-lf-item">
+          <text>{{taskListsItem.content}}</text> <text class="itemId">#{{taskListsItem.id}}</text>
+        </view>
+        <view
+          class="tCC-mv-lf-item">
+          {{taskListsItem.otherOpations.remarks}}
+        </view>
+      </view>
+      <view
+        class="tCC-mv-lf-item time">
+        {{taskListsItem.startAt}} - {{taskListsItem.endAt}}<image src="/static/red.png"></image>x{{taskListsItem.redNum}}
+      </view>
+    </view>
+    <view
+      class="tCC-mv-ri">
+      <view
+        style="background-color:red;"
+        class="tCC-mv-ri-item"
+        bindtap="delateItem"
+        data-taskId="{{taskListsItem.id}}">
+        <view>删除</view>
+      </view>
+      <navigator
+        url="/pages/addNewTask/index?id={{taskListsItem.id}}"
+        style="background-color:{{themeColor}};"
+        class="tCC-mv-ri-item">
+        <view>编辑</view>
+      </navigator>
+    </view>
+  </movable-view>
+</movable-area>

@@ -22,13 +22,15 @@ exports.main = async (event, context) => {
         msg:'成功添加新记录'
       }
   }else{
-    await db.collection('allTasksList').doc(ifhave.data[0]._id).update({
+    await db.collection('allTasksList').where({
+      openId: event.userInfo.openId
+    }).update({
       data:{
         allTasks: event.allTasks
       }
     })
     return {
-      status:200,
+      status: 200,
       msg:'更新成功'
     }
   }

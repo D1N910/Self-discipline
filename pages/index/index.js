@@ -45,13 +45,13 @@ Page({
         that.data.windowWidth = res.windowWidth
       }
     })
-    var thisVision = 'v0.2.3'
+    var thisVision = 'v0.2.4'
     var getVision = wx.getStorageSync('vision')
     if(getVision){
       if (thisVision != getVision){
         wx.showModal({
           title: `版本${thisVision}更新`,
-          content: '优化了首页样式，时钟现在居中了，加了阴影，可以在首页长按任务试试~如果不喜欢请电邮我~如果喜欢，希望能添加到我的小程序orz',
+          content: '优化了设置-已结束任务的显示样式,尝试下去设置-已结束任务的滑动吧~',
           showCancel:false,
           confirmColor:this.data.themeColor
         })

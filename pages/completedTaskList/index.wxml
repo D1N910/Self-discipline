@@ -7,54 +7,12 @@
     </view>
   </navigator>
 
-  <view
-    class="DoneUI-form-preview"
+  <task-card
     wx:for="{{endTaskLists}}"
     wx:key="index"
-    data-taskId="{{item.id}}">
-    <view class="DoneUI-form-preview__hd">
-      <view class="DoneUI-form-preview__item">
-        <label class="DoneUI-form-preview__label">获得红花数</label>
-        <em class="DoneUI-form-preview__value">{{item.redNum}}朵</em>
-      </view>
-    </view>
-    <view class="DoneUI-form-preview__bd">
-      <view class="DoneUI-form-preview__item">
-        <label class="DoneUI-form-preview__label">任务内容</label>
-        <span class="DoneUI-form-preview__value">{{item.content}}</span>
-      </view>
-      <view
-        class="DoneUI-form-preview__item"
-        wx-if="{{item.otherOpations.remarks}}">
-        <label class="DoneUI-form-preview__label">备注</label>
-        <span class="DoneUI-form-preview__value">{{item.otherOpations.remarks}}</span>
-      </view>
-      <view class="DoneUI-form-preview__item">
-        <label class="DoneUI-form-preview__label">开始时间</label>
-        <span class="DoneUI-form-preview__value">{{item.startAt}}</span>
-      </view>
-      <view class="DoneUI-form-preview__item">
-        <label class="DoneUI-form-preview__label">结束时间</label>
-        <span class="DoneUI-form-preview__value">{{item.endAt}}</span>
-      </view>
-    </view>
-    <view class="DoneUI-form-preview__ft">
-      <view
-        class="DoneUI-form-preview__btn DoneUI-form-preview__btn_default"
-        bindtap="delateItem"
-        data-taskId="{{item.id}}">
-        删除
-      </view>
-      <navigator
-        class="DoneUI-form-preview__btn DoneUI-form-preview__btn_primary DoneUI-form-preview__btn_down"
-        url="/pages/addNewTask/index?id={{item.id}}">
-      <view
-        style="color:{{themeColor}};"
-        >编辑</view>
-      </navigator>        
-
-    </view>
-  </view>
+    bindRefresh="Refresh"
+    themeColor="{{themeColor}}"
+    taskListsItem="{{item}}"/>
 
   <view
     class="noThing"

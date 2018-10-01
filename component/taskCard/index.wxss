@@ -1,0 +1,60 @@
+/* component/taskCard/index.wxss */
+.tCC-ma{
+  width: 100%;
+  height: 180rpx;
+}
+.tCC-mv{
+  min-height: 100%;
+  display: flex;
+  background-color: #fff;
+}
+.tCC-mv-lf{
+  flex: 1;
+  min-height: 100%;
+  color:#808080;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.tCC-mv-lf-item{
+  font-size: 32rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.tCC-mv-lf-top{
+  padding: 16rpx;
+}
+.itemId{
+  font-size: 18rpx;
+}
+.time{
+  font-size: 26rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 12rpx;
+}
+.time image{
+  width: 30rpx;
+  height: 30rpx;
+  padding: 0 0 0 6rpx;
+}
+.tCC-mv-lf-item text{
+  color: #000;
+}
+.tCC-mv-ri{
+  height: 100%;
+  display: flex;
+}
+.tCC-mv-ri-item{
+  width: 200rpx;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size:42rpx;
+}

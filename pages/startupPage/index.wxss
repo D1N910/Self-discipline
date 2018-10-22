@@ -1,0 +1,111 @@
+/* pages/startupPage/index.wxss */
+.content {
+  position: relative;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: #fff;  
+}
+.content .title{
+  position: absolute;
+  top: 80rpx;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  z-index: 3;
+  width: 280rpx;
+}
+.content .solgan{
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  top: 130rpx;
+  margin: auto;
+  z-index: 3;
+  width: 380rpx;
+}
+.content .enter{
+  width: 300rpx;
+  background-color: #ff7199;
+  border: 0px;
+  margin: auto;
+  bottom: 180rpx;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+  height: 80rpx;
+  line-height: 80rpx;
+  z-index: 3;
+  color: #fff;
+  border-radius: 80rpx;
+}
+.contentOneCircle, .contentTwoCircle {
+  content: "";
+  position: absolute;
+  left: 50%;
+  min-width: 300vw;
+  min-height: 300vw;
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.contentOneCircle {
+  bottom: 55vh;
+  border-radius: 45%;
+  animation-duration: 10s;
+}
+
+.contentTwoCircle {
+  z-index: 3;  
+  bottom: 42.8vh;
+  opacity: .5;
+  border-radius: 47%;
+  animation-duration: 10s;
+  border: 80px solid #fff;
+}
+ 
+@keyframes rotate {
+  0% {
+      transform: translate(-50%, 0) rotateZ(0deg);
+  }
+  50% {
+      transform: translate(-50%, -2%) rotateZ(180deg);
+  }
+  100% {
+      transform: translate(-50%, 0%) rotateZ(360deg);
+  }
+}
+.userAvatarUrl{
+  position: fixed;
+  bottom: calc(42vh + 130rpx);
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  width:150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 2;
+  animation-name: changeUserAvatarUrl;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-duration: 3s;
+}
+@keyframes changeUserAvatarUrl {
+  0% {
+      transform: translate(0, 0%) rotateZ(0deg);
+  }
+  25% {
+      transform: translate(-5%, -5%) rotateZ(18deg);
+  }
+  50% {
+      transform: translate(0, 1%) rotateZ(0deg);
+  }
+  70% {
+      transform: translate(5%, -5%) rotateZ(-20deg);
+  }
+  100% {
+      transform: translate(0, 0%) rotateZ(0deg);
+  }
+}

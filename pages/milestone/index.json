@@ -1,1 +1,6 @@
-{}
+{
+  "navigationBarTitleText": "里程碑",
+  "usingComponents": {
+    "milestoneCard": "./_components/milestone-card/index"
+  }
+}

@@ -1,1 +1,4 @@
 /* pages/milestone/index.wxss */
+.milestone-card-list{
+  padding: 32rpx 0 0 0;
+}

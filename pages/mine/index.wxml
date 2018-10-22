@@ -71,6 +71,24 @@
 
     </navigator>
 
+    <view class="DoneUI-cell">
+
+      <view class="weui-cell__hd">
+    
+        <image src="../../static/red.png"></image>    
+    
+      </view>
+    
+      <view class="DoneUI-cell__bd">
+        已获得红花数
+      </view>
+    
+      <view class="DoneUI-cell__ft">
+        {{getRed}}朵
+      </view>
+    
+    </view>
+
     <!-- <navigator
       url="/pages/milestone/index">
 
@@ -94,24 +112,6 @@
       </view>
     
     </navigator> -->
-
-    <view class="DoneUI-cell">
-
-      <view class="weui-cell__hd">
-    
-        <image src="../../static/red.png"></image>    
-    
-      </view>
-    
-      <view class="DoneUI-cell__bd">
-        已获得红花数
-      </view>
-    
-      <view class="DoneUI-cell__ft">
-        {{getRed}}朵
-      </view>
-    
-    </view>
 
   </view>
 

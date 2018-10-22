@@ -1,0 +1,24 @@
+<!--里程碑的标签-->
+<view
+  class="milestone-card">
+  <!-- 标签 -->
+  <view
+    class="tag">
+    <text>未完成</text>
+  </view>
+  <view
+    class="milestone-card-header">
+    {{title}}
+  </view>
+  <view
+    class="timeContainer">
+    <view
+      class="startTime">
+      开始时间：{{startTime}}
+    </view>
+    <view
+      class="endTime">
+      结束时间：{{endTime}}
+    </view>
+  </view>
+</view>

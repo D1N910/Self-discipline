@@ -1,0 +1,29 @@
+/* pages/milestone/_components/milestone-card/index.wxss */
+.milestone-card{
+  width: calc(100% - 78rpx);
+  margin: 0 auto 16rpx auto;
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding: 8px;
+  position: relative;
+}
+.tag{
+  padding: 0 16rpx;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  margin: auto;
+  background-color: #999;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 18rpx;
+  color: #fff;
+  border-radius: 5px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.timeContainer{
+  font-size: 14px;
+  color: #999;
+}

@@ -1,0 +1,36 @@
+<!-- 自律表启动页 -->
+<view
+  class="content">
+  <!-- 标题 -->
+  <image
+    class="title"
+    mode="widthFix"
+    src="/static/title.png"></image>
+  <view
+    style="background-color:{{themeColor}};"  
+    class="contentOneCircle">
+  </view>
+  <view
+    class="contentTwoCircle">
+  </view>
+  <!-- 用户头像 -->
+  <view
+    class="userAvatarUrl">
+    <open-data type="userAvatarUrl"></open-data>  
+  </view>
+  <!-- solgan -->
+  <image
+    class="solgan"
+    mode="widthFix"
+    src="/static/solgan.png"></image>
+  <!-- 自律入口 -->
+  <navigator
+    open-type="redirect"
+    url="/pages/index/index">
+    <button
+      style="background-color:{{themeColor}};"    
+      class="enter">
+      开始自律
+    </button>
+  </navigator>
+</view>

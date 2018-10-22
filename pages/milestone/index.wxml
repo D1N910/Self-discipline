@@ -1,2 +1,10 @@
 <!--pages/milestone/index.wxml-->
-<text>pages/milestone/index.wxml</text>
+<view
+  class="container">
+  <view
+    class="milestone-card-list">
+    <milestoneCard
+      wx:for="{{milestoneCardList}}"
+      wx:key="index"/>
+  </view>
+</view>

@@ -18,6 +18,7 @@ Page({
     edit: 0,
     changeTime: 0,
     submitText: '添加项目',
+    title: '',
     remarks:'',
     startTime: '',
     endTime: '',
@@ -105,14 +106,17 @@ Page({
             })
           }
 
-          for(let t in this.data.array){
-            if (this.data.array[t] == allTasks[i].content){
-              this.setData({
-                index:t
-              })
-              break
-            }
-          }
+          // for(let t in this.data.array){
+          //   if (this.data.array[t] == allTasks[i].content){
+          //     this.setData({
+          //       index:t
+          //     })
+          //     break
+          //   }
+          // }
+          this.setData({
+            title: allTasks[i].content
+          })
           if (!allTasks[i].otherOpations.remarks){
             allTasks[i].otherOpations.remarks = ''
           }
@@ -270,7 +274,7 @@ Page({
     if (this.data.edit) {
       this.data.editTasks.startAt = sRDate.getTime()
       this.data.editTasks.endAt = eRDate.getTime()
-      this.data.editTasks.content = this.data.array[this.data.index]
+      this.data.editTasks.content = this.data.title
       this.data.editTasks.otherOpations.remarks = this.data.remarks
       this.data.editTasks.otherOpations.doneTime = doneTime
       for (let i in allTasks) {
@@ -297,7 +301,8 @@ Page({
     var nowDate = new Date();
     var newTask = {
       id: nowDate.getTime(),
-      content: this.data.array[this.data.index],
+      // content: this.data.array[this.data.index],
+      content: this.data.title,
       success:[],
       startAt: sRDate.getTime(),
       endAt: eRDate.getTime(),
@@ -341,6 +346,10 @@ Page({
    */
   changeRemarks(e){
     this.data.remarks = e.detail.value
+  },
+
+  changeTitle(e){
+    this.data.title = e.detail.value
   },
 
   /**

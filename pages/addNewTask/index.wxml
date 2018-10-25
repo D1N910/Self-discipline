@@ -14,14 +14,20 @@
           项目名称
         </view>
 
-        <view class="DoneUI-cell__bd">
+        <!-- <view class="DoneUI-cell__bd">
           <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
             <view class="picker">
               {{array[index]}}
             </view>
-          </picker>
+          </picker> -->
+          <view class="DoneUI-cell__bd">
+            <input
+              value="{{title}}"
+              bindinput="changeTitle"
+              placeholder="自律带来自信"></input>
+          </view>
 
-        </view>
+        <!-- </view> -->
 
       </view>
 

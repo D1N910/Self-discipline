@@ -45,13 +45,13 @@ Page({
         that.data.windowWidth = res.windowWidth
       }
     })
-    var thisVision = 'v0.2.5'
+    var thisVision = 'v0.2.6'
     var getVision = wx.getStorageSync('vision')
     if(getVision){
       if (thisVision != getVision){
         wx.showModal({
           title: `版本${thisVision}更新`,
-          content: '添加了启动页',
+          content: '更新了颜色问题',
           showCancel:false,
           confirmColor:this.data.themeColor
         })

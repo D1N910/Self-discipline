@@ -1,7 +1,7 @@
 <!--pages/addNewTask/index.wxml-->
 <view class="container">
 
-    <view class="DoneUI-cells__title">
+    <!-- <view class="DoneUI-cells__title">
       内容设置
     </view>
     <view class="DoneUI-list">
@@ -32,7 +32,7 @@
           </picker>
       </view>
       </view>
-    </view>
+    </view> -->
 
     <view class="DoneUI-cells__title">
       其他设置

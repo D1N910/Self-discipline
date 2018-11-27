@@ -25,6 +25,8 @@ App({
         fail: console.error
       })
     }else{
+      console.log(wx.getStorageSync('allTasks'))
+      
     // 存储信息
       wx.cloud.init({
         env: 'test-all-bb8cb2'

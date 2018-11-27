@@ -5,7 +5,7 @@
     当你看到这则使用帮助的时候，说明[设置]模块不够透明清楚，我感到非常抱歉。
   </view>
 
-    <view class="DoneUI-cells__title">
+    <!-- <view class="DoneUI-cells__title">
       内容设置
     </view>
     <view class="DoneUI-list">
@@ -37,7 +37,7 @@
   <view
     class="sorryContent">
     [大朋友]['按时起床', '自己洗碗', '开心上班', '专心上班', '积极勇敢', '细嚼慢咽', '文明礼貌', '讲卫生', '关心别人', '关爱孩子', '不打骂孩子','讲故事','亲吻爱人','零点前睡觉']
-  </view>
+  </view> -->
     <view class="DoneUI-cells__title">
       其他设置
     </view>

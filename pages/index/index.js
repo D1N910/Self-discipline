@@ -19,7 +19,9 @@ Page({
     nowTimeWord: '',
     minTransform: 'transform:rotate(0deg);',
     hourTransform: 'transform:rotate(0deg);',
-    themeColor: ''
+    themeColor: '',
+    buttonPositionX: '620rpx',
+    buttonPositionY: '1000rpx'
   },
 
   /**
@@ -45,13 +47,19 @@ Page({
         that.data.windowWidth = res.windowWidth
       }
     })
-    var thisVision = 'v0.2.6'
+    if (wx.getStorageSync('buttonPosition')){
+      this.setData({
+        buttonPositionX: wx.getStorageSync('buttonPosition').buttonPositionX,
+        buttonPositionY: wx.getStorageSync('buttonPosition').buttonPositionY,
+      })
+    }
+    var thisVision = 'v0.2.7'
     var getVision = wx.getStorageSync('vision')
     if(getVision){
       if (thisVision != getVision){
         wx.showModal({
           title: `版本${thisVision}更新`,
-          content: '更新了颜色问题',
+          content: '去掉了花里胡哨的启动页；现在右下角的设置按钮可以移动了；现在可以在设置里找到客服了',
           showCancel:false,
           confirmColor:this.data.themeColor
         })
@@ -64,8 +72,25 @@ Page({
         showCancel: false,
         confirmColor: this.data.themeColor
       })
-      wx.setStorageSync('vision', thisVision)      
+      wx.setStorageSync('vision', thisVision)
     }
+  },
+
+  // 修改右下角按钮位置
+  moveButton(e) {
+    let that = this
+    this.setData({
+      buttonPositionX: e.touches[0].pageX - 21 +'px',
+      buttonPositionY: e.touches[0].pageY - 21 +'px'
+    }, function(){
+      wx.setStorage({
+        key: 'buttonPosition',
+        data: {
+          buttonPositionX: that.data.buttonPositionX,
+          buttonPositionY: that.data.buttonPositionY
+        }
+      })
+    })
   },
 
   // 长按走向导航页面
@@ -357,7 +382,6 @@ Page({
       }
       List[i].thingList = [...sorSetDateList, ...allDayList]      
     }
-    console.log(List)
     var that = this
     this.setData({
       List: List,

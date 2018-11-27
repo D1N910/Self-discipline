@@ -1,7 +1,11 @@
 <!--pages/aboutSelfdis/index.wxml-->
 <!--pages/completedTaskList/index.wxml-->
 <view class="container">
-
+  <button
+    open-type="contact"
+    class='contactMe'>
+    联系我（早上10点-晚上10点）
+  </button>
   <view
     class="DoneUI-form-preview"
     wx:for="{{update}}"

@@ -1,7 +1,7 @@
 {
   "pages": [
+    "pages/index/index",    
     "pages/startupPage/index",
-    "pages/index/index",
     "pages/milestone/index",
     "pages/completedTaskList/index",
     "pages/calendar/index",

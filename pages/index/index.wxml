@@ -141,14 +141,13 @@
       </swiper-item>      
     </block>  
   </swiper>
-  <!-- 个人 -->
   <navigator
     url="/pages/mine/index">
     <view
+      bindtouchmove="moveButton"
       class="editButton"
-      style="background-color:{{themeColor}};">
+      style="background-color:{{themeColor}};left:{{buttonPositionX}};top:{{buttonPositionY}};">
       <image src="../../static/index_setting.png"></image>
     </view>
   </navigator>
-
 </view>

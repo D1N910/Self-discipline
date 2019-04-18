@@ -1,33 +1,14 @@
-var app = getApp()
-// pages/completedTaskList/index.js
-Page({
+const app = getApp()
+const words = require(`../../i18n/${app.lang}/wordList.js`);
+const pageContent = require(`../../i18n/${app.lang}/pages/unfinishedTaskList.js`);
 
-  /**
-   * 页面的初始数据
-   */
+Page({
   data: {
+    words: words,
+    i18n: pageContent.wxml,
+
     unfinishedTaskLists:[],
     themeColor: []
-  },
-
-  /**
-   * 更新主题
-   */
-  toUpdateTheme() {
-    this.setData({
-      themeColor: app.globalData.themeColor
-    })
-    wx.setNavigationBarColor({
-      frontColor: '#ffffff',
-      backgroundColor: this.data.themeColor,
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options){
-    this.toUpdateTheme()
   },
 
   // 刷新页面
@@ -56,8 +37,8 @@ Page({
         unfinishedTaskListsItem.content = allTasks[i].content
         unfinishedTaskListsItem.otherOpations = allTasks[i].otherOpations
         // 转换时间
-        unfinishedTaskListsItem.startAt = `${allTaskStart.getFullYear()}年${allTaskStart.getMonth() + 1}月${allTaskStart.getDate()}日`
-        unfinishedTaskListsItem.endAt = `${allTaskEnd.getFullYear()}年${allTaskEnd.getMonth() + 1}月${allTaskEnd.getDate()}日`
+        unfinishedTaskListsItem.startAt = `${allTaskStart.getFullYear()}${words.year}${allTaskStart.getMonth() + 1}${words.month}${allTaskStart.getDate()}${words.day}`
+        unfinishedTaskListsItem.endAt = `${allTaskEnd.getFullYear()}${words.year}${allTaskEnd.getMonth() + 1}${words.month}${allTaskEnd.getDate()}${words.day}`
 
         // 完成时间
         var doneDay = (allTasks[i].endAt - allTasks[i].startAt)/86400000 + 1
@@ -78,60 +59,24 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
   
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-    this.Refresh()  
-    this.toUpdateTheme()    
+    this.Refresh();
+    app.lib.toUpdateTheme(this, app.titles.unfinishedTaskList, app.globalData.themeColor);
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
   
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击删除任务
-   */
   delateItem(e) {
     console.log(e)
     var _this = this
+
+
     wx.showModal({
-      title: '将永久删除此任务',
-      content: '是否继续',
+      title: words.confirmDelete.title,
+      content: words.confirmDelete.content,
+      confirmText: words.confirm,
+
       cancelColor: this.data.themeColor,
-      confirmText: '确定',
       success: function (res) {
         if (res.confirm) {
           var allTasks = wx.getStorageSync('allTasks')
@@ -144,13 +89,7 @@ Page({
           wx.setStorageSync('allTasks', allTasks)
           _this.Refresh()
           wx.showToast({
-            title: '删除啦',
-            icon: 'none'
-          })
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-          wx.showToast({
-            title: '刚刚的事情当作没发生过',
+            title: words.deleted,
             icon: 'none'
           })
         }

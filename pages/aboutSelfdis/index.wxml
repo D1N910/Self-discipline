@@ -4,7 +4,7 @@
   <button
     open-type="contact"
     class='contactMe'>
-    联系我（早上10点-晚上10点）
+    {{i18n.contact}}
   </button>
   <view
     class="DoneUI-form-preview"
@@ -12,33 +12,33 @@
     wx:key="index">
     <view class="DoneUI-form-preview__hd">
       <view class="DoneUI-form-preview__item">
-        <label class="DoneUI-form-preview__label">版本号</label>
+        <label class="DoneUI-form-preview__label">{{i18n.version.number}}</label>
         <em class="DoneUI-form-preview__value">{{item.versionId}}</em>
       </view>
     </view>
     <view class="DoneUI-form-preview__bd">
       <view class="DoneUI-form-preview__item">
-        <label class="DoneUI-form-preview__label">作者的话</label>
+        <label class="DoneUI-form-preview__label">{{i18n.author.comment}}</label>
         <span class="DoneUI-form-preview__value">{{item.authorSaid}}</span>
       </view>
       <view class="DoneUI-form-preview__item">
-        <label class="DoneUI-form-preview__label">版本内容</label>
+        <label class="DoneUI-form-preview__label">{{i18n.version.content}}</label>
         <span class="DoneUI-form-preview__value">{{item.content}}</span>
       </view>
       <view class="DoneUI-form-preview__item">
-        <label class="DoneUI-form-preview__label">问题反馈</label>
-        <span class="DoneUI-form-preview__value">{{item.feeked}}</span>
+        <label class="DoneUI-form-preview__label">{{i18n.feedback}}</label>
+        <span class="DoneUI-form-preview__value">{{item.feedback}}</span>
       </view>
       <view class="DoneUI-form-preview__item">
-        <label class="DoneUI-form-preview__label">本版作者</label>
+        <label class="DoneUI-form-preview__label">{{i18n.author.name}}</label>
         <span class="DoneUI-form-preview__value">{{item.author}}</span>
       </view>
       <view class="DoneUI-form-preview__item">
-        <label class="DoneUI-form-preview__label">鸣谢</label>
+        <label class="DoneUI-form-preview__label">{{i18n.thanks}}</label>
         <span class="DoneUI-form-preview__value">{{item.thanks}}</span>
       </view>
       <view class="DoneUI-form-preview__item">
-        <label class="DoneUI-form-preview__label">代码开源</label>
+        <label class="DoneUI-form-preview__label">{{i18n.opensource}}</label>
         <span class="DoneUI-form-preview__value">{{item.open}}</span>
       </view>
     </view>

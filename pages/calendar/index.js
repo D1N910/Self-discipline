@@ -1,11 +1,14 @@
-// pages/calendar/index.js
+//这页没用上么？=_=?
+const app = getApp();
+const fetchWeekNames = require('../../i18n/weekNames.js').fetchWeekNames;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    showYear:'2018',
+    showYear: new Date().getFullYear(),
     List: [],
     weekArray: [],
     current:0
@@ -26,19 +29,11 @@ Page({
   onLoad: function (options) {
     var nowDate = new Date()
     var monthArray = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'];
-    var value = wx.getStorageSync('weekType')
-    if (value) {
-      if (value == 0) {
-        var weekArray = ['日', '一', '二', '三', '四', '五', '六'];
-      } else if (value == 1) {
-        var weekArray = ['日', '月', '火', '水', '木', '金', '土'];
-      } else if (value == 2) {
-        var weekArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
-      }
-    } else {
-      wx.setStorageSync('weekType', 0)
-      var weekArray = ['日', '一', '二', '三', '四', '五', '六'];
-    }
+    var value = wx.getStorageSync('weekType') || 0
+
+    //WeekNames的获取
+    let weekArray = fetchWeekNames(value);
+
     this.setData({
       nowMonth: monthArray[nowDate.getMonth()],
       weekArray
@@ -84,47 +79,10 @@ Page({
     return (year % 100 == 0 ? (year % 400 == 0 ? 1 : 0) : res = (year % 4 == 0 ? 1 : 0));
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onShow: function() {
+    app.lib.toUpdateTheme(this, app.titles.calendar, app.globalData.themeColor);
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
   changeWeekShow(event) {
     this.setData({
       showCurrent: event.detail.current

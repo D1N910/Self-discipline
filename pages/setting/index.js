@@ -1,5 +1,8 @@
 // pages/setting/in de.js
 const app = getApp()
+const words = require(`../../i18n/${app.lang}/wordList.js`);
+const pageContent = require(`../../i18n/${app.lang}/pages/setting.js`);
+
 
 Page({
 
@@ -7,26 +10,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    weekTypeArray: ['中式(日...六)', '日语(日...土)','英语(Sun...Sat)'],
+    words: words,
+    i18n: pageContent.wxml,
+
+    weekTypeArray: pageContent.weeklyExpressions,
     weekTypeIndex:0,
     programIndex: 0,
     themeColorIndex: 0,
-    programArray:['小朋友','大朋友'],
-    themeColorArray: ['#ff7199 粉[默认]', '#2d2d2d 黑', '#f1453d 红', '#ffc041 黄','#85c35c 绿','#1297ec 蓝','#a129aa 紫'],
+    programArray:['小朋友','大朋友'],//这个没用上？
+    themeColorArray: pageContent.themes,
     themeColor: '#ff7199'
-  },
-
-  /**
-   * 更新主题
-   */
-  toUpdateTheme() {
-    this.setData({
-      themeColor: app.globalData.themeColor
-    })
-    wx.setNavigationBarColor({
-      frontColor: '#ffffff',
-      backgroundColor: this.data.themeColor,
-    })
   },
 
   /**
@@ -57,13 +50,6 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
    * 修改星期显示设置
    */
   bindPickerChange: function (e) {
@@ -76,7 +62,7 @@ Page({
       data: parseInt(e.detail.value),
       success(){
         wx.showToast({
-          title: '修改成功!'
+          title: words.finished
         })
       }
     })
@@ -100,38 +86,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.toUpdateTheme()
+    app.lib.toUpdateTheme(this, app.titles.setting, app.globalData.themeColor);
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
   
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 
-   */
 })

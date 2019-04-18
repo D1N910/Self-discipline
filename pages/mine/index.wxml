@@ -14,7 +14,7 @@
         </view>
       
         <view class="DoneUI-cell__bd">
-          添加新自律项目
+          {{i18n.selections.appendItem}}
         </view>
         
         <view class="DoneUI-cell__ft">
@@ -37,7 +37,7 @@
         </view>
       
         <view class="DoneUI-cell__bd">
-          进行中的项目
+          {{i18n.selections.undoneList}}
         </view>
       
         <view class="DoneUI-cell__ft">
@@ -60,7 +60,7 @@
         </view>
       
         <view class="DoneUI-cell__bd">
-          已结束的项目
+          {{i18n.selections.doneList}}
         </view>
       
         <view class="DoneUI-cell__ft">
@@ -71,47 +71,14 @@
 
     </navigator>
 
-    <view class="DoneUI-cell">
-
+    <!--改为如果有小红花才显示-->
+    <view class="DoneUI-cell" wx:if="{{getRed > 0}}">
       <view class="weui-cell__hd">
-    
         <image src="../../static/red.png"></image>    
-    
       </view>
-    
-      <view class="DoneUI-cell__bd">
-        已获得红花数
-      </view>
-    
-      <view class="DoneUI-cell__ft">
-        {{getRed}}朵
-      </view>
-    
+      <view class="DoneUI-cell__bd">{{i18n.selections.flowers}}</view>
+      <view class="DoneUI-cell__ft">{{getRed}} {{words.flowerUnit}}</view>
     </view>
-
-    <!-- <navigator
-      url="/pages/milestone/index">
-
-      <view class="DoneUI-cell DoneUI-cell_access">
-
-
-        <view class="weui-cell__hd">
-      
-          <image src="../../static/milestone.png"></image>    
-      
-        </view>
-      
-        <view class="DoneUI-cell__bd">
-          里程碑
-        </view>
-      
-        <view class="DoneUI-cell__ft">
-          0
-        </view>
-      
-      </view>
-    
-    </navigator> -->
 
   </view>
 
@@ -128,7 +95,7 @@
         </view>
       
         <view class="DoneUI-cell__bd">
-          设置
+          {{i18n.selections.settings}}
         </view>
         
         <view class="DoneUI-cell__ft">
@@ -150,7 +117,7 @@
         </view>
       
         <view class="DoneUI-cell__bd">
-          关于自律表
+          {{i18n.selections.about}}
         </view>
         
         <view class="DoneUI-cell__ft">

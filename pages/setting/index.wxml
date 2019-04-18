@@ -1,41 +1,6 @@
-<!--pages/addNewTask/index.wxml-->
 <view class="container">
-
-    <!-- <view class="DoneUI-cells__title">
-      内容设置
-    </view>
-    <view class="DoneUI-list">
-
-      <view class="DoneUI-cell DoneUI-cell_access">
-      <view class="weui-cell__hd">
-    
-        <image src="../../static/program.png"></image>    
-    
-      </view>
-    
-      <view class="DoneUI-cell__bd">
-        自律方案
-      </view>
-    
-      <view class="DoneUI-cell__ft">
-          <picker
-            data-arrayName="program"          
-            bindchange="bindPickerChange"
-            value="{{programIndex}}"
-            range="{{programArray}}"
-          >
-
-            <view class="picker">
-              {{programArray[programIndex]}}
-            </view>
-            
-          </picker>
-      </view>
-      </view>
-    </view> -->
-
     <view class="DoneUI-cells__title">
-      其他设置
+      {{i18n.others.label}}
     </view>
     <view class="DoneUI-list">
       <view class="DoneUI-cell DoneUI-cell_access">
@@ -46,7 +11,7 @@
         </view>
     
         <view class="DoneUI-cell__bd">
-          星期语言
+          {{i18n.others.weeksExpressions}}
         </view>
     
         <view class="DoneUI-cell__ft">
@@ -75,7 +40,7 @@
         </view>
     
         <view class="DoneUI-cell__bd">
-          主题颜色
+          {{i18n.others.themes}}
         </view>
     
         <view class="DoneUI-cell__ft">
@@ -95,7 +60,7 @@
     </view>
     <navigator url="/pages/help/index">
       <view class="DoneUI-cells__title DoneUI-help">
-        使用帮助
+        {{i18n.getHelp}}
       </view>
     </navigator>    
 </view>

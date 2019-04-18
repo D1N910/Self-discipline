@@ -2,44 +2,10 @@
 <view>
   <view
     class="sorryTitle">
-    当你看到这则使用帮助的时候，说明[设置]模块不够透明清楚，我感到非常抱歉。
+    {{i18n.toolTip}}
   </view>
-
-    <!-- <view class="DoneUI-cells__title">
-      内容设置
-    </view>
-    <view class="DoneUI-list">
-
-      <view class="DoneUI-cell DoneUI-cell_access">
-      <view class="weui-cell__hd">
-    
-        <image src="../../static/program.png"></image>    
-    
-      </view>
-    
-      <view class="DoneUI-cell__bd">
-        自律方案
-      </view>
-    
-      <view class="DoneUI-cell__ft">
-          小朋友
-      </view>
-      </view>
-    </view>
-  <view
-    class="sorryContent">
-    【自律方案】可以调整任务设置的类型。比如你现在是大朋友，你没有小朋友，自律表，那么你可以调成“大朋友”的自律方案，那么在新增任务的时候就会显示针对大朋友的自律内容
-  </view>
-  <view
-    class="sorryContent">
-    [小朋友]['按时起床', '自己洗漱', '自己吃饭', '开心上学', '专心做事', '自己睡觉', '文明礼貌', '讲卫生', '关心别人', '热爱劳动', '积极勇敢']
-  </view>
-  <view
-    class="sorryContent">
-    [大朋友]['按时起床', '自己洗碗', '开心上班', '专心上班', '积极勇敢', '细嚼慢咽', '文明礼貌', '讲卫生', '关心别人', '关爱孩子', '不打骂孩子','讲故事','亲吻爱人','零点前睡觉']
-  </view> -->
     <view class="DoneUI-cells__title">
-      其他设置
+      {{i18n.settings}}
     </view>
     <view class="DoneUI-list">
 
@@ -51,20 +17,20 @@
         </view>
       
         <view class="DoneUI-cell__bd">
-          星期语言
+          {{i18n.weekDays.text}}
         </view>
     
         <view class="DoneUI-cell__ft">
-            中式(日...六)
+            {{i18n.weekDays.format}}
         </view>
       </view>
       <view
         class="sorryContent">
-        [星期语言]：修改星期显示的语言
+        {{i18n.weekDays.substract}}
       </view>
       <view
         class="sorryContent">
-        现在的自律方案['中式(日...六)', '日语(日...土)','英语(Sun...Sat)']
+        {{i18n.weekDays.content}}
       </view>
      <view class="DoneUI-cell DoneUI-cell_access">
         <view class="weui-cell__hd">
@@ -77,7 +43,7 @@
         </view>
       
         <view class="DoneUI-cell__bd">
-          背景颜色
+          {{i18n.backgroundColors.text}}
         </view>
     
         <view class="DoneUI-cell__ft">
@@ -86,11 +52,11 @@
       </view>
       <view
         class="sorryContent">
-        可以修改背景颜色
+        {{i18n.backgroundColors.substract}}
       </view>
       <view
         class="sorryContent">
-        现在的自律方案支持颜色['#ff7199 粉[默认]', '#2d2d2d 黑', '#f1453d 红', '#ffc041 黄','#85c35c 绿','#1297ec 蓝','#a129aa 紫']
+        {{i18n.backgroundColors.content}}
       </view>
     </view>  
 </view>

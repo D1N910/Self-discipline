@@ -3,13 +3,14 @@
 // 这里我直接就默认用中文了，我懒……
 
 // 支持的语言
-const supportedLanguages = [];
+const supportedLanguages = ['zh','en'];
 // 系统语言
 let osLang;
 
 wx.getSystemInfo({
   success: res => {
-    if(supportedLanguages.indexOf(res.language)){
+    console.log(res, supportedLanguages.indexOf(res.language));
+    if(supportedLanguages.indexOf(res.language) > -1){
       osLang = res.language;
     }else{
       //如果不在支持列表就显示中文
@@ -17,6 +18,8 @@ wx.getSystemInfo({
     }
   },
 })
+
+console.log(osLang);
 
 const base = require(`/i18n/${osLang}/index.js`);
 

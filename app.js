@@ -2,10 +2,11 @@
 // 或者指定一个默认使用的语言，然后在设置里面去修改语言环境（强烈不推荐）
 // 这里我直接就默认用中文了，我懒……
 
-// 支持的语言
-const supportedLanguages = ['zh','en','jp'];
+// 支持的语言，这里需要与i18n/weekNames.js中的数组位置一致
+const supportedLanguages = ['zh','jp','en'];
 // 系统语言
 let osLang;
+let weekType = wx.getStorageSync('weekType');
 
 wx.getSystemInfo({
   success: res => {
@@ -17,6 +18,12 @@ wx.getSystemInfo({
     }
   },
 })
+
+//如果是从来没有使用过的用户，默认按本土语言表示星期，如果之后用户修改过了，自然也就不会走这个逻辑了
+if (!weekType) {
+  weekType = supportedLanguages.indexOf(osLang);
+  wx.setStorageSync('weekType', weekType);
+}
 
 const base = require(`/i18n/${osLang}/index.js`);
 

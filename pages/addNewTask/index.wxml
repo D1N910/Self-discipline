@@ -1,30 +1,23 @@
-<!--pages/addNewTask/index.wxml-->
 <view class="container">
 
   <form bindsubmit="formSubmit">
 
     <view class="DoneUI-cells__title">
-      选择自律项目
+      {{i18n.selectSelfDisciplineItem}}
     </view>
     <view class="DoneUI-list DoneUI-form">
 
       <view class="DoneUI-cell">
 
         <view class="weui-cell__hd">
-          项目名称
+          {{i18n.selfDisciplineItem.name.text}}
         </view>
 
-        <!-- <view class="DoneUI-cell__bd">
-          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-            <view class="picker">
-              {{array[index]}}
-            </view>
-          </picker> -->
           <view class="DoneUI-cell__bd">
             <input
               value="{{title}}"
               bindinput="changeTitle"
-              placeholder="自律带来自信"></input>
+              placeholder="{{i18n.selfDisciplineItem.name.placeholder}}"></input>
           </view>
 
         <!-- </view> -->
@@ -34,21 +27,21 @@
       <view class="DoneUI-cell">
 
         <view class="weui-cell__hd">
-          备注
+          {{i18n.selfDisciplineItem.note.text}}
         </view>
 
         <view class="DoneUI-cell__bd">
           <input
             value="{{remarks}}"
             bindinput="changeRemarks"
-            placeholder="加油完成自律任务吧"></input>
+            placeholder="{{i18n.selfDisciplineItem.note.placeholder}}"></input>
         </view>
 
       </view>
     </view>
     <view class="DoneUI-cells__title">
-      持续天数
-      <text wx:if="{{days!=''}}">(坚持自律 {{days}} 天)</text>
+      {{i18n.duration.label}}
+      <text wx:if="{{days!=''}}">({{i18n.duration.count}} {{days}} {{words.day}})</text>
     </view>
 
     <view class="DoneUI-list DoneUI-form">
@@ -56,7 +49,7 @@
       <view class="DoneUI-cell">
 
         <view class="weui-cell__hd">
-          第一天
+          {{duration.first}}
         </view>
 
         <view class="DoneUI-cell__bd">
@@ -79,7 +72,7 @@
       <view class="DoneUI-cell">
 
         <view class="weui-cell__hd">
-          最后一天
+          {{duration.last}}
         </view>
 
         <view class="DoneUI-cell__bd">
@@ -117,13 +110,13 @@
     </view>
 
     <view class="DoneUI-cells__title">
-      执行时间段
+      {{i18n.period.label}}
     </view>
     <view class="DoneUI-list DoneUI-form">
       <view class="DoneUI-cell">
 
         <view class="weui-cell__hd">
-          全天
+          {{i18n.period.wholeday}}
         </view>
 
         <view class="DoneUI-cell__bd">
@@ -141,7 +134,7 @@
         wx-if="{{!ifAllDay}}">
 
         <view class="weui-cell__hd">
-          开始时间
+          {{i18n.period.start}}
         </view>
 
         <view class="DoneUI-cell__bd">
@@ -154,7 +147,7 @@
               <text
                 class="prompt"
                 wx:if="{{startTime==''}}"
-              >选择时间</text>
+              >{{i18n.period.text}}</text>
               {{startTime}}
             </view>
           </picker>
@@ -165,7 +158,7 @@
         wx-if="{{!ifAllDay}}">      
 
         <view class="weui-cell__hd">
-          结束时间
+          {{i18n.period.end}}
         </view>
 
         <view class="DoneUI-cell__bd">
@@ -179,7 +172,7 @@
              <text
               class="prompt"             
               wx:if="{{endTime==''}}"
-            >选择时间</text>
+            >{{i18n.period.text}}</text>
               {{endTime}}
             </view>
           </picker>
@@ -197,7 +190,7 @@
 
         <view
           class="DoneUI-form-preview__btn DoneUI-form-preview__btn_default"
-          bindtap="cancel">取消</view>  
+          bindtap="cancel">{{words.cancel}}</view>  
 
         <!-- 修改/添加 -->
         <button
@@ -209,7 +202,7 @@
           wx:if="{{editTasks.id}}"
           data-taskid="{{editTasks.id}}"
           class="DoneUI-form-preview__btn DoneUI-form-preview__btn_default"
-          bindtap="delateItem">删除</view>  
+          bindtap="deleteItem">{{words.del}}</view>  
 
 
       </view>

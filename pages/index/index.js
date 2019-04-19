@@ -1,11 +1,19 @@
 // pages/index/index.js
-var app = getApp()
+const app = getApp();
+const words = require(`../../i18n/${app.lang}/wordList.js`);
+const version = require(`../../i18n/${app.lang}/version.js`);
+const pageContents = require(`../../i18n/${app.lang}/pages/index.js`);
+const fetchWeekNames = require('../../i18n/weekNames.js').fetchWeekNames;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    words: words,
+    i18n: pageContents.wxml,
+
     nowDate:'',
     List:[],
     showCurrent:0,
@@ -16,7 +24,8 @@ Page({
     rect:[],
     nowTimeInTop:1,
     nowTimeShow: '',
-    nowTimeWord: '',
+    //在语言环境文件里直接获取好了
+    nowTimeWord: pageContents.motto(),
     minTransform: 'transform:rotate(0deg);',
     hourTransform: 'transform:rotate(0deg);',
     themeColor: '',
@@ -24,23 +33,10 @@ Page({
     buttonPositionY: '1000rpx'
   },
 
-  /**
-   * 更新主题
-   */
-  toUpdateTheme() {
-    this.setData({
-      themeColor: app.globalData.themeColor
-    })
-    wx.setNavigationBarColor({
-      frontColor: '#ffffff',
-      backgroundColor: this.data.themeColor,
-    })
-  },
-  /**
+    /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.toUpdateTheme()
     var that = this
     wx.getSystemInfo({
       success: function (res) {
@@ -53,22 +49,23 @@ Page({
         buttonPositionY: wx.getStorageSync('buttonPosition').buttonPositionY,
       })
     }
-    var thisVision = 'v0.2.7'
+    let thisVision = version.updateInfo.version;
     var getVision = wx.getStorageSync('vision')
     if(getVision){
       if (thisVision != getVision){
         wx.showModal({
-          title: `版本${thisVision}更新`,
-          content: '去掉了花里胡哨的启动页；现在右下角的设置按钮可以移动了；现在可以在设置里找到客服了',
+          title: version.updateInfo.title,
+          content: version.updateInfo.content,
           showCancel:false,
           confirmColor:this.data.themeColor
         })
-        wx.setStorageSync('vision', thisVision)        
+        wx.setStorageSync('vision', thisVision)
       }
     }else{
       wx.showModal({
-        title:'欢迎自律新人',
-        content: '亲爱的自律者，欢迎来到自律表，点击［右下角］的按钮来新建自律项目吧（点击右下角-设置-【主题颜色】即可更改颜色）',
+        //信标：自律新人的提示
+        title: pageContents.tips.welcome.title,
+        content: pageContents.tips.welcome.content,
         showCancel: false,
         confirmColor: this.data.themeColor
       })
@@ -166,7 +163,8 @@ Page({
             [`List[${e.currentTarget.dataset.listid}].thingList[${e.currentTarget.dataset.item}].flowerShow`]: flowerShowAnimationData.export()
           })
           wx.showToast({
-            title: '可喜可贺，奖励一朵大红花',
+            //信标： 可喜可贺。因为icon不属于文本范畴，所以不修正
+            title: pageContents.tips.medetashi.title,
             icon: 'none'
           })
         }.bind(this), 300)
@@ -199,7 +197,7 @@ Page({
     return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
     break;
     default: 
-                return 0;
+    return 0;
     break;
     } 
   },
@@ -207,28 +205,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.toUpdateTheme()
+    app.lib.toUpdateTheme(this, app.titles.index, app.globalData.themeColor);
     
-    var nowTimeWord = ['自律带来自信', '三更灯火五更鸡，正是读书时', '大海源于山溪', '不登高山，不知天之高', '不临深溪，不知地之厚', '君子博学而日参省乎己', '积土成山，风雨兴焉', '积水成渊，蛟龙生焉', '积善成德，而神明自得', '不积跬步，无以至千里', '不积小流，无以成江海', '驽马十驾，功在不舍', '锲而不舍，金石可镂', '时间，就像海棉里的水', '读书应自己思索，自己做主。', '凡事以理想为因，实行为果。', '有趣， 源于对生活的热爱', '我给你一个拥抱','在坚持中走向富有和平和']
-    this.setData({
-      nowTimeWord:nowTimeWord[this.randomNum(0, nowTimeWord.length - 1)]
-    })
     var nowDate = new Date()
-    // var testDate = new Date()
-    // var nowDate = new Date(testDate.getFullYear(), testDate.getMonth(), testDate.getDate() + 4);
-    var value = wx.getStorageSync('weekType')
-    if (value) {
-      if (value == 0) {
-        var weekArray = ['日', '一', '二', '三', '四', '五', '六'];
-      } else if (value == 1) {
-        var weekArray = ['日', '月', '火', '水', '木', '金', '土'];
-      } else if (value == 2) {
-        var weekArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
-      }
-    } else {
-      wx.setStorageSync('weekType', 0)
-      var weekArray = ['日', '一', '二', '三', '四', '五', '六'];
-    }
+    //“优化”了一下，没必要用else，给个默认就好啦
+    //另外，我也有一个weekNames.js的解决方案，在i18n里面
+    let value = wx.getStorageSync('weekType') || 0
+    let weekArray = fetchWeekNames(value);
+
     this.setData({
       nowDate: weekArray[nowDate.getDay()]
     })
@@ -331,9 +315,10 @@ Page({
               // 当前时长
               let timeDifference = (allTasks[i].otherOpations.doneTime.endTime - allTasks[i].otherOpations.doneTime.startTime) / 1000 / 60 / 60
               if (parseInt(timeDifference)!=0){
-                newtask.needDoneTime = `${parseInt(timeDifference)}小时${(parseFloat(timeDifference - parseInt(timeDifference)) * 60).toFixed()}分钟`
+                //这里用words.*代替小时和分钟
+                newtask.needDoneTime = `${parseInt(timeDifference)}${words.hours}${(parseFloat(timeDifference - parseInt(timeDifference)) * 60).toFixed()}${words.minutes}`
               }else{
-                newtask.needDoneTime = `${(parseFloat(timeDifference - parseInt(timeDifference)) * 60).toFixed()}分钟`
+                newtask.needDoneTime = `${(parseFloat(timeDifference - parseInt(timeDifference)) * 60).toFixed()}${words.minutes}`
               }
             }
           } else {
@@ -459,6 +444,7 @@ Page({
       path: `/pages/index/index`,
       imageUrl: '../../static/share.jpg',
       success(e) {
+        //……你这也太水了吧？……
         console.log('转发成功')
       }
     }

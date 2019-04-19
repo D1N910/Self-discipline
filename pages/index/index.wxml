@@ -77,7 +77,7 @@
                 class="{{item.success?'dealTime dealTimeSuccess':'dealTime'}}"
                 wx:if="{{item.allDay}}"
                 >
-                全天
+                {{words.wholeDay}}
               </view>
               <view
                 class="{{item.success?'dealTime dealTimeSuccess':'dealTime'}}"
@@ -94,7 +94,7 @@
                   {{item.content}} 
                   <text
                     class="needDoneTime"
-                    wx:if="{{item.needDoneTime}}">时长{{item.needDoneTime}}  </text>  
+                    wx:if="{{item.needDoneTime}}">{{words.duration}}{{item.needDoneTime}}  </text>  
                 </view>
                 <view
                   style="{{item.success?'':'color:'+themeColor+';'}}"
@@ -106,7 +106,7 @@
                   style="{{item.success?'':'color:'+themeColor+';'}}"
                   wx:if="{{item.otherOpations.remarks==''}}"
                   class="{{item.success?'tingTitleRemarks dealTimeSuccess':'tingTitleRemarks'}}">
-                  加油完成自律任务吧
+                  {{i18n.cheerupTip}}
                 </view>
               </view>
             <view

@@ -1,9 +1,10 @@
 <!--pages/completedTaskList/index.wxml-->
 <view class="container">
+  <!--这里有问题，应该直接跳转到新加项目-->
   <navigator
-      url='/pages/unfinishdTaskList/index'>
+      url='/pages/addNewTask/index'>
     <view class="noThing" wx:if="{{endTaskLists.length==0}}">
-      这里空空如也，坚持完成自律项目去✊
+      {{words.noSelfDisciplineItem}}
     </view>
   </navigator>
 
@@ -18,6 +19,6 @@
     class="noThing"
     wx:if="{{endTaskLists.length!=0}}"
     style="color:{{themeColor}};">
-    －－这里是自律的底线－－
+    {{words.bottomLine}}
   </view>
 </view>

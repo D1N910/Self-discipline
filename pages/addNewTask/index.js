@@ -1,12 +1,13 @@
 var app = getApp()
+const words = require(`../../i18n/${app.lang}/wordList.js`);
+const pageContents = require(`../../i18n/${app.lang}/pages/addNewTask.js`);
 
-// pages/addNewTask/index.js
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
+    words: words,
+    i18n: pageContents.wxml,
+    
     index: 0,
     array:[],
     taskData: {
@@ -17,7 +18,7 @@ Page({
     editTasks:{},
     edit: 0,
     changeTime: 0,
-    submitText: '添加项目',
+    submitText: pageContents.data.submitText(false),
     title: '',
     remarks:'',
     startTime: '',
@@ -27,24 +28,12 @@ Page({
   },
 
   /**
-   * 更新主题
-   */
-  toUpdateTheme() {
-    this.setData({
-      themeColor: app.globalData.themeColor
-    })
-    wx.setNavigationBarColor({
-      frontColor: '#ffffff',
-      backgroundColor: this.data.themeColor,
-    })
-  },
-  
-  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.toUpdateTheme()
     var program = wx.getStorageSync('program')
+    /*
+    为啥明明写了却不用……也不注释？……
     var taskContentArray
     switch (program)
     {
@@ -62,15 +51,15 @@ Page({
     this.setData({
       array: taskContentArray
     })
+    */
+
+
     // 如果是编辑页面
     if(options.id){
       var allTasks = wx.getStorageSync('allTasks')
-      console.log('编辑页面')
-      wx.setNavigationBarTitle({
-        title: '修改项目'
-      })
+      
       this.setData({
-        submitText: '修改'
+        submitText: pageContents.data.submitText(true)
       })
       var haveId = 0
       for (let i in allTasks) {
@@ -134,7 +123,7 @@ Page({
       }
       if (!haveId) {
         wx.showToast({
-          title: '发生错误，该任务不存在',
+          title: pageContents.haveNoId.title,
           icon:'none'
         })
         setTimeout(()=>{
@@ -153,52 +142,23 @@ Page({
       this.getDays();      
     })
   },
+  ///////////////////////onLoad结束///////////////////////////////
+
+
   bindPickerChange: function (e) {
     this.setData({
       index: e.detail.value
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
+
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.toUpdateTheme()
+    app.lib.toUpdateTheme(this, app.titles.addNewTask, app.globalData.themeColor);
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
 
   /**
    * 修改时间
@@ -242,7 +202,7 @@ Page({
 
       if (endTimeDate.getTime() - startTimeDate.getTime() < 0) {
         wx.showToast({
-          title: '错误：请检查执行时间段设置',
+          title: pageContents.haveNoTime.title,
           icon: "none"
         })
         return false
@@ -257,7 +217,7 @@ Page({
 
     if (this.data.days<=0){
       wx.showToast({
-        title: '错误：请检查持续天数设置',
+        title: pageContents.haveNoDays.title,
         icon: "none"
       })
       return false;
@@ -286,7 +246,7 @@ Page({
       wx.setStorageSync('allTasks', allTasks)
 
       wx.showToast({
-        title: '修改项目成功'
+        title: pageContents.modified.title
       })
 
       setTimeout(() => {
@@ -321,7 +281,7 @@ Page({
     }
 
     wx.showToast({
-      title: '创建任务成功'
+      title: pageContents.created.title
     })
 
     setTimeout(()=>{
@@ -355,14 +315,18 @@ Page({
   /**
    * 用户点击删除任务
    */
-  delateItem(e) {
-    console.log(e)
-    var _this = this
+  //错别字！是delete!你delate是要delate川普么=_,=|||
+  //语义化函数是一个对可读性很重要的功能，一定要丰富词汇量啊……
+  deleteItem(e) {
+    
+    var _this = this;
     wx.showModal({
-      title: '将永久删除此任务',
-      content: '是否继续',
+      title: words.confirmDelete.title,
+      content: words.confirmDelete.content,
+
+      confirmText: words.confirm,
       cancelColor: this.data.themeColor,
-      confirmText:'确定',
+
       success: function (res) {
         if (res.confirm) {
           var allTasks = wx.getStorageSync('allTasks')
@@ -375,10 +339,11 @@ Page({
           wx.setStorageSync('allTasks', allTasks)
           _this.cancel()
           wx.showToast({
-            title: '删除啦',
+            title: pageContents.deleted.title,
             icon: 'none'
           })
         } else if (res.cancel) {
+          //水，如果无需逻辑调用，这里其实完全可以不写的
           console.log('用户点击取消')
         }
       }

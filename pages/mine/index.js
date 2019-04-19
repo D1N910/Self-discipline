@@ -1,47 +1,19 @@
-// pages/mine/index.js
-var app = getApp()
-Page({
+const app = getApp();
+const words = require(`../../i18n/${app.lang}/wordList.js`);
+const pageContents = require(`../../i18n/${app.lang}/pages/mine.js`);
 
-  /**
-   * 页面的初始数据
-   */
+Page({
   data: {
+    words: words,
+    i18n: pageContents.wxml,
+
     processing: '',
     over: '',
     getRed: 0
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    this.toUpdateTheme()    
-  },
-
-  /**
-   * 更新主题
-   */
-  toUpdateTheme() {
-    this.setData({
-      themeColor: app.globalData.themeColor
-    })
-    wx.setNavigationBarColor({
-      frontColor: '#ffffff',
-      backgroundColor: this.data.themeColor,
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
+  
   onShow: function () {
-    this.toUpdateTheme()
+    app.lib.toUpdateTheme(this, app.titles.mine, app.globalData.themeColor);
     
     var allTasks = wx.getStorageSync('allTasks')
     var nowDate = new Date();
@@ -63,32 +35,4 @@ Page({
       getRed: getRed
     })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  }
 })

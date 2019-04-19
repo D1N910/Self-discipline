@@ -1,4 +1,5 @@
 // component/taskCard/index.js
+// 这个莫非也没用上？=_=
 Component({
   /**
    * 组件的属性列表
